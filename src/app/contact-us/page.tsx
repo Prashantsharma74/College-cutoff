@@ -78,10 +78,7 @@ export default function ContactUsContent() {
       {/* HERO */}
 
       <section
-        className="w-full py-24 relative overflow-hidden"
-        style={{
-          background: "linear-gradient(135deg, #e0f2fe 0%, #ffffff 60%)",
-        }}
+        className="contact-hero w-full py-24 relative overflow-hidden"
       >
 
         {/* Glow Effects */}
@@ -219,10 +216,8 @@ export default function ContactUsContent() {
 
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-xl font-semibold text-white transition hover:scale-[1.02]"
-                  style={{
-                    background: "linear-gradient(to right, #2563eb, #3b82f6)",
-                  }}
+                  className="contact-hero w-full py-3 rounded-xl font-semibold text-white transition hover:scale-[1.02]"
+                  style={{ background: "linear-gradient(to right, #2563eb, #3b82f6)", }}
                 >
                   Send Message →
                 </button>
@@ -469,10 +464,7 @@ export default function ContactUsContent() {
       {/* About Section */}
 
       <section
-        className="w-full py-24 px-4 relative overflow-hidden"
-        style={{
-          background: "linear-gradient(135deg, #e0f2fe 0%, #ffffff 70%)",
-        }}
+        className="contact-hero w-full py-24 px-4 relative overflow-hidden"
       >
 
         {/* Glow Effects */}
@@ -546,10 +538,7 @@ export default function ContactUsContent() {
 
               {/* Glow Background */}
               <div
-                className="absolute inset-0 rounded-3xl blur-2xl opacity-40 -z-10"
-                style={{
-                  background: "linear-gradient(to top right, #bae6fd, #60a5fa)",
-                }}
+                className="contact-hero w-full py-24 absolute inset-0 rounded-3xl blur-2xl opacity-40 -z-10"
               ></div>
 
               {/* Glass Card */}

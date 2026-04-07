@@ -68,10 +68,10 @@ export default function Home() {
         <div 
           className="absolute inset-0 z-0 opacity-60 pointer-events-none dark:opacity-10" 
           style={{ 
-            backgroundImage: 'radial-gradient(#9ca3af 2px, transparent 1.5px)', 
-            backgroundSize: '26px 26px',
-            maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 85%)',
-            WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 85%)'
+            // backgroundImage: 'radial-gradient(#9ca3af 2px, transparent 1.5px)', 
+            // backgroundSize: '26px 26px',
+            // maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 85%)',
+            // WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 85%)'
           }}
         ></div>
         

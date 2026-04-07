@@ -276,28 +276,20 @@ export default function ClosingRanks() {
       <section className="w-full px-2 pt-4 pb-10">
         <Container>
           {/* Tabs */}
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
             <div>
-              <h2 className="text-2xl font-bold">States & Union Territories</h2>
-              <p className="text-gray-500">Select a region to view detailed closing ranks</p>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+                States & Union Territories
+              </h2>
+              <p className="text-gray-500 text-sm md:text-base">
+                Select a region to view detailed closing ranks
+              </p>
             </div>
-            {/* <div className="flex gap-3">
-              {["all", "popular"].map(tab => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab as "all" | "popular")}
-                  className={`px-4 py-2 rounded-full text-sm font-medium ${
-                    activeTab === tab ? "bg-yellow-500 text-white" : "bg-gray-100 hover:bg-gray-200"
-                  }`}
-                >
-                  {tab === "all" ? "All States" : "Popular States"}
-                </button>
-              ))}
-            </div> */}
           </div>
 
           {/* Filters */}
-          <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
+          {/* <div className=" flex flex-col md:flex-row justify-between gap-4 mb-4"> */}
+          <div className="bg-white/70 border border-gray-200 rounded-2xl p-4 md:p-5 shadow-sm flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
             <div className="flex flex-col md:flex-row gap-4">
               <SearchAndSelect
                 name="courseType"

@@ -471,7 +471,7 @@ export default function ClosingRanks() {
 
                 {/* ⚡ CTA */}
                 <div className="mt-5 flex items-center justify-between">
-                  <span className="text-blue-600 font-semibold text-sm">
+                  <span className="text-orange-500">
                     View Closing Ranks
                   </span>
 
@@ -523,12 +523,19 @@ export default function ClosingRanks() {
             </div>
 
             {/* 🚀 CTA BUTTON */}
-            <Link
+            {/* <Link
               href="https://wa.me/919028009835"
               className="relative z-10 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-7 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300"
             >
               <Users className="h-5 w-5" />
               Book Counselling
+            </Link> */}
+
+            <Link
+              href="https://wa.me/919028009835"
+              className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white px-6 py-3 rounded-lg shadow-md flex items-center gap-2"
+            >
+              <Users className="h-5 w-5" /> Book Counselling Session
             </Link>
 
           </div>

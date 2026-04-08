@@ -56,7 +56,7 @@ export default function StateClosingRanksPage() {
   const [statePaymentPopup, setStatePaymentPopup] = useState(false)
   const [paymentChecker, setPaymentChecker] = useState(false)
 
-  const currentYear = new Date().getFullYear()-1
+  const currentYear = new Date().getFullYear() - 1
   const prevYear = currentYear - 1
 
   // refs for safe async behavior
@@ -241,8 +241,8 @@ export default function StateClosingRanksPage() {
       } catch (err) {
         console.error("getData error", err)
       }
-      finally{
-         setLoading(false)
+      finally {
+        setLoading(false)
       }
     },
     // intentionally include pageSize and stateCode
@@ -263,13 +263,13 @@ export default function StateClosingRanksPage() {
 
     const payload = fromAccount
       ? {
-          course,
-          courseType,
-          state,
-          stateCode,
-          instituteName,
-          instituteType,
-        }
+        course,
+        courseType,
+        state,
+        stateCode,
+        instituteName,
+        instituteType,
+      }
       : closingRankCollege
 
     // debounce so multiple state updates in quick succession won't fire multiple requests
@@ -319,7 +319,7 @@ export default function StateClosingRanksPage() {
   function generateCols() {
     const percentile_Marks = courseType?.includes("UG") ? "Marks" : "Percentile"
 
-    let currentYear = new Date().getFullYear()-1
+    let currentYear = new Date().getFullYear() - 1
     let previousYear = currentYear - 1
 
     if (!isEmpty(configYear)) {
@@ -375,114 +375,114 @@ export default function StateClosingRanksPage() {
           )
         },
       },
-      //  {
-      //    title: (
-      //      <div
-      //        data-tooltip-id="tooltip"
-      //        data-tooltip-content={`Closing Rank/ ${percentile_Marks} Round 2 ${currentYear}`}
-      //      >
-      //        {`Closing Rank/ ${percentile_Marks} [R2] ${currentYear}`}
-      //      </div>
-      //    ),
-      //    tableKey: `showClosingRankR2`,
-      //    width: "190px",
-      //    renderer({ cellData }) {
-      //      return cellData !== "xxx" &&
-      //        (cellData === "undefined" ||
-      //          cellData === "null" ||
-      //          cellData == null) ? (
-      //        "NA"
-      //      ) : (
-      //        <div
-      //          data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
-      //          data-tooltip-content={`Unlock This College @ ₹49`}
-      //        >
-      //          {cellData ?? "NA"}
-      //        </div>
-      //      )
-      //    },
-      //  },
-      //  {
-      //    title: (
-      //      <div
-      //        data-tooltip-id="tooltip"
-      //        data-tooltip-content={`Closing Rank/ ${percentile_Marks} Round 3 ${currentYear}`}
-      //      >
-      //        {`Closing Rank/ ${percentile_Marks} [R3] ${currentYear}`}
-      //      </div>
-      //    ),
-      //    tableKey: `showClosingRankR3`,
-      //    width: "190px",
-      //    renderer({ cellData }) {
-      //      return cellData !== "xxx" &&
-      //        (cellData === "undefined" ||
-      //          cellData === "null" ||
-      //          cellData == null) ? (
-      //        "NA"
-      //      ) : (
-      //        <div
-      //          data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
-      //          data-tooltip-content={`Unlock This College @ ₹49`}
-      //        >
-      //          {cellData ?? "NA"}
-      //        </div>
-      //      )
-      //    },
-      //  },
-      //  {
-      //    title: (
-      //      <div
-      //        data-tooltip-id="tooltip"
-      //        data-tooltip-content={`Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
-      //      >
-      //        {`Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
-      //      </div>
-      //    ),
-      //    tableKey: `showStrayRound`,
-      //    width: "210px",
-      //    renderer({ cellData }) {
-      //      return cellData !== "xxx" &&
-      //        (cellData === "undefined" ||
-      //          cellData === "null" ||
-      //          cellData == null) ? (
-      //        "NA"
-      //      ) : (
-      //        <div
-      //          data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
-      //          data-tooltip-content={`Unlock This College @ ₹49`}
-      //        >
-      //          {cellData ?? "NA"}
-      //        </div>
-      //      )
-      //    },
-      //  },
-      //  {
-      //    title: (
-      //      <div
-      //        data-tooltip-id="tooltip"
-      //        data-tooltip-content={`Last Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
-      //      >
-      //        Last {`Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
-      //      </div>
-      //    ),
-      //    tableKey: `showLastStrayRound`,
-      //    width: "210px",
-      //    renderer({ cellData }) {
-      //      return cellData !== "xxx" &&
-      //        (cellData === "undefined" ||
-      //          cellData === "null" ||
-      //          cellData == null) ? (
-      //        "NA"
-      //      ) : (
-      //        <div
-      //          data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
-      //          data-tooltip-content={`Unlock This College @ ₹49`}
-      //        >
-      //          {cellData ?? "NA"}
-      //        </div>
-      //      )
-      //    },
-      //  },
+       {
+         title: (
+           <div
+             data-tooltip-id="tooltip"
+             data-tooltip-content={`Closing Rank/ ${percentile_Marks} Round 2 ${currentYear}`}
+           >
+             {`Closing Rank/ ${percentile_Marks} [R2] ${currentYear}`}
+           </div>
+         ),
+         tableKey: `showClosingRankR2`,
+         width: "190px",
+         renderer({ cellData }) {
+           return cellData !== "xxx" &&
+             (cellData === "undefined" ||
+               cellData === "null" ||
+               cellData == null) ? (
+             "NA"
+           ) : (
+             <div
+               data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
+               data-tooltip-content={`Unlock This College @ ₹49`}
+             >
+               {cellData ?? "NA"}
+             </div>
+           )
+         },
+       },
+       {
+         title: (
+           <div
+             data-tooltip-id="tooltip"
+             data-tooltip-content={`Closing Rank/ ${percentile_Marks} Round 3 ${currentYear}`}
+           >
+             {`Closing Rank/ ${percentile_Marks} [R3] ${currentYear}`}
+           </div>
+         ),
+         tableKey: `showClosingRankR3`,
+         width: "190px",
+         renderer({ cellData }) {
+           return cellData !== "xxx" &&
+             (cellData === "undefined" ||
+               cellData === "null" ||
+               cellData == null) ? (
+             "NA"
+           ) : (
+             <div
+               data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
+               data-tooltip-content={`Unlock This College @ ₹49`}
+             >
+               {cellData ?? "NA"}
+             </div>
+           )
+         },
+       },
+       {
+         title: (
+           <div
+             data-tooltip-id="tooltip"
+             data-tooltip-content={`Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
+           >
+             {`Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
+           </div>
+         ),
+         tableKey: `showStrayRound`,
+         width: "210px",
+         renderer({ cellData }) {
+           return cellData !== "xxx" &&
+             (cellData === "undefined" ||
+               cellData === "null" ||
+               cellData == null) ? (
+             "NA"
+           ) : (
+             <div
+               data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
+               data-tooltip-content={`Unlock This College @ ₹49`}
+             >
+               {cellData ?? "NA"}
+             </div>
+           )
+         },
+       },
+       {
+         title: (
+           <div
+             data-tooltip-id="tooltip"
+             data-tooltip-content={`Last Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
+           >
+             Last {`Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
+           </div>
+         ),
+         tableKey: `showLastStrayRound`,
+         width: "210px",
+         renderer({ cellData }) {
+           return cellData !== "xxx" &&
+             (cellData === "undefined" ||
+               cellData === "null" ||
+               cellData == null) ? (
+             "NA"
+           ) : (
+             <div
+               data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
+               data-tooltip-content={`Unlock This College @ ₹49`}
+             >
+               {cellData ?? "NA"}
+             </div>
+           )
+         },
+       },
 
       {
         title: (
@@ -750,9 +750,9 @@ export default function StateClosingRanksPage() {
             </Link> */}
 
             {/* ➡️ Right: Breadcrumbs */}
-                          <div className="md:text-right">
-                            <Breadcrumbs />
-                          </div>
+            <div className="md:text-right">
+              <Breadcrumbs />
+            </div>
 
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-3">
               <div>
@@ -959,11 +959,10 @@ export default function StateClosingRanksPage() {
                 {courseType?.toUpperCase().includes("UG")
                   ? `Access All Rounds of ${course} Cut-off (Rank/Marks) details (NEET UG 2025) for every college in ${stateCode?.toLowerCase() === "all" ? "MCC All India" : state}, covering all categories and quotas across ${stateCode?.toLowerCase() === "all" ? "Government & Deemed" : "Government & Private"} institutions.`
                   : courseType?.toUpperCase().includes("PG")
-                    ? `Access All Round's of MD/MS/Diploma Cut-off Rank / Percentile / Marks Details (NEET PG ${
-  ["all", "br", "ka"].includes(stateCode?.toLowerCase() ?? "")
-    ? " 2025 & 2024"
-    : "2024"
-}) for every college in ${state}, covering all specialization, category, and quota across Government & Private institutions.`
+                    ? `Access All Round's of MD/MS/Diploma Cut-off Rank / Percentile / Marks Details (NEET PG ${["all", "br", "ka"].includes(stateCode?.toLowerCase() ?? "")
+                      ? " 2025 & 2024"
+                      : "2024"
+                    }) for every college in ${state}, covering all specialization, category, and quota across Government & Private institutions.`
                     : courseType?.toUpperCase().includes("SS")
                       ? `Access All Round's Specialization Wise DM/MCH/DNBSS Cut-off Rank/Marks Details (NEET SS 2024) for Your Selected College or Hospital.`
                       : courseType?.toUpperCase().includes("MDS")

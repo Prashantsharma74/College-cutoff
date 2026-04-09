@@ -23,8 +23,8 @@ export function Hero() {
       <div className="flex flex-col justify-center items-start w-full text-left px-5 sm:px-0">
         <div className="space-y-2 sm:space-y-6 w-full max-w-[650px]">
 
-          
-          
+
+
           {/* Top Badge (Pill 1) - Fading effect from peach/orange to transparent */}
           <span className="inline-block bg-gradient-to-r from-[#ffedd5] to-transparent text-[#0A5092] text-xs sm:text-sm font-medium pl-4 pr-8 py-[6px] rounded-full">
             India’s Most Accurate NEET College Predictor
@@ -49,23 +49,23 @@ export function Hero() {
           {/* Feature List */}
 
           <div className={`space-y-1 sm:space-y-3 pt-0 sm:pt-2 ${poppins.className}`}>
-  {[
-    "Based on official 2025 cutoffs",
-    "Covers All India & State Quotas",
-    "Includes Govt & Private Colleges",
-    "Shows last 2 years trends",
-  ].map((item, i) => (
-    <div key={i} className="flex items-center gap-3">
-      <Check
-        className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] text-orange-500"
-        strokeWidth={3}
-      />
-      <span className=" text-[13px] sm:text-[16px] md:text-[17px] text-gray-700 font-normal">
-        {item}
-      </span>
-    </div>
-  ))}
-</div>
+            {[
+              "Based on official 2025 cutoffs",
+              "Covers All India & State Quotas",
+              "Includes Govt & Private Colleges",
+              "Shows last 2 years trends",
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <Check
+                  className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] text-orange-500"
+                  strokeWidth={3}
+                />
+                <span className=" text-[13px] sm:text-[16px] md:text-[17px] text-gray-700 font-normal">
+                  {item}
+                </span>
+              </div>
+            ))}
+          </div>
 
           {/* Trust Strip (Pill 2) - Fading effect from light blue to transparent */}
           <div className="flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-[#e1effe] to-transparent rounded-full pl-4 pr-8 sm:pl-5 sm:pr-10 py-2.5 w-fit">
@@ -94,21 +94,21 @@ export function Hero() {
             {/* Rows */}
             <div className="space-y-4 mt-4">
               {[
-                {clg:"AIIMS, New Delhi" ,course:"MBBS", quota:"Open", rank1: "48/657", rank2: "57/500" },
-                {clg:"AIIMS, Bhopal" ,course:"MBBS", quota:"Open",rank1: "98/618", rank2: "277/450" },
-                {clg:"AIIMS, Patna" ,course:"MBBS", quota:"Open",rank1: "86/598", rank2: "607/440" },
+                { clg: "AIIMS, New Delhi", course: "MBBS", quota: "Open", rank1: "48/657", rank2: "57/500" },
+                { clg: "AIIMS, Bhopal", course: "MBBS", quota: "Open", rank1: "98/618", rank2: "277/450" },
+                { clg: "AIIMS, Patna", course: "MBBS", quota: "Open", rank1: "86/598", rank2: "607/440" },
               ].map((row, i) => (
                 <div key={i} className="grid grid-cols-5 items-center">
                   {/* <div className="flex items-center gap-2"> */}
-                    <span className="text-center text-[14px] sm:text-[15px] text-gray-700 font-medium">
-                      {row.clg}
-                    </span>
-                    <span className="text-center text-[14px] sm:text-[15px] text-gray-700 font-medium">
-                      {row.course}
-                    </span>
-                    <span className="text-center text-[14px] sm:text-[15px] text-gray-700 font-medium">
-                      {row.quota}
-                    </span>
+                  <span className="text-center text-[14px] sm:text-[15px] text-gray-700 font-medium">
+                    {row.clg}
+                  </span>
+                  <span className="text-center text-[14px] sm:text-[15px] text-gray-700 font-medium">
+                    {row.course}
+                  </span>
+                  <span className="text-center text-[14px] sm:text-[15px] text-gray-700 font-medium">
+                    {row.quota}
+                  </span>
                   <span className="text-center text-[14px] sm:text-[15px] text-gray-700 font-medium">
                     {row.rank1}
                   </span>

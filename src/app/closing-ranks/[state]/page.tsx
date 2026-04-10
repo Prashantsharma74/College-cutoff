@@ -58,7 +58,7 @@ export default function CollegeListClosingRanksPage() {
   const [tableData, setTableData] = useState<any>(null)
 
   const [updateUI, setUpdateUI] = useState(false)
-const [isLoading,setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [processingPayment, setProcessingPayment] = useState<any>(false)
   const [showPaymentPopup, setShowPaymentPopup] = useState(false)
   const [rowData, setRowData] = useState<any>(null)
@@ -105,25 +105,25 @@ const [isLoading,setIsLoading] = useState(false)
   }
 
   const [showUnlockPopover, setShowUnlockPopover] = useState(false);
-// const [rowData, setRowData] = useState<any>(null);
-// const [processingPayment, setProcessingPayment] = useState<any>(false);
+  // const [rowData, setRowData] = useState<any>(null);
+  // const [processingPayment, setProcessingPayment] = useState<any>(false);
 
   async function handleStatePurchase() {
-  const user = await fetchData({
-    url: "/api/user",
-    method: "GET",
-    noToast: true,
-  })
+    const user = await fetchData({
+      url: "/api/user",
+      method: "GET",
+      noToast: true,
+    })
 
-  if (user?.success) {
-    setProcessingPayment(rowData?.id)
-    setStatePurchaseMode(true)
-    setStatePaymentPopup(true)
-    setPaymentChecker(true)
-  } else {
-    setAppState({ signInModalOpen: true })
+    if (user?.success) {
+      setProcessingPayment(rowData?.id)
+      setStatePurchaseMode(true)
+      setStatePaymentPopup(true)
+      setPaymentChecker(true)
+    } else {
+      setAppState({ signInModalOpen: true })
+    }
   }
-}
   // useEffect(() => {
   //   setCurrentPage(1)
   //   updateURL(1, pageSize)
@@ -143,150 +143,150 @@ const [isLoading,setIsLoading] = useState(false)
   async function getData(page: number, data: string) {
     // console.log("GET DATA: ", data)
     // Type guard to ensure the key is valid
-   function isValidPriceTypeKey(key: string): key is keyof typeof priceType {
+    function isValidPriceTypeKey(key: string): key is keyof typeof priceType {
       return key in priceType
     }
     try {
 
-    setIsLoading(true)
- 
+      setIsLoading(true)
 
-    // const page = Number(getSearchParams("page") || 1)
-    if (stateCode !== "all") {
-      const priceTypeName =
-        courseType && courseType.includes(" ")
-          ? courseType.split(" ")[1]
-          : courseType
 
-      const fullKey = `SINGLE_COLLEGE_CLOSING_RANK_${priceTypeName?.toUpperCase()}`
+      // const page = Number(getSearchParams("page") || 1)
+      if (stateCode !== "all") {
+        const priceTypeName =
+          courseType && courseType.includes(" ")
+            ? courseType.split(" ")[1]
+            : courseType
 
-      const stateFullKey = `STATE_CLOSING_RANK_${priceTypeName?.toUpperCase()}`
+        const fullKey = `SINGLE_COLLEGE_CLOSING_RANK_${priceTypeName?.toUpperCase()}`
 
-      const priceTypeValue = isValidPriceTypeKey(fullKey)
-        ? priceType[fullKey]
-        : undefined
-      const statePriceTypeValue = isValidPriceTypeKey(stateFullKey)
-        ? priceType[stateFullKey]
-        : undefined
-      const params = {
-        page: page || currentPage,
-        size: pageSize,
-        state,
-        courseType,
-        course,
-        stateCode,
-        filterState: selectedState?.text || "",
-        instituteType: selectedInstituteType?.text || "",
+        const stateFullKey = `STATE_CLOSING_RANK_${priceTypeName?.toUpperCase()}`
+
+        const priceTypeValue = isValidPriceTypeKey(fullKey)
+          ? priceType[fullKey]
+          : undefined
+        const statePriceTypeValue = isValidPriceTypeKey(stateFullKey)
+          ? priceType[stateFullKey]
+          : undefined
+        const params = {
+          page: page || currentPage,
+          size: pageSize,
+          state,
+          courseType,
+          course,
+          stateCode,
+          filterState: selectedState?.text || "",
+          instituteType: selectedInstituteType?.text || "",
+        }
+
+        const [price, res, statePrice] = await Promise.all([
+          fetchData({
+            url: "/api/admin/configure_prices/get",
+            params: {
+              type: priceTypeValue,
+              item: state,
+            },
+            noLoading: true,
+            noToast: true,
+          }),
+
+          fetchData({
+            url: "/api/closing_ranks/college_list",
+            params,
+          }),
+
+          fetchData({
+            url: "/api/admin/configure_prices/get",
+            params: {
+              type: statePriceTypeValue,
+              item: state,
+            },
+            noLoading: true,
+            noToast: true,
+          }),
+        ])
+        // console.log("Price: ",price)
+        if (price?.success) {
+          setAmount(price?.payload?.data?.price)
+        }
+
+        if (statePrice?.success) {
+          setStateAmount(statePrice?.payload?.data?.price)
+        }
+
+        if (res?.success) {
+          // console.log("Data: ",res.payload)
+          setTableData(res?.payload)
+        }
+      } else {
+        const priceTypeName =
+          courseType && courseType.includes(" ")
+            ? courseType.split(" ")[1]
+            : courseType
+
+        const allIndiaFullKey = `SINGLE_COLLEGE_CLOSING_RANK_${priceTypeName?.toUpperCase()}`
+        const allIndiaFull = `ALL_INDIA_CLOSING_RANK_${priceTypeName?.toUpperCase()}`
+
+        const allIndiaPriceTypeValue = isValidPriceTypeKey(allIndiaFullKey)
+          ? priceType[allIndiaFullKey]
+          : undefined
+
+        const allIndiaPriceTypeValueForAll = isValidPriceTypeKey(allIndiaFull)
+          ? priceType[allIndiaFull]
+          : undefined
+
+        const [price, res, allIndiaPrice] = await Promise.all([
+          fetchData({
+            url: "/api/admin/configure_prices/get",
+            params: {
+              type: allIndiaPriceTypeValue,
+              item: stateCode === "all" ? "All India" : state,
+            },
+            noLoading: true,
+            noToast: true,
+          }),
+
+          fetchData({
+            url: "/api/closing_ranks/college_list",
+            params: {
+              page: currentPage,
+              size: pageSize,
+              state,
+              courseType: courseType,
+              course: course,
+              stateCode: stateCode,
+              filterState: selectedState?.text || "",
+              instituteType: selectedInstituteType?.text || "",
+            },
+          }),
+          fetchData({
+            url: "/api/admin/configure_prices/get",
+            params: {
+              type: allIndiaPriceTypeValueForAll,
+              item: stateCode === "all" ? "All India" : state,
+            },
+            noLoading: true,
+            noToast: true,
+          }),
+        ])
+        if (price?.success) {
+          setAmount(price?.payload?.data?.price)
+        }
+
+        if (allIndiaPrice?.success) {
+          setStateAmount(allIndiaPrice?.payload?.data?.price)
+        }
+
+        if (res?.success) {
+          // console.log("ResP ",res.payload)
+          setTableData(res?.payload)
+        }
       }
 
-      const [price, res, statePrice] = await Promise.all([
-        fetchData({
-          url: "/api/admin/configure_prices/get",
-          params: {
-            type: priceTypeValue,
-            item: state,
-          },
-          noLoading: true,
-          noToast: true,
-        }),
-
-        fetchData({
-          url: "/api/closing_ranks/college_list",
-          params,
-        }),
-
-        fetchData({
-          url: "/api/admin/configure_prices/get",
-          params: {
-            type: statePriceTypeValue,
-            item: state,
-          },
-          noLoading: true,
-          noToast: true,
-        }),
-      ])
-      // console.log("Price: ",price)
-      if (price?.success) {
-        setAmount(price?.payload?.data?.price)
-      }
-
-      if (statePrice?.success) {
-        setStateAmount(statePrice?.payload?.data?.price)
-      }
-
-      if (res?.success) {
-        // console.log("Data: ",res.payload)
-        setTableData(res?.payload)
-      }
-    } else {
-      const priceTypeName =
-        courseType && courseType.includes(" ")
-          ? courseType.split(" ")[1]
-          : courseType
-
-      const allIndiaFullKey = `SINGLE_COLLEGE_CLOSING_RANK_${priceTypeName?.toUpperCase()}`
-      const allIndiaFull = `ALL_INDIA_CLOSING_RANK_${priceTypeName?.toUpperCase()}`
-
-      const allIndiaPriceTypeValue = isValidPriceTypeKey(allIndiaFullKey)
-        ? priceType[allIndiaFullKey]
-        : undefined
-
-      const allIndiaPriceTypeValueForAll = isValidPriceTypeKey(allIndiaFull)
-        ? priceType[allIndiaFull]
-        : undefined
-
-      const [price, res, allIndiaPrice] = await Promise.all([
-        fetchData({
-          url: "/api/admin/configure_prices/get",
-          params: {
-            type: allIndiaPriceTypeValue,
-            item: stateCode === "all" ? "All India" : state,
-          },
-          noLoading: true,
-          noToast: true,
-        }),
-
-        fetchData({
-          url: "/api/closing_ranks/college_list",
-          params: {
-            page: currentPage,
-            size: pageSize,
-            state,
-            courseType: courseType,
-            course: course,
-            stateCode: stateCode,
-            filterState: selectedState?.text || "",
-            instituteType: selectedInstituteType?.text || "",
-          },
-        }),
-        fetchData({
-          url: "/api/admin/configure_prices/get",
-          params: {
-            type: allIndiaPriceTypeValueForAll,
-            item: stateCode === "all" ? "All India" : state,
-          },
-          noLoading: true,
-          noToast: true,
-        }),
-      ])
-      if (price?.success) {
-        setAmount(price?.payload?.data?.price)
-      }
-
-      if (allIndiaPrice?.success) {
-        setStateAmount(allIndiaPrice?.payload?.data?.price)
-      }
-
-      if (res?.success) {
-        // console.log("ResP ",res.payload)
-        setTableData(res?.payload)
-      }
-    }
-          
     } catch (error) {
-      console.log("error",error)
+      console.log("error", error)
     }
-    finally{
+    finally {
       setIsLoading(false)
     }
   }
@@ -368,7 +368,7 @@ const [isLoading,setIsLoading] = useState(false)
 
                     setRowData(rowData)
                     // handleBuyNow()
-                        setShowUnlockPopover(true);
+                    setShowUnlockPopover(true);
                   }}
                   disabled={processingPayment === rowData?.id}
                 >
@@ -379,83 +379,82 @@ const [isLoading,setIsLoading] = useState(false)
           )
         },
       },
-      // testing 
       // In your generateCols() function, update the renderer for the "Unlock Cut-off" column:
-// {
-//   title: "Unlock Cut-off",
-//   tableKey: "action",
-//   width: "120px",
-//   renderer({ rowData }) {
-//     const paymentStatus = getLocalStorageItem<any>(
-//       `payment-${state?.replaceAll(" ", "-").toLowerCase()}-${courseType?.replaceAll(" ", "-").toLowerCase()}-${rowData.instituteName.toLowerCase().trim().split(" ").join("-")}`,
-//     )
-    
-//     return (
-//       <div className="w-[120px] md:m-3">
-//         {rowData?.purchased || paymentStatus ? (
-//           <Link
-//             href={`/closing-ranks/${stateCode}/college-details?state=${state}&college=${rowData?.instituteName}&courseType=${courseType}&course=${course || ""}&collegeCount=${tableData?.totalItems || 0}`}
-//              className="text-[14px] disabled:bg-color-table-header disabled:text-white disabled:cursor-not-allowed flex items-center gap-2"
-//             onClick={() => {
-//               saveToLocalStorage(
-//                 paymentType.SINGLE_COLLEGE_CLOSING_RANK,
-//                 {
-//                   ...rowData,
-//                   course: course,
-//                   courseType: courseType,
-//                   state: state,
-//                 },
-//               )
-//             }}
-//           >
-//             <Button
-//               className="py-2 px-2 text-[14px] w-fit disabled:bg-color-table-header disabled:text-white disabled:cursor-not-allowed min-w-[100px] flex items-center gap-2"
-//               variant="primary"
-//             >
-//               <Eye size={20} /> View
-//             </Button>
-//           </Link>
-//         ) : (
-//           <UnlockPopover
-//             amount={amount}
-//             stateAmount={stateAmount}
-//             stateName={state || ""}
-//             processingPayment={processingPayment === rowData?.id}
-//             onBuySingle={() => {
-//               setPaymentChecker(true)
-//               saveToLocalStorage(
-//                 paymentType.SINGLE_COLLEGE_CLOSING_RANK,
-//                 {
-//                   ...rowData,
-//                   course: course,
-//                   courseType: courseType,
-//                   state: state,
-//                 },
-//               )
-//               setRowData(rowData)
-//               handleBuyNow()
-//             }}
-//             onBuyState={() => {
-//               setPaymentChecker(true)
-//               saveToLocalStorage(
-//                 paymentType.SINGLE_COLLEGE_CLOSING_RANK,
-//                 {
-//                   ...rowData,
-//                   course: course,
-//                   courseType: courseType,
-//                   state: state,
-//                 },
-//               )
-//               setRowData(rowData)
-//               handleStatePurchase()
-//             }}
-//             // pitch={`Choose to unlock just ${rowData?.instituteName} or all colleges in ${state}`}
-//           />
-//         )}
-//       </div>
-//     )
-//   },
-// }
+      // {
+      //   title: "Unlock Cut-off",
+      //   tableKey: "action",
+      //   width: "120px",
+      //   renderer({ rowData }) {
+      //     const paymentStatus = getLocalStorageItem<any>(
+      //       `payment-${state?.replaceAll(" ", "-").toLowerCase()}-${courseType?.replaceAll(" ", "-").toLowerCase()}-${rowData.instituteName.toLowerCase().trim().split(" ").join("-")}`,
+      //     )
+
+      //     return (
+      //       <div className="w-[120px] md:m-3">
+      //         {rowData?.purchased || paymentStatus ? (
+      //           <Link
+      //             href={`/closing-ranks/${stateCode}/college-details?state=${state}&college=${rowData?.instituteName}&courseType=${courseType}&course=${course || ""}&collegeCount=${tableData?.totalItems || 0}`}
+      //              className="text-[14px] disabled:bg-color-table-header disabled:text-white disabled:cursor-not-allowed flex items-center gap-2"
+      //             onClick={() => {
+      //               saveToLocalStorage(
+      //                 paymentType.SINGLE_COLLEGE_CLOSING_RANK,
+      //                 {
+      //                   ...rowData,
+      //                   course: course,
+      //                   courseType: courseType,
+      //                   state: state,
+      //                 },
+      //               )
+      //             }}
+      //           >
+      //             <Button
+      //               className="py-2 px-2 text-[14px] w-fit disabled:bg-color-table-header disabled:text-white disabled:cursor-not-allowed min-w-[100px] flex items-center gap-2"
+      //               variant="primary"
+      //             >
+      //               <Eye size={20} /> View
+      //             </Button>
+      //           </Link>
+      //         ) : (
+      //           <UnlockPopover
+      //             amount={amount}
+      //             stateAmount={stateAmount}
+      //             stateName={state || ""}
+      //             processingPayment={processingPayment === rowData?.id}
+      //             onBuySingle={() => {
+      //               setPaymentChecker(true)
+      //               saveToLocalStorage(
+      //                 paymentType.SINGLE_COLLEGE_CLOSING_RANK,
+      //                 {
+      //                   ...rowData,
+      //                   course: course,
+      //                   courseType: courseType,
+      //                   state: state,
+      //                 },
+      //               )
+      //               setRowData(rowData)
+      //               handleBuyNow()
+      //             }}
+      //             onBuyState={() => {
+      //               setPaymentChecker(true)
+      //               saveToLocalStorage(
+      //                 paymentType.SINGLE_COLLEGE_CLOSING_RANK,
+      //                 {
+      //                   ...rowData,
+      //                   course: course,
+      //                   courseType: courseType,
+      //                   state: state,
+      //                 },
+      //               )
+      //               setRowData(rowData)
+      //               handleStatePurchase()
+      //             }}
+      //             // pitch={`Choose to unlock just ${rowData?.instituteName} or all colleges in ${state}`}
+      //           />
+      //         )}
+      //       </div>
+      //     )
+      //   },
+      // }
     ]
     if (stateCode === "all" || stateCode === "All") {
       columns.splice(
@@ -528,7 +527,7 @@ const [isLoading,setIsLoading] = useState(false)
         },
         noToast: true,
       })
-      console.log("Price Response: ",priceRes)
+      console.log("Price Response: ", priceRes)
       if (priceRes?.success) {
         router.push(
           `/closing-ranks/${stateCode}/college-details?state=${state}&college=${rowData?.instituteName}&courseType=${courseType}&course=${course || ""}&collegeCount=${tableData?.totalItems || 0}`,
@@ -603,18 +602,18 @@ const [isLoading,setIsLoading] = useState(false)
     setProcessingPayment(false)
     setShowPaymentPopup(false)
   }
-const showCollege =
-  courseType?.toUpperCase().includes("UG")
-    ? course === "MBBS"
-      ? "Medical"
-      : course === "BDS"
-      ? "Dental"
-      : course === "BAMS"
-      ? "Ayurveda"
-      : course === "BHMS"
-      ? "Homeopathy"
-      : "Medical"
-    : "";
+  const showCollege =
+    courseType?.toUpperCase().includes("UG")
+      ? course === "MBBS"
+        ? "Medical"
+        : course === "BDS"
+          ? "Dental"
+          : course === "BAMS"
+            ? "Ayurveda"
+            : course === "BHMS"
+              ? "Homeopathy"
+              : "Medical"
+      : "";
 
   const totalCost = amount * (tableData?.totalItems || 0)
   // const savingsPercent = ((totalCost - stateAmount) * 100) / stateAmount
@@ -633,9 +632,9 @@ const showCollege =
             </Link> */}
 
             {/* ➡️ Right: Breadcrumbs */}
-              <div className="md:text-right">
-                <Breadcrumbs />
-              </div>
+            <div className="md:text-right">
+              <Breadcrumbs />
+            </div>
 
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-3">
               <div>
@@ -691,7 +690,7 @@ const showCollege =
                   value={selectedInstituteType}
                   onChange={({ selectedValue }) => {
                     setSelectedInstituteType(selectedValue)
-  setCurrentPage(1) // reset page
+                    setCurrentPage(1) // reset page
                     updateURL(1, pageSize) // update URL
                     clearErrors("instituteType")
                   }}
@@ -711,7 +710,7 @@ const showCollege =
                     autoComplete(
                       text,
                       stateCode?.toLowerCase() === "all"
-                        ?allInstituteTypes(courseType)
+                        ? allInstituteTypes(courseType)
                         : stateInstituteTypes,
                       setOptions,
                     )
@@ -732,8 +731,8 @@ const showCollege =
                     // boxWrapperClass="border-color-accent"
                     onChange={({ selectedValue }) => {
                       setSelectedState(selectedValue)
-  setCurrentPage(1) // reset page
-                    updateURL(1, pageSize) // update URL
+                      setCurrentPage(1) // reset page
+                      updateURL(1, pageSize) // update URL
                       clearErrors("state")
                     }}
                     control={control}
@@ -789,94 +788,139 @@ const showCollege =
 
         {tableData?.data?.length > 0 &&
           !tableData?.data?.[0]?.statePurchased && (
-            <section className="w-full  p-3 flex items-center justify-center">
-              <Card className="max-w-xl md:p-6 p-4 shadow-lg bg-gradient-to-b from-yellow-50/50 to-emerald-50/50 text-left">
-                {/* <Card className="p-6 shadow-lg bg-green-50 text-center"> */}
-                <h2 className="text-xl font-bold text-color-table-header">
-                  {`Unlock All ${state}'s ${courseType} ${course} Closing Ranks`}
-                </h2>
-                <p className="text-gray-600 mt-2">
-                  Get access to <strong>{tableData?.total_table_count || 0}</strong>{" "}
-                  colleges across <br className="md:hidden" />
-                  <strong>{state}</strong> round-wise closing ranks in one
-                  place.
-                </p>
-                <p className="text-gray-600 mt-2">
-                  Worth <strong> ₹{totalCost} </strong>if unlocked One by one,{" "}
-                  <br className="md:hidden" />
-                  now just <strong>₹{stateAmount}</strong>
-                </p>
+            <section className="w-full py-12 px-3 flex justify-center">
+              <div className="max-w-5xl w-full grid md:grid-cols-2 gap-6 items-stretch">
 
-                <div className="grid grid-cols-2 gap-3 mt-6">
-                  <div className="border rounded-md md:p-3 p-2 pt-2.5 text-gray-700">
-                    <p className="font-medium">Single College</p>
-                    <p className="text-xl">
-                      <strong>₹{amount}</strong> each
+                {/* 🔵 LEFT CONTENT */}
+                <div className="bg-gradient-to-br from-blue-600 to-blue-500 text-white rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-xl">
+
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold leading-snug">
+                      Unlock Complete {state} Closing Ranks
+                    </h2>
+
+                    <p className="mt-3 text-blue-100 text-sm">
+                      {/* Get access to <strong>{tableData?.total_table_count || 0}</strong> colleges across ALL INDIA . */}
+                      Get access to <strong>{tableData?.total_table_count || 0}</strong>{" "}
+                      colleges across <br className="md:hidden" />
+                      <strong>{state}</strong> round-wise closing ranks in one
+                      place.
                     </p>
                   </div>
-                  <div className="border border-blue-800 rounded-md md:p-3 pt-2.5 p-2 relative">
-                    <p className="font-medium flex items-center justify-start gap-1">
-                      {state} Pack
+
+                  {/* 💰 Value */}
+                  <div className="mt-6">
+                    <p className="text-sm text-blue-200">
+                      Worth ₹{totalCost} If unlocked One by one, now just
+                    </p>
+                    <p className="text-3xl font-bold mt-1">
+                      ₹{stateAmount}
+                    </p>
+                  </div>
+
+                </div>
+
+                {/* 💎 RIGHT PRICING PANEL */}
+                <div className="bg-white border border-blue-100 rounded-3xl p-6 md:p-8 shadow-xl flex flex-col justify-between">
+
+                  {/* Options */}
+                  <div className="space-y-4">
+
+                    {/* Single */}
+                    <div className="flex justify-between items-center border rounded-xl p-4 hover:border-blue-400 transition">
+                      <div>
+                        <p className="font-medium text-gray-900">Single College</p>
+                        <p className="text-xs text-gray-500">Pay per college</p>
+                      </div>
+                      <p className="font-bold text-gray-900">₹{amount}</p>
+                    </div>
+
+                    {/* Pack */}
+                    <div className="flex justify-between items-center border-2 border-blue-500 rounded-xl p-4 bg-blue-50 relative">
+
+                      {/* Badge */}
                       <span className="absolute -top-2.5 right-2 text-xs bg-color-accent text-white px-2 py-0.5 rounded">
                         Most Popular
                       </span>
-                    </p>
-                    <p className="text-xl text-color-accent font-bold">
-                      <strong> ₹{stateAmount} /-</strong>
-                    </p>
+
+                      <div>
+                        <p className="font-medium text-blue-900">{state} Pack</p>
+                        <p className="text-xs text-blue-600">Best value for all colleges</p>
+                      </div>
+
+                      <p className="font-bold text-blue-900 text-lg">₹{stateAmount}</p>
+                    </div>
+
                   </div>
+
+                  {/* CTA */}
+                  <button
+                    className="mt-6 w-full py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+                    onClick={() => {
+                      fetchData({
+                        url: "/api/user",
+                        method: "GET",
+                        noToast: true,
+                      }).then((user) => {
+                        if (user?.success) {
+                          setStatePurchaseMode(true)
+                          setStatePaymentPopup(true)
+                          setPaymentChecker(true)
+                        } else {
+                          setAppState({ signInModalOpen: true })
+                        }
+                      })
+                    }}
+                  >
+                    Unlock Now
+                    <ArrowRight size={18} />
+                  </button>
+
+                  {/* Trust */}
+                  <p className="text-xs text-gray-400 text-center mt-3">
+                    🔒 Secure • Instant Access
+                  </p>
+
                 </div>
 
-                <Button
-                  // disabled={stateCode?.toLowerCase()!=="all"}
-                  // data-tooltip-id={"tooltip"}
-                  // data-tooltip-content={
-                  //   stateCode?.toLowerCase() !== "all" ? "Coming Soon" : ""
-                  // }
-                  className="w-full uppercase font-bold mt-6 py-3 text-white bg-color-table-header/95  hover:bg-color-table-header active:bg-color-table-header rounded-md shadow-md hover:scale-105 transition flex items-center justify-center gap-2"
-                  onClick={() => {
-                    fetchData({
-                      url: "/api/user",
-                      method: "GET",
-                      noToast: true,
-                    }).then((user) => {
-                      if (user?.success) {
-                        setStatePurchaseMode(true)
-                        setStatePaymentPopup(true)
-                        setPaymentChecker(true)
-                      } else {
-                        setAppState({ signInModalOpen: true })
-                      }
-                    })
-                  }}
-                >
-                  Unlock {state} @ ₹{stateAmount}
-                  <ArrowRight size={18} strokeWidth={2} className="ml-1" />
-                </Button>
-              </Card>
+              </div>
             </section>
           )}
 
         <section className="w-full my-10">
           <Container className="container px-4 md:px-6">
-            {/* Expert Guidance CTA */}
-            <div className="border border-color-accent rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-              <div>
-                <h3 className="text-xl font-bold mb-2 text-black">
-                  Need personalized guidance?
+            <div className="mt-20 relative overflow-hidden rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-100 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
+
+              {/* 🔵 Glow */}
+              <div className="absolute -top-16 -right-16 w-40 h-40 bg-blue-400 opacity-20 blur-3xl rounded-full"></div>
+              <div className="absolute -bottom-16 -left-16 w-40 h-40 bg-blue-500 opacity-20 blur-3xl rounded-full"></div>
+
+              {/* 🧠 Content */}
+              <div className="relative z-10 text-center md:text-left">
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                  Need Personalized Guidance?
                 </h3>
-                <p className="text-gray-600">
-                  Connect with our expert counselors to get personalized college
-                  recommendations based on your NEET rank and preferences.
+                <p className="text-gray-600 text-base md:text-lg max-w-md">
+                  Talk to our experts and get the best college recommendations based on your rank, category, and preferences.
                 </p>
               </div>
+
+              {/* 🚀 CTA BUTTON */}
+              {/* <Link
+              href="https://wa.me/919028009835"
+              className="relative z-10 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-7 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300"
+            >
+              <Users className="h-5 w-5" />
+              Book Counselling
+            </Link> */}
+
               <Link
                 href="https://wa.me/919028009835"
-                className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 font-medium px-6 py-3 rounded-lg shadow-md flex items-center gap-2 text-white"
+                className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white px-6 py-3 rounded-lg shadow-md flex items-center gap-2"
               >
-                <Users className="h-5 w-5" />
-                Book Counselling Session
+                <Users className="h-5 w-5" /> Book Counselling Session
               </Link>
+
             </div>
           </Container>
         </section>
@@ -914,12 +958,11 @@ const showCollege =
                 {courseType?.toUpperCase().includes("UG")
                   ? `Access All Rounds of ${course} Cut-off (Rank/Marks) details (NEET UG 2025) for every college in ${stateCode?.toLowerCase() === "all" ? "MCC All India" : state}, covering all categories and quotas across ${stateCode?.toLowerCase() === "all" ? "Government & Deemed" : "Government & Private"} institutions.`
                   : courseType?.toUpperCase().includes("PG")
-                    ? `Access All Round's of MD/MS/Diploma Cut-off Rank / Marks / Percentile Details (NEET PG ${
-  ["all", "br", "ka"].includes(stateCode?.toLowerCase() ?? "")
-    ? " 2025 & 2024"
-    //: "2024"
-    :"2025 & 2024"
-}) for every college in ${state}, covering all specialization, category, and quota across Government & Private institutions.`
+                    ? `Access All Round's of MD/MS/Diploma Cut-off Rank / Marks / Percentile Details (NEET PG ${["all", "br", "ka"].includes(stateCode?.toLowerCase() ?? "")
+                      ? " 2025 & 2024"
+                      //: "2024"
+                      : "2025 & 2024"
+                    }) for every college in ${state}, covering all specialization, category, and quota across Government & Private institutions.`
                     : courseType?.toUpperCase().includes("SS")
                       ? `Access All Round's Specialization Wise DM/MCH/DNBSS Cut-off Rank/Marks Details (NEET SS 2024) for Your Selected College or Hospital.`
                       : courseType?.toUpperCase().includes("MDS")
@@ -945,55 +988,57 @@ const showCollege =
           </ul>
         }
         amount={stateAmount}
-      /> 
+      />
 
-<UnlockPopover
-  isOpen={showUnlockPopover}
-  onClose={() => {
-    setShowUnlockPopover(false);
-    setProcessingPayment(false);      // ensure UI resets if user closes modal
-    setStatePurchaseMode(false);
-  }}
-  // You can pass tab-specific header text:
-  titleSingle={<p className="p-0 uppercase poppinsFont">Please make payment to Unlock: {rowData?.instituteName}</p>}
-  titleState={<p className="p-0 uppercase poppinsFont">Please make payment to Unlock: All {state?.toUpperCase()} Colleges</p>}
-  // props
-  amount={amount}
-  stateAmount={stateAmount}
-  stateName={state || ""}
-  collegeCount={tableData?.total_table_count || 0}
-  paymentDescription="CollegeCutOff.net Payment for Closing Ranks"
-  courseType={courseType}
-  course={course}
-  initialTab="single" // optional: 'single' or 'state'
-  onBuySingle={() => {
-    // called immediately before starting payment when user confirms the "single" tab
-    setProcessingPayment(rowData?.id);
-    setPaymentChecker(true);
-  }}
-  onBuyState={() => {
-    // called immediately before starting payment when user confirms "state" tab
-    setProcessingPayment(rowData?.id);
-    setStatePurchaseMode(true);
-    setPaymentChecker(true);
-  }}
-  onConfirm={(verifyData) => {
-    // verifyData is the object returned by your /api/verify
-    // prefer handling the full payload rather than assuming fields
-    // const orderId = verifyData?.orderId ?? verifyData?.razorpay_order_id ?? "";
-    // successCallback(orderId); // or pass entire verifyData if your successCallback supports it
-    setShowUnlockPopover(false);
-  }}
-  stateCode={stateCode}
-/>
-      {paymentChecker && (
-        <PaymentRedirectPopup
-          successCallback={
-            statePurchaseMode ? successCallbackStatePayment : successCallback
-          }
-        />
-      )}
-    </FELayout>
+      <UnlockPopover
+        isOpen={showUnlockPopover}
+        onClose={() => {
+          setShowUnlockPopover(false);
+          setProcessingPayment(false);      // ensure UI resets if user closes modal
+          setStatePurchaseMode(false);
+        }}
+        // You can pass tab-specific header text:
+        titleSingle={<p className="p-0 uppercase poppinsFont">Please make payment to Unlock: {rowData?.instituteName}</p>}
+        titleState={<p className="p-0 uppercase poppinsFont">Please make payment to Unlock: All {state?.toUpperCase()} Colleges</p>}
+        // props
+        amount={amount}
+        stateAmount={stateAmount}
+        stateName={state || ""}
+        collegeCount={tableData?.total_table_count || 0}
+        paymentDescription="CollegeCutOff.net Payment for Closing Ranks"
+        courseType={courseType}
+        course={course}
+        initialTab="single" // optional: 'single' or 'state'
+        onBuySingle={() => {
+          // called immediately before starting payment when user confirms the "single" tab
+          setProcessingPayment(rowData?.id);
+          setPaymentChecker(true);
+        }}
+        onBuyState={() => {
+          // called immediately before starting payment when user confirms "state" tab
+          setProcessingPayment(rowData?.id);
+          setStatePurchaseMode(true);
+          setPaymentChecker(true);
+        }}
+        onConfirm={(verifyData) => {
+          // verifyData is the object returned by your /api/verify
+          // prefer handling the full payload rather than assuming fields
+          // const orderId = verifyData?.orderId ?? verifyData?.razorpay_order_id ?? "";
+          // successCallback(orderId); // or pass entire verifyData if your successCallback supports it
+          setShowUnlockPopover(false);
+        }}
+        stateCode={stateCode}
+      />
+      {
+        paymentChecker && (
+          <PaymentRedirectPopup
+            successCallback={
+              statePurchaseMode ? successCallbackStatePayment : successCallback
+            }
+          />
+        )
+      }
+    </FELayout >
   )
 }
 

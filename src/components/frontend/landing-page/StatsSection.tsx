@@ -44,3 +44,68 @@ export function StatsSection() {
     </section>
   )
 }
+
+// import { Award, Users, Building, BookMarked } from "lucide-react"
+// import { Container } from "../Container"
+
+// export function StatsSection() {
+//   const stats = [
+//     { icon: <Award className="h-6 w-6" />, value: "8+", label: "Years of Expertise" },
+//     { icon: <Users className="h-6 w-6" />, value: "30k+", label: "Students Registered" },
+//     { icon: <Building className="h-6 w-6" />, value: "500+", label: "Colleges Covered" },
+//     { icon: <BookMarked className="h-6 w-6" />, value: "25k+", label: "Queries Answered" },
+//   ];
+
+//   return (
+//     <section className="w-full py-24 relative overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white">
+
+//       {/* 🔵 Soft Blue Glow Background */}
+//       <div className="absolute -top-20 -left-20 w-72 h-72 bg-blue-200 rounded-full blur-3xl opacity-30" />
+//       <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-blue-300 rounded-full blur-3xl opacity-20" />
+
+//       <Container>
+//         <div className="relative z-10">
+
+//           {/* Heading */}
+//           <div className="text-center mb-16">
+//             <h2 className="text-3xl md:text-4xl font-bold text-blue-900 tracking-tight">
+//               Our Impact in Numbers
+//             </h2>
+//             <div className="w-20 h-1 bg-blue-500 mx-auto mt-4 rounded-full"></div>
+//           </div>
+
+//           {/* 🔥 Modern Card Grid */}
+//           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+//             {stats.map((item, i) => (
+//               <div
+//                 key={i}
+//                 className="group relative bg-white/70 backdrop-blur-xl border border-blue-100 rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+//               >
+
+//                 {/* subtle hover glow */}
+//                 <div className="absolute inset-0 rounded-2xl bg-blue-500/0 group-hover:bg-blue-500/5 transition"></div>
+
+//                 {/* Icon */}
+//                 <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+//                   {item.icon}
+//                 </div>
+
+//                 {/* Value */}
+//                 <div className="text-3xl md:text-4xl font-bold text-gray-900">
+//                   {item.value}
+//                 </div>
+
+//                 {/* Label */}
+//                 <div className="text-sm text-gray-500 mt-2 font-medium">
+//                   {item.label}
+//                 </div>
+
+//               </div>
+//             ))}
+//           </div>
+
+//         </div>
+//       </Container>
+//     </section>
+//   )
+// }

@@ -40,3 +40,82 @@ export default function HowItWorks() {
     </section>
   );
 }
+
+
+// "use client"
+// import { motion } from "framer-motion";
+// import { ClipboardList, Search, BookOpen, Globe, Filter, BarChart3 } from "lucide-react";
+
+// export default function HowItWorks() {
+//   const steps = [
+//     { title: "Select Your Exam", desc: "Choose your exam such as NEET UG, NEET PG, NEET MDS, NEET SS, DNB, or AIAPGET.", icon: ClipboardList },
+//     { title: "Enter Rank / Marks", desc: "Provide your NEET rank or marks for accurate prediction.", icon: Search },
+//     { title: "Choose Course", desc: "Select MBBS, BDS, BAMS, BHMS or PG courses.", icon: BookOpen },
+//     { title: "Select Counselling", desc: "Choose AIQ or State Quota based on eligibility.", icon: Globe },
+//     { title: "Apply Filters", desc: "Filter by category, quota and reservation.", icon: Filter },
+//     { title: "Get Colleges", desc: "View eligible colleges based on latest data.", icon: BarChart3 },
+//   ];
+
+//   return (
+//     <section className="py-12 bg-gradient-to-b from-blue-50 to-white px-6" style={{paddingBottom:"0px"}}>
+//       <div className="max-w-6xl mx-auto">
+
+//         {/* Heading */}
+//         <div className="text-center mb-16">
+//           <h2 className="text-4xl font-bold text-blue-900">
+//             How Predictor Works
+//           </h2>
+//           <p className="text-blue-600 mt-2">
+//             Simple step-by-step process to find your best college
+//           </p>
+//         </div>
+
+//         {/* Timeline */}
+//         <div className="relative">
+
+//           {/* Line */}
+//           <div className="hidden md:block absolute top-10 left-0 right-0 h-1 bg-blue-100"></div>
+
+//           <div className="grid md:grid-cols-6 gap-8 relative z-10">
+
+//             {steps.map((step, i) => {
+//               const Icon = step.icon;
+//               return (
+//                 <motion.div
+//                   key={i}
+//                   initial={{ opacity: 0, y: 20 }}
+//                   whileInView={{ opacity: 1, y: 0 }}
+//                   transition={{ delay: i * 0.1 }}
+//                   className="text-center group"
+//                 >
+
+//                   {/* Circle Icon */}
+//                   <div className="w-14 h-14 mx-auto rounded-full bg-white border-2 border-blue-200 flex items-center justify-center shadow-md group-hover:border-blue-500 transition">
+//                     <Icon className="text-blue-600 w-6 h-6" />
+//                   </div>
+
+//                   {/* Step Number */}
+//                   <div className="text-xs text-blue-500 mt-2 font-medium">
+//                     Step {i + 1}
+//                   </div>
+
+//                   {/* Title */}
+//                   <h3 className="text-md font-semibold text-gray-900 mt-2">
+//                     {step.title}
+//                   </h3>
+
+//                   {/* Description */}
+//                   <p className="text-sm text-gray-500 mt-1">
+//                     {step.desc}
+//                   </p>
+
+//                 </motion.div>
+//               );
+//             })}
+//           </div>
+//         </div>
+
+//       </div>
+//     </section>
+//   );
+// }

@@ -109,6 +109,7 @@ export default function ClosingRanks() {
   const [predictorTypeList, setPredictorTypeList] = useState<IOption[]>([])
   const [coursesList, setCoursesList] = useState<IOption[]>([])
   const [isCourseLoading, setIsCourseLoading] = useState<boolean>(false)
+  const [stateSummary, setStateSummary] = useState<any[]>([])
 
   const searchParams = useSearchParams()
   const courseType = searchParams.get("courseType")
@@ -122,6 +123,33 @@ export default function ClosingRanks() {
       title: "Closing Ranks for Medical, Dental & Ayurveda Courses",
       desc: "Explore college-wise cut-offs and closing ranks from All India and State counselling for all rounds across UG, PG & Super-Specialization.",
     }
+
+  const fetchStateSummary = async (courseType: string) => {
+    try {
+      const res = await fetch(`/api/state-summary?courseType=${courseType}`)
+      const json = await res.json()
+      console.log("testing Data", json)
+      if (json?.success) {
+        setStateSummary(json.data)
+      }
+    } catch (err) {
+      console.error("State summary error:", err)
+    }
+  }
+
+  // useEffect(() => {
+  //   if (selectedType) {
+  //     fetchStateSummary(selectedType.text)
+  //   }
+  // }, [selectedType])
+
+  useEffect(() => {
+    if (!selectedType && predictorTypeList.length > 0) {
+      const defaultType = predictorTypeList[0] // ya "NEET UG"
+      setSelectedType(defaultType)
+      fetchStateSummary(defaultType.text)
+    }
+  }, [predictorTypeList])
 
   const updateURL = useCallback((params: Record<string, string>, replace = true) => {
     const query = new URLSearchParams(params).toString();
@@ -161,6 +189,10 @@ export default function ClosingRanks() {
       }
     })()
   }, [])
+
+  const getStateData = (code: string) => {
+    return stateSummary.find((item) => item.state === code)
+  }
 
   // Fetch courses by type
   const getCoursesByType = useCallback(async (type: string) => {
@@ -259,7 +291,7 @@ export default function ClosingRanks() {
             )}
 
             {/* 🧠 Title */}
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6" style={{lineHeight:"65px"}}>
               {currentContent.title}
             </h1>
 
@@ -413,67 +445,91 @@ export default function ClosingRanks() {
 
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {filteredStates.map((state) => (
-              <Link
-                key={state.slug}
-                href={buildRedirectURL(state)}
-                onClick={(e) => !validateSelection() && e.preventDefault()}
-                className="group relative bg-white rounded-2xl border border-gray-200 p-5 hover:shadow-xl hover:border-blue-300 transition-all duration-300 flex flex-col overflow-hidden"
-              >
+            {filteredStates.map((state) => {
+              const meta = getStateData(state.code)
+              const count = meta?.count || 0;
+              const hasData = meta?.minYear && meta?.maxYear;
 
-                {/* 🔵 Subtle top gradient strip (premium feel) */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-300"></div>
+              return (
+                <Link
+                  key={state.slug}
+                  href={buildRedirectURL(state)}
+                  onClick={(e) => !validateSelection() && e.preventDefault()}
+                  className="group relative bg-white rounded-2xl border border-gray-200 p-5 hover:shadow-xl hover:border-blue-300 transition-all duration-300 flex flex-col overflow-hidden"
+                >
 
-                {/* 🔥 Popular Badge */}
-                {state.popular && (
-                  <span className="absolute top-3 right-3 bg-blue-100 text-blue-700 text-[11px] px-2 py-0.5 rounded-full font-medium">
-                    🔥 Popular
-                  </span>
-                )}
+                  {/* 🔵 Subtle top gradient strip (premium feel) */}
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-300"></div>
 
-                {/* 📍 Title */}
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="bg-blue-50 p-2 rounded-lg">
-                    <MapPin className="h-4 w-4 text-blue-600" />
-                  </div>
-                  <h3 className="font-semibold text-gray-800 group-hover:text-blue-600 transition">
-                    {state.name}
-                  </h3>
-                </div>
-
-                {/* 📊 Info Section */}
-                <div className="space-y-3 text-sm text-gray-600">
-
-                  <div className="flex items-center gap-2">
-                    <GraduationCap className="h-4 w-4 text-gray-400" />
-                    <span>
-                      <span className="font-semibold text-gray-800">
-                        {state?.collegeCount || 2}
-                      </span>{" "}
-                      Colleges Available
+                  {/* 🔥 Popular Badge */}
+                  {state.popular && (
+                    <span className="absolute top-3 right-3 bg-blue-100 text-blue-700 text-[11px] px-2 py-0.5 rounded-full font-medium">
+                      🔥 Popular
                     </span>
+                  )}
+
+                  {/* 📍 Title */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="bg-blue-50 p-2 rounded-lg">
+                      <MapPin className="h-4 w-4 text-blue-600" />
+                    </div>
+                    <h3 className="font-semibold text-gray-800 group-hover:text-blue-600 transition">
+                      {state.name}
+                    </h3>
                   </div>
 
-                  <div className="flex items-center gap-2">
-                    <BarChart3 className="h-4 w-4 text-gray-400" />
-                    <span>Latest 2024 & 2025 Counselling Data</span>
+                  {/* 📊 Info Section */}
+                  <div className="space-y-3 text-sm text-gray-600">
+
+                    <div className="flex items-center gap-2">
+                      <GraduationCap className="h-4 w-4 text-gray-400" />
+                      <span>
+
+                        {count === 0 ? (
+                          <span className="font-semibold text-gray-500">
+                            Coming Soon...
+                          </span>
+                        ) : (
+                          <>
+                            <span className="font-semibold text-gray-800">
+                              {count}
+                            </span>{" "}
+                            Colleges Available
+                          </>
+                        )}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <BarChart3 className="h-4 w-4 text-gray-400" />
+                      {/* <span>Latest 2024 & 2025 Counselling Data</span> */}
+                      {/* <span>
+                        {meta?.minYear && meta?.maxYear
+                          ? `Latest ${meta.minYear} – ${meta.maxYear} Counselling Data`
+                          : "No Data Available"}
+                      </span> */}
+                      <span>
+                        {hasData
+                          ? `Latest ${meta.minYear} – ${meta.maxYear} Counselling Data`
+                          : "Coming Soon..."}
+                      </span>
+                    </div>
+
                   </div>
 
-                </div>
+                  {/* ⚡ CTA */}
+                  <div className="mt-5 flex items-center justify-between">
+                    <span className="text-orange-500">
+                      View Closing Ranks
+                    </span>
 
-                {/* ⚡ CTA */}
-                <div className="mt-5 flex items-center justify-between">
-                  <span className="text-orange-500">
-                    View Closing Ranks
-                  </span>
-
-                  <div className="bg-blue-50 group-hover:bg-blue-600 transition p-2 rounded-full">
-                    <ArrowRight className="h-4 w-4 text-blue-600 group-hover:text-white transition" />
+                    <div className="bg-blue-50 group-hover:bg-blue-600 transition p-2 rounded-full">
+                      <ArrowRight className="h-4 w-4 text-blue-600 group-hover:text-white transition" />
+                    </div>
                   </div>
-                </div>
 
-              </Link>
-            ))}
+                </Link>)
+            })}
           </div>
 
           {!filteredStates.length && (

@@ -18,16 +18,34 @@ export function generateCols(
   courseType?: string,
   state?: any,
 ) {
-  let currentYear = new Date().getFullYear()-1
+  let currentYear = new Date().getFullYear() - 1
   let previousYear = currentYear - 1
   const percentile_Marks =
     courseType?.includes("UG") || courseType?.includes("MDS")
       ? "Marks"
       : "Percentile"
 
+  // if (!isEmpty(configYear)) {
+  //   previousYear = configYear[0]
+  //   currentYear = configYear[1]
+  // }
+
+  // By Prashant 
+  const systemYear = new Date().getFullYear()
+
   if (!isEmpty(configYear)) {
-    previousYear = configYear[0]
-    currentYear = configYear[1]
+    const prev = parseInt(configYear[0])
+    const curr = parseInt(configYear[1])
+
+    // validate incoming years
+    if (curr <= systemYear) {
+      previousYear = prev
+      currentYear = curr
+    } else {
+      // fallback to correct year
+      currentYear = systemYear
+      previousYear = systemYear - 1
+    }
   }
 
   const columns: TableColumn[] = [
@@ -379,6 +397,8 @@ export function generateCols(
 
         const id = rowData?.id
 
+        console.log("YEAR DEBUG:", new Date().getFullYear(), configYear)
+
         return (
           <div className="flex items-center gap-2 bg-color-form-background px-4 py-5">
             <Copy
@@ -461,7 +481,7 @@ export function generateColsPublic(
 
   const percentile_Marks =
     courseType?.toUpperCase().includes("UG") ||
-    courseType?.toUpperCase().includes("MDS")
+      courseType?.toUpperCase().includes("MDS")
       ? "Marks"
       : "Percentile"
 
@@ -518,7 +538,7 @@ export function generateColsPublic(
       },
     },
 
-  ...(courseType?.toUpperCase().includes("UG")?[ {
+    ...(courseType?.toUpperCase().includes("UG") ? [{
       title: (
         <div
           data-tooltip-id="tooltip"
@@ -626,9 +646,9 @@ export function generateColsPublic(
         )
       },
     },
-  ]:[]),
+    ] : []),
 
-    
+
     {
       title: (
         <div

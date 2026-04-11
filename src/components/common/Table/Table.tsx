@@ -12,7 +12,7 @@ interface TableProps {
   selectable?: boolean
   itemsCountPerPage?: number
   className?: string
-   loading?: boolean
+  loading?: boolean
   onChange?: (selectedRows: any[]) => void
   renderBelowTable?: React.ReactNode
 }
@@ -22,7 +22,7 @@ export interface TableColumn {
   tableKey: string
   width?: string
   hidden?: boolean
- 
+
   overrideInternalClick?: boolean
   disableMobStaticLeft?: boolean
   renderer?: (props: {
@@ -106,6 +106,8 @@ export function Table({
     }
   }
 
+  console.log("Columns", columns)
+
   return (
     <div className={cn("relative")}>
       {/* {isEmpty(data) && (
@@ -114,17 +116,17 @@ export function Table({
         </div>
       )} */}
 
-      { loading?<div className="defaultTextStyles font-normal absolute top-1/2 left-1/2 -translate-x-1/2">
-          <Loader2Icon className="animate-spin text-color-accent"/>
-        </div>: <div className="defaultTextStyles font-normal absolute top-1/2 left-1/2 -translate-x-1/2">
-          No Data Available...
-        </div>}
+      {loading ? <div className="defaultTextStyles font-normal absolute top-1/2 left-1/2 -translate-x-1/2">
+        <Loader2Icon className="animate-spin text-color-accent" />
+      </div> : <div className="defaultTextStyles font-normal absolute top-1/2 left-1/2 -translate-x-1/2">
+        No Data Available...
+      </div>}
       <div
         className={cn(
           "overflow-auto border rounded-lg border-color-border relative min-h-[543px] max-h-[750px]",
           data?.length === 10 && "min-h-0",
           isMobile &&
-            "landscape:min-h-[250px] landscape:max-h-[calc(100vh-10px)]",
+          "landscape:min-h-[250px] landscape:max-h-[calc(100vh-10px)]",
           className,
         )}
       >
@@ -155,7 +157,7 @@ export function Table({
                     headerTHClass,
                     "uppercase",
                     column?.tableKey === "action" &&
-                      "tableActionStatic bg-color-table-header",
+                    "tableActionStatic bg-color-table-header",
                     handleStaticLeft(column, true),
                   )}
                   style={{ minWidth: column?.width }}
@@ -198,7 +200,7 @@ export function Table({
                         "px-4 py-3 text-left text-[13px] bg-color-white_black",
                         column?.overrideInternalClick && "cursor-auto",
                         column?.tableKey === "action" &&
-                          "tableActionStatic px-0 py-0",
+                        "tableActionStatic px-0 py-0",
                         handleStaticLeft(column, false),
                       )}
                       onClick={(e) =>
@@ -215,16 +217,16 @@ export function Table({
                       >
                         {column?.renderer
                           ? column?.renderer({
-                              rowData: row,
-                              cellData: row[column?.tableKey],
-                            })
+                            rowData: row,
+                            cellData: row[column?.tableKey],
+                          })
                           : shouldRenderComponent(
-                                [
-                                  row[column?.tableKey] === "-",
-                                  !row[column?.tableKey],
-                                ],
-                                "OR",
-                              )
+                            [
+                              row[column?.tableKey] === "-",
+                              !row[column?.tableKey],
+                            ],
+                            "OR",
+                          )
                             ? "NA"
                             : row[column?.tableKey]}
                       </div>

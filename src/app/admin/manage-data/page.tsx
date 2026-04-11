@@ -267,6 +267,8 @@ setCurrentPage(1)
     getData(searchInput, 1)
   }
 
+  console.log("Table Data", tableData)
+
   return (
     <BELayout className="mb-10 tab:mb-0 pc:max-w-[calc(100vw-213px)] p-0 ml-0 !px-0">
       <div className="pb-4 pc:pb-8 flex justify-between flex-col pc:flex-row">

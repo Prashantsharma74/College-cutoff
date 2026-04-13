@@ -63,7 +63,7 @@ export default function Home() {
         </Container>
       </div>*/}
 
-      {/* <div className="py-12 pc:py-16 relative bg-gradient-to-b from-white via-yellow-50 to-yellow-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 min-h-dvh overflow-hidden"> */}
+      <div className="py-12 pc:py-16 relative bg-gradient-to-b from-white via-yellow-50 to-yellow-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 min-h-dvh overflow-hidden">
         {/* CSS Dot Pattern with Bottom-to-Top Fade */}
         <div
           className="absolute inset-0 z-0 opacity-60 pointer-events-none dark:opacity-10"
@@ -76,24 +76,24 @@ export default function Home() {
         ></div>
 
         {/* Increased max width from 1200px to 1400px to reduce empty side space */}
-        {/* <Container className="max-w-[1400px] relative z-10 px-2 sm:px-6">
+        <Container className="max-w-[1400px] relative z-10 px-2 sm:px-6">
           <Hero />
         </Container>
-      </div> */}
+      </div>
 
       {/* <Container className="max-w-[1600px]">
         <TrustedBy />
       </Container> */}
 
       {/* <Container className="max-w-[1600px]">
-        <Container className="max-w-[1600px]">
+        <Container className="max-w-[1600px]"> */}
           <HowItWorks />
-        </Container>
+        {/* </Container>
       </Container> */}
 
-      {/* <div className="py-16 pc:py-20 relative bg-gradient-to-b from-white via-yellow-50 to-yellow-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700">
+      {/* <div className="py-16 pc:py-20 relative bg-gradient-to-b from-white via-yellow-50 to-yellow-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700"> */}
         <StatsSection />
-      </div> */}
+      {/* </div> */}
 
       {/* <div className="py-16 pc:py-20 relative bg-gradient-to-b from-white via-yellow-50 to-yellow-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700"> */}
         {/* <Container className="max-w-[1600px]"> */}

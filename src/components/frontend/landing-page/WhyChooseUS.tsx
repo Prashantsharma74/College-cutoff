@@ -277,8 +277,8 @@ export default function WhyChooseUs() {
     <section className="relative py-24 px-6 bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden">
 
       {/* 🔥 Background Glow */}
-      <div className="absolute top-[-100px] right-[-100px] w-[300px] h-[300px] bg-blue-400 opacity-20 blur-3xl rounded-full"></div>
-      <div className="absolute bottom-[-120px] left-[-120px] w-[300px] h-[300px] bg-orange-400 opacity-20 blur-3xl rounded-full"></div>
+      {/* <div className="absolute top-[-100px] right-[-100px] w-[300px] h-[300px] bg-blue-400 opacity-20 blur-3xl rounded-full"></div> */}
+      {/* <div className="absolute bottom-[-120px] left-[-120px] w-[300px] h-[300px] bg-orange-400 opacity-20 blur-3xl rounded-full"></div> */}
 
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
@@ -307,9 +307,10 @@ export default function WhyChooseUs() {
               <motion.div
                 key={i}
                 whileHover={{ y: -5 }}
-                className="p-5 rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all"
+                className="p-5 rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-orange-600 transition-all"
               >
-                <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-50 text-blue-600 mb-3">
+                {/* <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-50 text-blue-600 mb-3"> */}
+                <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-blue-50 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all">
                   {item.icon}
                 </div>
 
@@ -332,7 +333,7 @@ export default function WhyChooseUs() {
           <div className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 md:p-10 relative overflow-hidden">
 
             {/* Gradient border glow */}
-            <div className="absolute inset-0 border-2 border-transparent bg-gradient-to-r from-blue-400 to-orange-400 opacity-20 rounded-3xl"></div>
+            {/* <div className="absolute inset-0 border-2 border-transparent bg-gradient-to-r from-blue-400 to-orange-400 opacity-20 rounded-3xl"></div> */}
 
             {/* Content */}
             <div className="relative z-10">

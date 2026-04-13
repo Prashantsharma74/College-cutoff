@@ -25,6 +25,7 @@ import type React from "react"
 import { ReactNode, useEffect, useState } from "react"
 
 import { Tabs } from "./Tabs"
+import Seo from "@/components/Seo"
 
 const tabMenu = [
   {
@@ -391,6 +392,11 @@ export default function PackagesPage() {
 
   return (
     <FELayout>
+      <Seo
+        title="Counselling Packages - College Admission Plans"
+        description="Explore affordable college counselling packages and admission guidance plans for engineering and medical aspirants."
+        keywords="college counselling packages, admission guidance plans india, counselling services"
+      />
       <div className="dark:bg-color-form-background">
         {/* Hero Section */}
         <section className="w-full py-12 md:py-16 lg:py-20 bg-gradient-to-r from-yellow-50 to-emerald-50 relative overflow-hidden">
@@ -629,9 +635,8 @@ export default function PackagesPage() {
                     )}
                   </button>
                   <div
-                    className={`mt-2 text-gray-600 transition-all duration-300 overflow-hidden ${
-                      expandedFaq === index ? "max-h-96" : "max-h-0"
-                    }`}
+                    className={`mt-2 text-gray-600 transition-all duration-300 overflow-hidden ${expandedFaq === index ? "max-h-96" : "max-h-0"
+                      }`}
                   >
                     <p className="pb-4">{faq.answer}</p>
                   </div>

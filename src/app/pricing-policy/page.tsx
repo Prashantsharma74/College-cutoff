@@ -1,10 +1,16 @@
 import { Container } from "@/components/frontend/Container"
 import { FELayout } from "@/components/frontend/FELayout"
+import Seo from "@/components/Seo"
 import Link from "next/link"
 
 export default function PricingPolicyPage() {
   return (
     <FELayout>
+      <Seo
+        title="Pricing Policy - Counselling Services Cost"
+        description="Learn about our pricing policy, counselling charges, and admission guidance service costs."
+        keywords="counselling pricing, admission service cost india, pricing policy counselling"
+      />
       <Container className="max-w-[1600px] py-4 mx-4 pc:mx-6 text-sm text-color-text">
         <div className="my-4 space-y-4 text-color-text">
           <h1 className="text-3xl md:text-4xl font-bold pb-4 text-color-table-header">

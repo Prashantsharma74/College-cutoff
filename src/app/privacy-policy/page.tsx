@@ -1,9 +1,15 @@
 import { Container } from "@/components/frontend/Container"
 import { FELayout } from "@/components/frontend/FELayout"
+import Seo from "@/components/Seo"
 
 export default function PrivacyPolicyPage() {
   return (
     <FELayout>
+      <Seo
+        title="Privacy Policy - Data Protection"
+        description="Read our privacy policy to understand how we collect, use, and protect your personal data."
+        keywords="privacy policy, data protection india, user data policy"
+      />
       <Container className="max-w-[1600px] py-4 mx-4 pc:mx-6 text-sm text-color-text">
         <div className="my-4 space-y-4 text-color-text">
           <h1 className="text-3xl md:text-4xl font-bold pb-4">

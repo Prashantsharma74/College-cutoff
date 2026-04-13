@@ -37,6 +37,7 @@ import { useForm } from "react-hook-form"
 import { Tooltip } from "react-tooltip"
 
 import TableSignup from "./TableSignup"
+import Seo from "@/components/Seo"
 
 export default function ResultPage() {
   const {
@@ -52,7 +53,7 @@ export default function ResultPage() {
   const [filterPopup, setFilterPopup] = useState(false)
   const [filterParams, setFilterParams] = useState<any>(null)
   const [updateUI, setUpdateUI] = useState(false)
-const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [paid, setPaid] = useState(false)
   const [amount, setAmount] = useState(149)
 
@@ -200,78 +201,78 @@ const [loading,setLoading] = useState(false)
   }
 
   async function getData(paginationPage: any) {
-try {
-  setLoading(true)
+    try {
+      setLoading(true)
 
-    const page = paginationPage || currentPage
-    const size = pageSize
-    const rank = getSearchParams("rank")
-    const course = getSearchParams("course")
-    const courseType = getSearchParams("courseType")
-    const rankType = getSearchParams("rankType") ?? null
-    const quota = getSearchParams("quota")
-    const subQuota = getSearchParams("subQuota")
-    const category = getSearchParams("category")
-    const subCategory = getSearchParams("subCategory")
+      const page = paginationPage || currentPage
+      const size = pageSize
+      const rank = getSearchParams("rank")
+      const course = getSearchParams("course")
+      const courseType = getSearchParams("courseType")
+      const rankType = getSearchParams("rankType") ?? null
+      const quota = getSearchParams("quota")
+      const subQuota = getSearchParams("subQuota")
+      const category = getSearchParams("category")
+      const subCategory = getSearchParams("subCategory")
 
-    const params: Record<string, any> = {
-      page,
-      size,
-      rank,
-      rankType,
-      course,
-      courseType,
-      state: getSearchParams("state"),
-      filterState: selectedState?.text || "",
-      instituteType: selectedInstituteType?.text || "",
-      stateCode: getSearchParams("stateCode"),
-      quota,
-      subCategory,
-      subQuota,
-      category,
-    }
+      const params: Record<string, any> = {
+        page,
+        size,
+        rank,
+        rankType,
+        course,
+        courseType,
+        state: getSearchParams("state"),
+        filterState: selectedState?.text || "",
+        instituteType: selectedInstituteType?.text || "",
+        stateCode: getSearchParams("stateCode"),
+        quota,
+        subCategory,
+        subQuota,
+        category,
+      }
 
-    if (!isEmpty(filterParams)) {
-      Object.entries(filterParams).forEach(([key, value]: any) => {
-        if (!isEmpty(value)) {
-          params[key] = value
-        }
-      })
+      if (!isEmpty(filterParams)) {
+        Object.entries(filterParams).forEach(([key, value]: any) => {
+          if (!isEmpty(value)) {
+            params[key] = value
+          }
+        })
 
-      // if (!paginationPage) {
-      //   setSearchParams("page", "1")
-      //   if (paginationRef.current) {
-      //     paginationRef.current.setActivePage(1)
-      //   }
-      // }
-    }
+        // if (!paginationPage) {
+        //   setSearchParams("page", "1")
+        //   if (paginationRef.current) {
+        //     paginationRef.current.setActivePage(1)
+        //   }
+        // }
+      }
 
 
-    console.log("SENDING PARAMS: ",params)
-    const [dataRes] = await Promise.all([
-      fetchData({
-        url: "/api/predict_college",
-        params,
-      }),
-    ])
+      console.log("SENDING PARAMS: ", params)
+      const [dataRes] = await Promise.all([
+        fetchData({
+          url: "/api/predict_college",
+          params,
+        }),
+      ])
 
-    // console.log(dataRes)
-    if (dataRes?.success) {
-      setPaid(dataRes?.payload?.isPurchase || false)
-      setTableData(dataRes?.payload)
-      // console.log(dataRes.payload)
-    }
+      // console.log(dataRes)
+      if (dataRes?.success) {
+        setPaid(dataRes?.payload?.isPurchase || false)
+        setTableData(dataRes?.payload)
+        // console.log(dataRes.payload)
+      }
     } catch (error) {
-  console.log("Error",error)
-}
-finally{
-    setLoading(false)
-}
-  
+      console.log("Error", error)
+    }
+    finally {
+      setLoading(false)
+    }
+
   }
 
   function generateCols(paid: boolean, stateCode?: any) {
-    let currentYear = new Date().getFullYear()-1
+    let currentYear = new Date().getFullYear() - 1
     let previousYear = currentYear - 1
     const percentile_Marks =
       getSearchParams("rankType") === "Marks" ? "Marks" : "Percentile"
@@ -346,131 +347,131 @@ finally{
       },
       ...(getSearchParams("courseType") === "NEET UG"
         ? [
-            {
-              title: (
-                <div
-                  data-tooltip-id="tooltip"
-                  data-tooltip-content={`Closing Rank/ ${percentile_Marks} Round 2 ${currentYear}`}
-                >
-                  {`Closing Rank/ ${percentile_Marks} [R2] ${currentYear}`}
-                </div>
-              ),
-              tableKey: `showClosingRankR2`,
-              width: "190px",
-              renderer({ cellData }) {
-                return cellData !== "xxx" &&
-                  (cellData === "undefined" ||
-                    cellData === "null" ||
-                    cellData == null) ? (
-                  !paid ? (
-                    "xxx"
-                  ) : (
-                    "NA"
-                  )
+          {
+            title: (
+              <div
+                data-tooltip-id="tooltip"
+                data-tooltip-content={`Closing Rank/ ${percentile_Marks} Round 2 ${currentYear}`}
+              >
+                {`Closing Rank/ ${percentile_Marks} [R2] ${currentYear}`}
+              </div>
+            ),
+            tableKey: `showClosingRankR2`,
+            width: "190px",
+            renderer({ cellData }) {
+              return cellData !== "xxx" &&
+                (cellData === "undefined" ||
+                  cellData === "null" ||
+                  cellData == null) ? (
+                !paid ? (
+                  "xxx"
                 ) : (
-                  <div
-                    data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
-                    data-tooltip-content={`Unlock This College @ ₹49`}
-                  >
-                    {cellData ?? "NA"}
-                  </div>
+                  "NA"
                 )
-              },
-            },
-            {
-              title: (
+              ) : (
                 <div
-                  data-tooltip-id="tooltip"
-                  data-tooltip-content={`Closing Rank/ ${percentile_Marks} Round 3 ${currentYear}`}
+                  data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
+                  data-tooltip-content={`Unlock This College @ ₹49`}
                 >
-                  {`Closing Rank/ ${percentile_Marks} [R3] ${currentYear}`}
+                  {cellData ?? "NA"}
                 </div>
-              ),
-              tableKey: `showClosingRankR3`,
-              width: "190px",
-              renderer({ cellData }) {
-                return cellData !== "xxx" &&
-                  (cellData === "undefined" ||
-                    cellData === "null" ||
-                    cellData == null) ? (
-                  !paid ? (
-                    "xxx"
-                  ) : (
-                    "NA"
-                  )
-                ) : (
-                  <div
-                    data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
-                    data-tooltip-content={`Unlock This College @ ₹49`}
-                  >
-                    {cellData ?? "NA"}
-                  </div>
-                )
-              },
+              )
             },
-            {
-              title: (
+          },
+          {
+            title: (
+              <div
+                data-tooltip-id="tooltip"
+                data-tooltip-content={`Closing Rank/ ${percentile_Marks} Round 3 ${currentYear}`}
+              >
+                {`Closing Rank/ ${percentile_Marks} [R3] ${currentYear}`}
+              </div>
+            ),
+            tableKey: `showClosingRankR3`,
+            width: "190px",
+            renderer({ cellData }) {
+              return cellData !== "xxx" &&
+                (cellData === "undefined" ||
+                  cellData === "null" ||
+                  cellData == null) ? (
+                !paid ? (
+                  "xxx"
+                ) : (
+                  "NA"
+                )
+              ) : (
                 <div
-                  data-tooltip-id="tooltip"
-                  data-tooltip-content={`Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
+                  data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
+                  data-tooltip-content={`Unlock This College @ ₹49`}
                 >
-                  {`Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
+                  {cellData ?? "NA"}
                 </div>
-              ),
-              tableKey: `showStrayRound`,
-              width: "210px",
-              renderer({ cellData }) {
-                return cellData !== "xxx" &&
-                  (cellData === "undefined" ||
-                    cellData === "null" ||
-                    cellData == null) ? (
-                  !paid ? (
-                    "xxx"
-                  ) : (
-                    "NA"
-                  )
-                ) : (
-                  <div
-                    data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
-                    data-tooltip-content={`Unlock This College @ ₹49`}
-                  >
-                    {cellData ?? "NA"}
-                  </div>
-                )
-              },
+              )
             },
-            {
-              title: (
+          },
+          {
+            title: (
+              <div
+                data-tooltip-id="tooltip"
+                data-tooltip-content={`Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
+              >
+                {`Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
+              </div>
+            ),
+            tableKey: `showStrayRound`,
+            width: "210px",
+            renderer({ cellData }) {
+              return cellData !== "xxx" &&
+                (cellData === "undefined" ||
+                  cellData === "null" ||
+                  cellData == null) ? (
+                !paid ? (
+                  "xxx"
+                ) : (
+                  "NA"
+                )
+              ) : (
                 <div
-                  data-tooltip-id="tooltip"
-                  data-tooltip-content={`Last Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
+                  data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
+                  data-tooltip-content={`Unlock This College @ ₹49`}
                 >
-                  Last {`Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
+                  {cellData ?? "NA"}
                 </div>
-              ),
-              tableKey: `showLastStrayRound`,
-              width: "210px",
-              renderer({ cellData }) {
-                return cellData !== "xxx" &&
-                  (cellData === "undefined" ||
-                    cellData === "null" ||
-                    cellData == null) ? (
-                  !paid ? (
-                    "xxx"
-                  ) : (
-                    "NA"
-                  )
-                ) : (
-                  <div
-                    data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
-                    data-tooltip-content={`Unlock This College @ ₹49`}
-                  >
-                    {cellData ?? "NA"}
-                  </div>
-                )
-              },
+              )
             },
-          ]
+          },
+          {
+            title: (
+              <div
+                data-tooltip-id="tooltip"
+                data-tooltip-content={`Last Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
+              >
+                Last {`Stray Round Rank/ ${percentile_Marks} ${currentYear}`}
+              </div>
+            ),
+            tableKey: `showLastStrayRound`,
+            width: "210px",
+            renderer({ cellData }) {
+              return cellData !== "xxx" &&
+                (cellData === "undefined" ||
+                  cellData === "null" ||
+                  cellData == null) ? (
+                !paid ? (
+                  "xxx"
+                ) : (
+                  "NA"
+                )
+              ) : (
+                <div
+                  data-tooltip-id={cellData === "xxx" ? "tooltip" : ""}
+                  data-tooltip-content={`Unlock This College @ ₹49`}
+                >
+                  {cellData ?? "NA"}
+                </div>
+              )
+            },
+          },
+        ]
         : []),
 
       {
@@ -662,6 +663,11 @@ finally{
 
   return (
     <FELayout>
+      <Seo
+        title="Counselling Packages - College Admission Plans"
+        description="Explore affordable college counselling packages and admission guidance plans for engineering and medical aspirants."
+        keywords="college counselling packages, admission guidance plans india, counselling services"
+      />
       <Container className="pb-10 pt-1 pc:pt-10">
         <div className="pb-4 pc:pb-8 flex justify-between flex-col pc:flex-row">
           <h2 className="text-color-text text-2xl pc:text-3xl w-full text-left pc:pb-6 pb-4 pt-4">
@@ -767,8 +773,8 @@ finally{
                 amount={amount}
                 courseType={courseType}
                 course={course}
-                stateCode= {stateCode}
-                // configYear={configYear}
+                stateCode={stateCode}
+              // configYear={configYear}
               />
             )}
           </div>
@@ -780,7 +786,7 @@ finally{
           setMobFilterFormData={setMobFilterFormData}
           mobFilterFormData={mobFilterFormData}
           onClose={() => setFilterPopup(false)}
-          onConfirm={() => {}}
+          onConfirm={() => { }}
         />
       </Container>
 

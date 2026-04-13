@@ -1,10 +1,16 @@
 import { Container } from "@/components/frontend/Container"
 import { FELayout } from "@/components/frontend/FELayout"
+import Seo from "@/components/Seo"
 import Link from "next/link"
 
 export default function ShippingPolicyPage() {
   return (
     <FELayout>
+      <Seo
+        title="Service Delivery Policy"
+        description="Understand our service delivery process, timelines, and policies for digital counselling services."
+        keywords="service delivery policy, digital product delivery terms"
+      />
       <Container className="max-w-[1600px] py-4 mx-4 pc:mx-6 text-sm text-color-text">
         <div className="my-4 space-y-4 text-color-text">
           <h1 className="text-3xl md:text-4xl font-bold pb-4">

@@ -15,6 +15,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import React, { useEffect, useState, useCallback, useMemo } from "react"
 import { useForm } from "react-hook-form"
 import Breadcrumbs from "@/components/common/Breadcrumbs"
+import Seo from "@/components/Seo"
 
 // State list
 const STATES: { name: string; slug: string; code: string; popular?: boolean }[] = [
@@ -244,6 +245,11 @@ export default function ClosingRanks() {
 
   return (
     <FELayout>
+      <Seo
+        title={`${selectedType?.text || "All"} Closing Ranks 2025 - State & Branch Wise Cutoff`}
+        description={`Check ${selectedType?.text || ""} closing ranks, state wise and branch wise cutoff trends for latest counselling.`}
+        keywords={`college closing ranks, ${selectedType?.text}, cutoff ranks, counselling data`}
+      />
       {/* <section className="w-full px-2 py-10 bg-gradient-to-r from-yellow-50 to-emerald-50">
         <div className="md:text-right">
           <Breadcrumbs />
@@ -291,7 +297,21 @@ export default function ClosingRanks() {
             )}
 
             {/* 🧠 Title */}
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6" style={{lineHeight:"65px"}}>
+            {/* <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6" style={{lineHeight:"65px"}}>
+              {currentContent.title}
+            </h1> */}
+            <h1 className="
+  text-3xl 
+  sm:text-4xl 
+  md:text-5xl 
+  lg:text-6xl 
+  font-bold 
+  text-gray-900 
+  leading-snug 
+  md:leading-[55px] 
+  lg:leading-[65px] 
+  mb-6
+">
               {currentContent.title}
             </h1>
 

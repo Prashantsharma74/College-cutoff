@@ -65,16 +65,16 @@ export default function Home() {
 
       <div className="py-12 pc:py-16 relative bg-gradient-to-b from-white via-yellow-50 to-yellow-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 min-h-dvh overflow-hidden">
         {/* CSS Dot Pattern with Bottom-to-Top Fade */}
-        <div 
-          className="absolute inset-0 z-0 opacity-60 pointer-events-none dark:opacity-10" 
-          style={{ 
+        <div
+          className="absolute inset-0 z-0 opacity-60 pointer-events-none dark:opacity-10"
+          style={{
             // backgroundImage: 'radial-gradient(#9ca3af 2px, transparent 1.5px)', 
             // backgroundSize: '26px 26px',
             // maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 85%)',
             // WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 85%)'
           }}
         ></div>
-        
+
         {/* Increased max width from 1200px to 1400px to reduce empty side space */}
         <Container className="max-w-[1400px] relative z-10 px-2 sm:px-6">
           <Hero />
@@ -111,9 +111,9 @@ export default function Home() {
         </Container>
       </div> */}
 
-      <Container className="max-w-[1600px]">
-        <FAQSection />
-      </Container>
+      {/* <Container className="max-w-[1600px]"> */}
+      <FAQSection />
+      {/* </Container> */}
 
       <SignInPopup />
     </FELayout>

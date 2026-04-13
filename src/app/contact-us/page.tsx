@@ -3,6 +3,7 @@
 import { Button } from "@/components/common/Button"
 import { Container } from "@/components/frontend/Container"
 import { FELayout } from "@/components/frontend/FELayout"
+import Seo from "@/components/Seo"
 import { CheckCircle, Mail, MapPin, MessageCircle, Phone } from "lucide-react"
 import { useState } from "react"
 
@@ -75,6 +76,16 @@ export default function ContactUsContent() {
 
   return (
     <FELayout>
+      {/* <Seo
+        title="Contact Us - College Admission Guidance"
+        description="Get in touch with our counselling experts for college admission guidance, support, and career advice."
+        keywords="contact counselling support, college admission help india, career guidance support"
+      /> */}
+      <Seo
+        title="Contact Us - College Cutoff"
+        description="Get in touch with our team for admission guidance and support."
+        keywords="contact college counselling, admission help"
+      />
       {/* HERO */}
 
       <section

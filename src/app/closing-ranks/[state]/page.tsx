@@ -66,6 +66,7 @@ export default function CollegeListClosingRanksPage() {
   const [statePaymentPopup, setStatePaymentPopup] = useState(false)
   const [paymentChecker, setPaymentChecker] = useState(false)
   const [statePurchaseMode, setStatePurchaseMode] = useState(false)
+
   //changes made on 3feb2026
   // const currentYear = new Date().getFullYear()-1
   const currentYear = new Date().getFullYear()
@@ -84,6 +85,7 @@ export default function CollegeListClosingRanksPage() {
   const course = searchParams.get("course")
   const stateCode = decodeURIComponent(params.state as any)
   const state = searchParams.get("state")
+  const [isNewUser, setIsNewUser] = useState(false)
 
   const [pageSize, setPageSize] = useState(
     Number(searchParams.get("size") || 20),
@@ -108,22 +110,6 @@ export default function CollegeListClosingRanksPage() {
   // const [rowData, setRowData] = useState<any>(null);
   // const [processingPayment, setProcessingPayment] = useState<any>(false);
 
-  async function handleStatePurchase() {
-    const user = await fetchData({
-      url: "/api/user",
-      method: "GET",
-      noToast: true,
-    })
-
-    if (user?.success) {
-      setProcessingPayment(rowData?.id)
-      setStatePurchaseMode(true)
-      setStatePaymentPopup(true)
-      setPaymentChecker(true)
-    } else {
-      setAppState({ signInModalOpen: true })
-    }
-  }
   // useEffect(() => {
   //   setCurrentPage(1)
   //   updateURL(1, pageSize)
@@ -139,6 +125,37 @@ export default function CollegeListClosingRanksPage() {
     const timeout = setTimeout(() => getData(currentPage, "new One"), 200)
     return () => clearTimeout(timeout)
   }, [updateUI, selectedInstituteType, selectedState, pageSize, currentPage])
+
+  useEffect(() => {
+    async function checkUser() {
+      const user = await fetchData({
+        url: "/api/user",
+        method: "GET",
+        noToast: true,
+      })
+
+      if (!user?.success) return
+
+      const res = await fetchData({
+        url: "/api/purchase/all-purchase",
+        method: "POST",
+        data: { phone: user?.payload?.phone },
+        noToast: true,
+      })
+
+      setIsNewUser(!res?.data?.length)
+    }
+
+    checkUser()
+  }, [])
+
+  const finalAmount = isNewUser
+    ? amount === 49
+      ? 9
+      : amount === 99
+        ? 19
+        : amount
+    : amount
 
   async function getData(page: number, data: string) {
     // console.log("GET DATA: ", data)
@@ -281,7 +298,7 @@ export default function CollegeListClosingRanksPage() {
           // console.log("ResP ",res.payload)
           setTableData(res?.payload)
         }
-      }
+      } s
 
     } catch (error) {
       console.log("error", error)
@@ -294,7 +311,8 @@ export default function CollegeListClosingRanksPage() {
   function buttonText(rowData: any) {
     return processingPayment === rowData?.id
       ? "Processing..."
-      : `Unlock @ ₹${amount}`
+      : `Unlock @ ₹${finalAmount}`
+    // : `Unlock @ ₹${amount}`
   }
 
   function generateCols() {
@@ -466,22 +484,6 @@ export default function CollegeListClosingRanksPage() {
     return columns
   }
 
-  async function handleBuyNow() {
-    const user = await fetchData({
-      url: "/api/user",
-      method: "GET",
-      noToast: true,
-    })
-
-    if (user?.success) {
-      setProcessingPayment(rowData?.id)
-      setShowPaymentPopup(true)
-      setStatePurchaseMode(false)
-    } else {
-      setAppState({ signInModalOpen: true })
-    }
-  }
-
   async function successCallback(orderId: string) {
     setShowPaymentPopup(false)
 
@@ -496,7 +498,8 @@ export default function CollegeListClosingRanksPage() {
 
     const payload = {
       orderId,
-      amount,
+      // amount,
+      amount: finalAmount,
       payment_type: paymentType?.SINGLE_COLLEGE_CLOSING_RANK,
       closing_rank_details: {
         instituteName: rowData?.instituteName,
@@ -523,7 +526,8 @@ export default function CollegeListClosingRanksPage() {
         url: "/api/payment",
         method: "POST",
         data: {
-          [paymentType?.SINGLE_COLLEGE_CLOSING_RANK]: amount,
+          // [paymentType?.SINGLE_COLLEGE_CLOSING_RANK]: amount,
+          [paymentType?.SINGLE_COLLEGE_CLOSING_RANK]: finalAmount
         },
         noToast: true,
       })
@@ -832,7 +836,7 @@ export default function CollegeListClosingRanksPage() {
                         <p className="font-medium text-gray-900">Single College</p>
                         <p className="text-xs text-gray-500">Pay per college</p>
                       </div>
-                      <p className="font-bold text-gray-900">₹{amount}</p>
+                      <p className="font-bold text-gray-900">₹{finalAmount}</p>
                     </div>
 
                     {/* Pack */}
@@ -1001,7 +1005,8 @@ export default function CollegeListClosingRanksPage() {
         titleSingle={<p className="p-0 uppercase poppinsFont">Please make payment to Unlock: {rowData?.instituteName}</p>}
         titleState={<p className="p-0 uppercase poppinsFont">Please make payment to Unlock: All {state?.toUpperCase()} Colleges</p>}
         // props
-        amount={amount}
+        // amount={amount}
+        amount={finalAmount}
         stateAmount={stateAmount}
         stateName={state || ""}
         collegeCount={tableData?.total_table_count || 0}

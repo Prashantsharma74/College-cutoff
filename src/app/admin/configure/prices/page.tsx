@@ -67,7 +67,6 @@ const dropDownType: IOption[] = [
   { id: "College Cutoff - DNB", text: "W College Cutoff - DNB" },
   { id: "College Cutoff - INICET", text: "W College Cutoff - INICET" },
   { id: "College Cutoff - AIAPGET", text: "W College Cutoff - AIAPGET (Ayurveda)" },
-
   { id: "All India College Cutoff - UG", text: "W All India College Cutoff - UG" },
   { id: "All India College Cutoff - MDS", text: "W All India College Cutoff - MDS" },
   { id: "All India College Cutoff - PG", text: "W All India College Cutoff - PG" },
@@ -75,223 +74,201 @@ const dropDownType: IOption[] = [
   { id: "All India College Cutoff - DNB", text: "W All India College Cutoff - DNB" },
   { id: "All India College Cutoff - INICET", text: "W All India College Cutoff - INICET" },
   { id: "All India College Cutoff - AIAPGET", text: "W All India College Cutoff - AIAPGET (Ayurveda)" },
-
   { id: "College Predictor", text: "College Predictor" },
-// UG
+
+  // UG
   { id: "All India College Predictor-UG-MBBS", text: "All India College Predictor-UG-MBBS" },
   { id: "All India College Predictor-UG-BDS", text: "All India College Predictor-UG-BDS" },
   { id: "All India College Predictor-UG-BAMS", text: "All India College Predictor-UG-BAMS" },
   { id: "All India College Predictor-UG-BHMS", text: "All India College Predictor-UG-BHMS" },
-  
-  
-  
   { id: "State College Predictor-UG-MBBS", text: "State College Predictor-UG-MBBS" },
   { id: "State College Predictor-UG-BDS", text: "State College Predictor-UG-BDS" },
   { id: "State College Predictor-UG-BAMS", text: "State College Predictor-UG-BAMS" },
   { id: "State College Predictor-UG-BHMS", text: "State College Predictor-UG-BHMS" },
 
   // PG
+  { id: "All India College Predictor-PG-ALL", text: "All India College Predictor-PG-ALL" },
+  { id: "All India College Predictor-PG-MD-DERMATOLOGY", text: "All India College Predictor-PG-MD-DERMATOLOGY" },
+  { id: "All India College Predictor-PG-MS-ORTHOPEDICS", text: "All India College Predictor-PG-MS-ORTHOPEDICS" },
+  { id: "All India College Predictor-PG-MD-PHARMACOLOGY", text: "All India College Predictor-PG-MD-PHARMACOLOGY" },
+  { id: "All India College Predictor-PG-MS-OBS-AND-GYNAE", text: "All India College Predictor-PG-MS-OBS-AND-GYNAE" },
+  { id: "All India College Predictor-PG-MD-PATHOLOGY", text: "All India College Predictor-PG-MD-PATHOLOGY" },
+  { id: "All India College Predictor-PG-MS-GENERAL-SURGERY", text: "All India College Predictor-PG-MS-GENERAL-SURGERY" },
+  { id: "All India College Predictor-PG-MD-PAEDIATRICS", text: "All India College Predictor-PG-MD-PAEDIATRICS" },
+  { id: "All India College Predictor-PG-MD-GENERAL-MEDICINE", text: "All India College Predictor-PG-MD-GENERAL-MEDICINE" },
+  { id: "All India College Predictor-PG-MD-ANATOMY", text: "All India College Predictor-PG-MD-ANATOMY" },
+  { id: "All India College Predictor-PG-MD-COMMUNITY-MEDICINE", text: "All India College Predictor-PG-MD-COMMUNITY-MEDICINE" },
+  { id: "All India College Predictor-PG-MD-PHYSIOLOGY", text: "All India College Predictor-PG-MD-PHYSIOLOGY" },
+  { id: "All India College Predictor-PG-MD-BIOCHEMISTRY", text: "All India College Predictor-PG-MD-BIOCHEMISTRY" },
+  { id: "All India College Predictor-PG-MD-MICROBIOLOGY", text: "All India College Predictor-PG-MD-MICROBIOLOGY" },
+  { id: "All India College Predictor-PG-MD-TB-AND-CHEST", text: "All India College Predictor-PG-MD-TB-AND-CHEST" },
+  { id: "All India College Predictor-PG-MD-RADIOLOGY", text: "All India College Predictor-PG-MD-RADIOLOGY" },
+  { id: "All India College Predictor-PG-MD-PSYCHIATRY", text: "All India College Predictor-PG-MD-PSYCHIATRY" },
+  { id: "All India College Predictor-PG-MD-EMERGENCY-MEDICINE", text: "All India College Predictor-PG-MD-EMERGENCY-MEDICINE" },
+  { id: "All India College Predictor-PG-MS-OPHTHALMOLOGY", text: "All India College Predictor-PG-MS-OPHTHALMOLOGY" },
+  { id: "All India College Predictor-PG-MS-ENT", text: "All India College Predictor-PG-MS-ENT" },
+  { id: "All India College Predictor-PG-MD-ANAESTHESIA", text: "All India College Predictor-PG-MD-ANAESTHESIA" },
+  { id: "All India College Predictor-PG-MD-FORENSIC-MEDICINE", text: "All India College Predictor-PG-MD-FORENSIC-MEDICINE" },
+  { id: "All India College Predictor-PG-MD-NUCLEAR-MEDICINE", text: "All India College Predictor-PG-MD-NUCLEAR-MEDICINE" },
+  { id: "All India College Predictor-PG-MD-RADIOTHERAPY", text: "All India College Predictor-PG-MD-RADIOTHERAPY" },
+  { id: "All India College Predictor-PG-MD-PMR", text: "All India College Predictor-PG-MD-PMR" },
+  { id: "All India College Predictor-PG-MD-GERIATRIC", text: "All India College Predictor-PG-MD-GERIATRIC" },
+  { id: "All India College Predictor-PG-MD-PALLIATIVE-MEDICINE", text: "All India College Predictor-PG-MD-PALLIATIVE-MEDICINE" },
+  { id: "All India College Predictor-PG-MPH-EPIDEIMOLOGY", text: "All India College Predictor-PG-MPH-EPIDEIMOLOGY" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-PAEDIATRICS", text: "All India College Predictor-PG-DIPLOMA-IN-PAEDIATRICS" },
+  { id: "All India College Predictor-PG-MD-TRANSFUSION-MEDICINE", text: "All India College Predictor-PG-MD-TRANSFUSION-MEDICINE" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-ANAESTHESIA", text: "All India College Predictor-PG-DIPLOMA-IN-ANAESTHESIA" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-ORTHOPAEDICS", text: "All India College Predictor-PG-DIPLOMA-IN-ORTHOPAEDICS" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-OBS-AND-GYNAE", text: "All India College Predictor-PG-DIPLOMA-IN-OBS-AND-GYNAE" },
+  { id: "All India College Predictor-PG-MD-SPORTS-MEDICINE", text: "All India College Predictor-PG-MD-SPORTS-MEDICINE" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-OPHTHALMOLOGY", text: "All India College Predictor-PG-DIPLOMA-IN-OPHTHALMOLOGY" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-PATHOLOGY", text: "All India College Predictor-PG-DIPLOMA-IN-PATHOLOGY" },
+  { id: "All India College Predictor-PG-MD-TROPICAL-MEDICINE", text: "All India College Predictor-PG-MD-TROPICAL-MEDICINE" },
+  { id: "All India College Predictor-PG-MD-LABORATORY-MEDICINE", text: "All India College Predictor-PG-MD-LABORATORY-MEDICINE" },
+  { id: "All India College Predictor-PG-MD-FAMILY-MEDICINE", text: "All India College Predictor-PG-MD-FAMILY-MEDICINE" },
+  { id: "All India College Predictor-PG-MD-HOSPITAL-ADMINISTRATION", text: "All India College Predictor-PG-MD-HOSPITAL-ADMINISTRATION" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-PSYCHIATRY", text: "All India College Predictor-PG-DIPLOMA-IN-PSYCHIATRY" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-FORENSIC-MEDICINE", text: "All India College Predictor-PG-DIPLOMA-IN-FORENSIC-MEDICINE" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-ENT", text: "All India College Predictor-PG-DIPLOMA-IN-ENT" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-DERMATOLOGY", text: "All India College Predictor-PG-DIPLOMA-IN-DERMATOLOGY" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-RADIATION-MEDICINE", text: "All India College Predictor-PG-DIPLOMA-IN-RADIATION-MEDICINE" },
+  { id: "All India College Predictor-PG-MS-TRAUMATOLOGY-AND-SURGERY", text: "All India College Predictor-PG-MS-TRAUMATOLOGY-AND-SURGERY" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-RADIOTHERAPY", text: "All India College Predictor-PG-DIPLOMA-IN-RADIOTHERAPY" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-RADIOLOGY", text: "All India College Predictor-PG-DIPLOMA-IN-RADIOLOGY" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-PUBLIC-HEALTH", text: "All India College Predictor-PG-DIPLOMA-IN-PUBLIC-HEALTH" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-TB-AND-CHEST", text: "All India College Predictor-PG-DIPLOMA-IN-TB-AND-CHEST" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-DIABETOLOGY", text: "All India College Predictor-PG-DIPLOMA-IN-DIABETOLOGY" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-SPORTS-MEDICINE", text: "All India College Predictor-PG-DIPLOMA-IN-SPORTS-MEDICINE" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-BACTERIOLOGY", text: "All India College Predictor-PG-DIPLOMA-IN-BACTERIOLOGY" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-TRANSFUSION-MEDICINE", text: "All India College Predictor-PG-DIPLOMA-IN-TRANSFUSION-MEDICINE" },
+  { id: "All India College Predictor-PG-MCH-NEURO-SURGERY", text: "All India College Predictor-PG-MCH-NEURO-SURGERY" },
+  { id: "All India College Predictor-PG-MD-COMMUNITY-HEALTH-ADMINSTRATION", text: "All India College Predictor-PG-MD-COMMUNITY-HEALTH-ADMINSTRATION" },
+  { id: "All India College Predictor-PG-DIPLOMA-IN-HEALTH-ADMINISTRATION", text: "All India College Predictor-PG-DIPLOMA-IN-HEALTH-ADMINISTRATION" },
+  { id: "State College Predictor-PG-ALL", text: "State College Predictor-PG-ALL" },
+  { id: "State College Predictor-PG-MD-DERMATOLOGY", text: "State College Predictor-PG-MD-DERMATOLOGY" },
+  { id: "State College Predictor-PG-MS-ORTHOPEDICS", text: "State College Predictor-PG-MS-ORTHOPEDICS" },
+  { id: "State College Predictor-PG-MD-PHARMACOLOGY", text: "State College Predictor-PG-MD-PHARMACOLOGY" },
+  { id: "State College Predictor-PG-MS-OBS-AND-GYNAE", text: "State College Predictor-PG-MS-OBS-AND-GYNAE" },
+  { id: "State College Predictor-PG-MD-PATHOLOGY", text: "State College Predictor-PG-MD-PATHOLOGY" },
+  { id: "State College Predictor-PG-MS-GENERAL-SURGERY", text: "State College Predictor-PG-MS-GENERAL-SURGERY" },
+  { id: "State College Predictor-PG-MD-PAEDIATRICS", text: "State College Predictor-PG-MD-PAEDIATRICS" },
+  { id: "State College Predictor-PG-MD-GENERAL-MEDICINE", text: "State College Predictor-PG-MD-GENERAL-MEDICINE" },
+  { id: "State College Predictor-PG-MD-ANATOMY", text: "State College Predictor-PG-MD-ANATOMY" },
+  { id: "State College Predictor-PG-MD-COMMUNITY-MEDICINE", text: "State College Predictor-PG-MD-COMMUNITY-MEDICINE" },
+  { id: "State College Predictor-PG-MD-PHYSIOLOGY", text: "State College Predictor-PG-MD-PHYSIOLOGY" },
+  { id: "State College Predictor-PG-MD-BIOCHEMISTRY", text: "State College Predictor-PG-MD-BIOCHEMISTRY" },
+  { id: "State College Predictor-PG-MD-MICROBIOLOGY", text: "State College Predictor-PG-MD-MICROBIOLOGY" },
+  { id: "State College Predictor-PG-MD-TB-AND-CHEST", text: "State College Predictor-PG-MD-TB-AND-CHEST" },
+  { id: "State College Predictor-PG-MD-RADIOLOGY", text: "State College Predictor-PG-MD-RADIOLOGY" },
+  { id: "State College Predictor-PG-MD-PSYCHIATRY", text: "State College Predictor-PG-MD-PSYCHIATRY" },
+  { id: "State College Predictor-PG-MD-EMERGENCY-MEDICINE", text: "State College Predictor-PG-MD-EMERGENCY-MEDICINE" },
+  { id: "State College Predictor-PG-MS-OPHTHALMOLOGY", text: "State College Predictor-PG-MS-OPHTHALMOLOGY" },
+  { id: "State College Predictor-PG-MS-ENT", text: "State College Predictor-PG-MS-ENT" },
+  { id: "State College Predictor-PG-MD-ANAESTHESIA", text: "State College Predictor-PG-MD-ANAESTHESIA" },
+  { id: "State College Predictor-PG-MD-FORENSIC-MEDICINE", text: "State College Predictor-PG-MD-FORENSIC-MEDICINE" },
+  { id: "State College Predictor-PG-MD-NUCLEAR-MEDICINE", text: "State College Predictor-PG-MD-NUCLEAR-MEDICINE" },
+  { id: "State College Predictor-PG-MD-RADIOTHERAPY", text: "State College Predictor-PG-MD-RADIOTHERAPY" },
+  { id: "State College Predictor-PG-MD-PMR", text: "State College Predictor-PG-MD-PMR" },
+  { id: "State College Predictor-PG-MD-GERIATRIC", text: "State College Predictor-PG-MD-GERIATRIC" },
+  { id: "State College Predictor-PG-MD-PALLIATIVE-MEDICINE", text: "State College Predictor-PG-MD-PALLIATIVE-MEDICINE" },
+  { id: "State College Predictor-PG-MPH-EPIDEIMOLOGY", text: "State College Predictor-PG-MPH-EPIDEIMOLOGY" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-PAEDIATRICS", text: "State College Predictor-PG-DIPLOMA-IN-PAEDIATRICS" },
+  { id: "State College Predictor-PG-MD-TRANSFUSION-MEDICINE", text: "State College Predictor-PG-MD-TRANSFUSION-MEDICINE" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-ANAESTHESIA", text: "State College Predictor-PG-DIPLOMA-IN-ANAESTHESIA" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-ORTHOPAEDICS", text: "State College Predictor-PG-DIPLOMA-IN-ORTHOPAEDICS" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-OBS-AND-GYNAE", text: "State College Predictor-PG-DIPLOMA-IN-OBS-AND-GYNAE" },
+  { id: "State College Predictor-PG-MD-SPORTS-MEDICINE", text: "State College Predictor-PG-MD-SPORTS-MEDICINE" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-OPHTHALMOLOGY", text: "State College Predictor-PG-DIPLOMA-IN-OPHTHALMOLOGY" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-PATHOLOGY", text: "State College Predictor-PG-DIPLOMA-IN-PATHOLOGY" },
+  { id: "State College Predictor-PG-MD-TROPICAL-MEDICINE", text: "State College Predictor-PG-MD-TROPICAL-MEDICINE" },
+  { id: "State College Predictor-PG-MD-LABORATORY-MEDICINE", text: "State College Predictor-PG-MD-LABORATORY-MEDICINE" },
+  { id: "State College Predictor-PG-MD-FAMILY-MEDICINE", text: "State College Predictor-PG-MD-FAMILY-MEDICINE" },
+  { id: "State College Predictor-PG-MD-HOSPITAL-ADMINISTRATION", text: "State College Predictor-PG-MD-HOSPITAL-ADMINISTRATION" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-PSYCHIATRY", text: "State College Predictor-PG-DIPLOMA-IN-PSYCHIATRY" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-FORENSIC-MEDICINE", text: "State College Predictor-PG-DIPLOMA-IN-FORENSIC-MEDICINE" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-ENT", text: "State College Predictor-PG-DIPLOMA-IN-ENT" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-DERMATOLOGY", text: "State College Predictor-PG-DIPLOMA-IN-DERMATOLOGY" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-RADIATION-MEDICINE", text: "State College Predictor-PG-DIPLOMA-IN-RADIATION-MEDICINE" },
+  { id: "State College Predictor-PG-MS-TRAUMATOLOGY-AND-SURGERY", text: "State College Predictor-PG-MS-TRAUMATOLOGY-AND-SURGERY" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-RADIOTHERAPY", text: "State College Predictor-PG-DIPLOMA-IN-RADIOTHERAPY" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-RADIOLOGY", text: "State College Predictor-PG-DIPLOMA-IN-RADIOLOGY" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-PUBLIC-HEALTH", text: "State College Predictor-PG-DIPLOMA-IN-PUBLIC-HEALTH" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-TB-AND-CHEST", text: "State College Predictor-PG-DIPLOMA-IN-TB-AND-CHEST" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-DIABETOLOGY", text: "State College Predictor-PG-DIPLOMA-IN-DIABETOLOGY" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-SPORTS-MEDICINE", text: "State College Predictor-PG-DIPLOMA-IN-SPORTS-MEDICINE" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-BACTERIOLOGY", text: "State College Predictor-PG-DIPLOMA-IN-BACTERIOLOGY" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-TRANSFUSION-MEDICINE", text: "State College Predictor-PG-DIPLOMA-IN-TRANSFUSION-MEDICINE" },
+  { id: "State College Predictor-PG-MCH-NEURO-SURGERY", text: "State College Predictor-PG-MCH-NEURO-SURGERY" },
+  { id: "State College Predictor-PG-MD-COMMUNITY-HEALTH-ADMINSTRATION", text: "State College Predictor-PG-MD-COMMUNITY-HEALTH-ADMINSTRATION" },
+  { id: "State College Predictor-PG-DIPLOMA-IN-HEALTH-ADMINISTRATION", text: "State College Predictor-PG-DIPLOMA-IN-HEALTH-ADMINISTRATION" },
+
+  // mds
+  { id: "All India College Predictor-MDS-ALL", text: "All India College Predictor-MDS-ALL" },
+  { id: "All India College Predictor-MDS-ORAL-MEDICINE-AND-RADIOLOGY", text: "All India College Predictor-MDS-ORAL-MEDICINE-AND-RADIOLOGY" },
+  { id: "All India College Predictor-MDS-ENDODONTICS", text: "All India College Predictor-MDS-ENDODONTICS" },
+  { id: "All India College Predictor-MDS-PUBLIC-HEALTH-DENTISTRY", text: "All India College Predictor-MDS-PUBLIC-HEALTH-DENTISTRY" },
+  { id: "All India College Predictor-MDS-PERIODONTOLOGY", text: "All India College Predictor-MDS-PERIODONTOLOGY" },
+  { id: "All India College Predictor-MDS-ORAL-AND-MAXILLOFACIAL-SURGERY", text: "All India College Predictor-MDS-ORAL-AND-MAXILLOFACIAL-SURGERY" },
+  { id: "All India College Predictor-MDS-PROSTHODONTICS", text: "All India College Predictor-MDS-PROSTHODONTICS" },
+  { id: "All India College Predictor-MDS-PEDODONTICS", text: "All India College Predictor-MDS-PEDODONTICS" },
+  { id: "All India College Predictor-MDS-ORTHODONTICS", text: "All India College Predictor-MDS-ORTHODONTICS" },
+  { id: "All India College Predictor-MDS-ORAL-PATHOLOGY-AND-MICROBIOLOGY", text: "All India College Predictor-MDS-ORAL-PATHOLOGY-AND-MICROBIOLOGY" },
+  { id: "State College Predictor-MDS-ALL", text: "State College Predictor-MDS-ALL" },
+  { id: "State College Predictor-MDS-ORAL-MEDICINE-AND-RADIOLOGY", text: "State College Predictor-MDS-ORAL-MEDICINE-AND-RADIOLOGY" },
+  { id: "State College Predictor-MDS-ENDODONTICS", text: "State College Predictor-MDS-ENDODONTICS" },
+  { id: "State College Predictor-MDS-PUBLIC-HEALTH-DENTISTRY", text: "State College Predictor-MDS-PUBLIC-HEALTH-DENTISTRY" },
+  { id: "State College Predictor-MDS-PERIODONTOLOGY", text: "State College Predictor-MDS-PERIODONTOLOGY" },
+  { id: "State College Predictor-MDS-ORAL-AND-MAXILLOFACIAL-SURGERY", text: "State College Predictor-MDS-ORAL-AND-MAXILLOFACIAL-SURGERY" },
+  { id: "State College Predictor-MDS-PROSTHODONTICS", text: "State College Predictor-MDS-PROSTHODONTICS" },
+  { id: "State College Predictor-MDS-PEDODONTICS", text: "State College Predictor-MDS-PEDODONTICS" },
+  { id: "State College Predictor-MDS-ORTHODONTICS", text: "State College Predictor-MDS-ORTHODONTICS" },
+  { id: "State College Predictor-MDS-ORAL-PATHOLOGY-AND-MICROBIOLOGY", text: "State College Predictor-MDS-ORAL-PATHOLOGY-AND-MICROBIOLOGY" },
+
+  // DNB
+  { id: "All India College Predictor-DNB-ALL", text: "All India College Predictor-DNB-ALL" },
+  { id: "All India College Predictor-DNB-ANAESTHESIOLOGY", text: "All India College Predictor-DNB-ANAESTHESIOLOGY" },
+  { id: "All India College Predictor-DNB-RADIODIAGNOSIS", text: "All India College Predictor-DNB-RADIODIAGNOSIS" },
+  { id: "All India College Predictor-DNB-GENERAL-SURGERY", text: "All India College Predictor-DNB-GENERAL-SURGERY" },
+  { id: "All India College Predictor-DNB-ORTHOPAEDICS", text: "All India College Predictor-DNB-ORTHOPAEDICS" },
+  { id: "All India College Predictor-DNB-OBS-AND-GYNAE", text: "All India College Predictor-DNB-OBS-AND-GYNAE" },
+  { id: "All India College Predictor-DNB-RADIATION-ONCOLOGY", text: "All India College Predictor-DNB-RADIATION-ONCOLOGY" },
+  { id: "All India College Predictor-DNB-PAEDIATRICS", text: "All India College Predictor-DNB-PAEDIATRICS" },
+  { id: "All India College Predictor-DNB-GENERAL-MEDICINE", text: "All India College Predictor-DNB-GENERAL-MEDICINE" },
+  { id: "All India College Predictor-DNB-RADIODIAGNOSIS-DIPLOMA", text: "All India College Predictor-DNB-RADIODIAGNOSIS-DIPLOMA" },
+  { id: "All India College Predictor-DNB-ANAESTHESIOLOGY-DIPLOMA", text: "All India College Predictor-DNB-ANAESTHESIOLOGY-DIPLOMA" },
+  { id: "All India College Predictor-DNB-EMERGENCY-MEDICINE", text: "All India College Predictor-DNB-EMERGENCY-MEDICINE" },
+  { id: "All India College Predictor-DNB-OPHTHALMOLOGY-DIPLOMA", text: "All India College Predictor-DNB-OPHTHALMOLOGY-DIPLOMA" },
+  { id: "All India College Predictor-DNB-NEURO-SURGERY", text: "All India College Predictor-DNB-NEURO-SURGERY" },
+  { id: "All India College Predictor-DNB-OBS-AND-GYNAE-DIPLOMA", text: "All India College Predictor-DNB-OBS-AND-GYNAE-DIPLOMA" },
+  { id: "All India College Predictor-DNB-FAMILY-MEDICINE", text: "All India College Predictor-DNB-FAMILY-MEDICINE" },
+  { id: "All India College Predictor-DNB-ENT", text: "All India College Predictor-DNB-ENT" },
+  { id: "All India College Predictor-DNB-OPHTHALMOLOGY", text: "All India College Predictor-DNB-OPHTHALMOLOGY" },
+  { id: "All India College Predictor-DNB-FAMILY-MEDICINE-DIPLOMA", text: "All India College Predictor-DNB-FAMILY-MEDICINE-DIPLOMA" },
+  { id: "All India College Predictor-DNB-PAEDIATRICS-DIPLOMA", text: "All India College Predictor-DNB-PAEDIATRICS-DIPLOMA" },
+  { id: "All India College Predictor-DNB-NUCLEAR-MEDICINE", text: "All India College Predictor-DNB-NUCLEAR-MEDICINE" },
+  { id: "All India College Predictor-DNB-TB-AND-CHEST", text: "All India College Predictor-DNB-TB-AND-CHEST" },
+  { id: "All India College Predictor-DNB-TB-AND-CHEST-DIPLOMA", text: "All India College Predictor-DNB-TB-AND-CHEST-DIPLOMA" },
+  { id: "All India College Predictor-DNB-PLASTIC-AND-RECONSTRUCTIVE-SURGERY", text: "All India College Predictor-DNB-PLASTIC-AND-RECONSTRUCTIVE-SURGERY" },
+  { id: "All India College Predictor-DNB-PATHOLOGY", text: "All India College Predictor-DNB-PATHOLOGY" },
+  { id: "All India College Predictor-DNB-TRANSFUSION-MEDICINE", text: "All India College Predictor-DNB-TRANSFUSION-MEDICINE" },
+  { id: "All India College Predictor-DNB-CARDIO-VASCULARAND-THORACIC-SURGERY", text: "All India College Predictor-DNB-CARDIO-VASCULARAND-THORACIC-SURGERY" },
+  { id: "All India College Predictor-DNB-MICROBIOLOGY", text: "All India College Predictor-DNB-MICROBIOLOGY" },
+  { id: "All India College Predictor-DNB-PSYCHIATRY", text: "All India College Predictor-DNB-PSYCHIATRY" },
+  { id: "All India College Predictor-DNB-PHYSIOLOGY", text: "All India College Predictor-DNB-PHYSIOLOGY" },
+  { id: "All India College Predictor-DNB-COMMUNITY-MEDICINE", text: "All India College Predictor-DNB-COMMUNITY-MEDICINE" },
+  { id: "All India College Predictor-DNB-PHARMACOLOGY", text: "All India College Predictor-DNB-PHARMACOLOGY" },
+  { id: "All India College Predictor-DNB-DERMATOLOGY", text: "All India College Predictor-DNB-DERMATOLOGY" },
+  { id: "All India College Predictor-DNB-PALLIATIVE-MEDICINE", text: "All India College Predictor-DNB-PALLIATIVE-MEDICINE" },
+  { id: "All India College Predictor-DNB-PAEDIATRIC-SURGERY", text: "All India College Predictor-DNB-PAEDIATRIC-SURGERY" },
+  { id: "All India College Predictor-DNB-GERIATRIC-MEDICINE", text: "All India College Predictor-DNB-GERIATRIC-MEDICINE" },
+  { id: "All India College Predictor-DNB-BIOCHEMISTRY", text: "All India College Predictor-DNB-BIOCHEMISTRY" },
+  { id: "All India College Predictor-DNB-FORENSIC-MEDICINE", text: "All India College Predictor-DNB-FORENSIC-MEDICINE" },
+  { id: "All India College Predictor-DNB-HOSPITAL-ADMINISTRATION", text: "All India College Predictor-DNB-HOSPITAL-ADMINISTRATION" },
+  { id: "All India College Predictor-DNB-PMR", text: "All India College Predictor-DNB-PMR" },
+  { id: "All India College Predictor-DNB-ANATOMY", text: "All India College Predictor-DNB-ANATOMY" },
+  { id: "All India College Predictor-DNB-EMERGENCY-MEDICINE-DIPLOMA", text: "All India College Predictor-DNB-EMERGENCY-MEDICINE-DIPLOMA" },
 
 
-
-{ id: "All India College Predictor-PG-ALL", text: "All India College Predictor-PG-ALL" },
-{ id: "All India College Predictor-PG-MD-DERMATOLOGY", text: "All India College Predictor-PG-MD-DERMATOLOGY" },
-{ id: "All India College Predictor-PG-MS-ORTHOPEDICS", text: "All India College Predictor-PG-MS-ORTHOPEDICS" },
-{ id: "All India College Predictor-PG-MD-PHARMACOLOGY", text: "All India College Predictor-PG-MD-PHARMACOLOGY" },
-{ id: "All India College Predictor-PG-MS-OBS-AND-GYNAE", text: "All India College Predictor-PG-MS-OBS-AND-GYNAE" },
-{ id: "All India College Predictor-PG-MD-PATHOLOGY", text: "All India College Predictor-PG-MD-PATHOLOGY" },
-{ id: "All India College Predictor-PG-MS-GENERAL-SURGERY", text: "All India College Predictor-PG-MS-GENERAL-SURGERY" },
-{ id: "All India College Predictor-PG-MD-PAEDIATRICS", text: "All India College Predictor-PG-MD-PAEDIATRICS" },
-{ id: "All India College Predictor-PG-MD-GENERAL-MEDICINE", text: "All India College Predictor-PG-MD-GENERAL-MEDICINE" },
-{ id: "All India College Predictor-PG-MD-ANATOMY", text: "All India College Predictor-PG-MD-ANATOMY" },
-{ id: "All India College Predictor-PG-MD-COMMUNITY-MEDICINE", text: "All India College Predictor-PG-MD-COMMUNITY-MEDICINE" },
-{ id: "All India College Predictor-PG-MD-PHYSIOLOGY", text: "All India College Predictor-PG-MD-PHYSIOLOGY" },
-{ id: "All India College Predictor-PG-MD-BIOCHEMISTRY", text: "All India College Predictor-PG-MD-BIOCHEMISTRY" },
-{ id: "All India College Predictor-PG-MD-MICROBIOLOGY", text: "All India College Predictor-PG-MD-MICROBIOLOGY" },
-{ id: "All India College Predictor-PG-MD-TB-AND-CHEST", text: "All India College Predictor-PG-MD-TB-AND-CHEST" },
-{ id: "All India College Predictor-PG-MD-RADIOLOGY", text: "All India College Predictor-PG-MD-RADIOLOGY" },
-{ id: "All India College Predictor-PG-MD-PSYCHIATRY", text: "All India College Predictor-PG-MD-PSYCHIATRY" },
-{ id: "All India College Predictor-PG-MD-EMERGENCY-MEDICINE", text: "All India College Predictor-PG-MD-EMERGENCY-MEDICINE" },
-{ id: "All India College Predictor-PG-MS-OPHTHALMOLOGY", text: "All India College Predictor-PG-MS-OPHTHALMOLOGY" },
-{ id: "All India College Predictor-PG-MS-ENT", text: "All India College Predictor-PG-MS-ENT" },
-{ id: "All India College Predictor-PG-MD-ANAESTHESIA", text: "All India College Predictor-PG-MD-ANAESTHESIA" },
-{ id: "All India College Predictor-PG-MD-FORENSIC-MEDICINE", text: "All India College Predictor-PG-MD-FORENSIC-MEDICINE" },
-{ id: "All India College Predictor-PG-MD-NUCLEAR-MEDICINE", text: "All India College Predictor-PG-MD-NUCLEAR-MEDICINE" },
-{ id: "All India College Predictor-PG-MD-RADIOTHERAPY", text: "All India College Predictor-PG-MD-RADIOTHERAPY" },
-{ id: "All India College Predictor-PG-MD-PMR", text: "All India College Predictor-PG-MD-PMR" },
-{ id: "All India College Predictor-PG-MD-GERIATRIC", text: "All India College Predictor-PG-MD-GERIATRIC" },
-{ id: "All India College Predictor-PG-MD-PALLIATIVE-MEDICINE", text: "All India College Predictor-PG-MD-PALLIATIVE-MEDICINE" },
-{ id: "All India College Predictor-PG-MPH-EPIDEIMOLOGY", text: "All India College Predictor-PG-MPH-EPIDEIMOLOGY" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-PAEDIATRICS", text: "All India College Predictor-PG-DIPLOMA-IN-PAEDIATRICS" },
-{ id: "All India College Predictor-PG-MD-TRANSFUSION-MEDICINE", text: "All India College Predictor-PG-MD-TRANSFUSION-MEDICINE" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-ANAESTHESIA", text: "All India College Predictor-PG-DIPLOMA-IN-ANAESTHESIA" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-ORTHOPAEDICS", text: "All India College Predictor-PG-DIPLOMA-IN-ORTHOPAEDICS" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-OBS-AND-GYNAE", text: "All India College Predictor-PG-DIPLOMA-IN-OBS-AND-GYNAE" },
-{ id: "All India College Predictor-PG-MD-SPORTS-MEDICINE", text: "All India College Predictor-PG-MD-SPORTS-MEDICINE" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-OPHTHALMOLOGY", text: "All India College Predictor-PG-DIPLOMA-IN-OPHTHALMOLOGY" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-PATHOLOGY", text: "All India College Predictor-PG-DIPLOMA-IN-PATHOLOGY" },
-{ id: "All India College Predictor-PG-MD-TROPICAL-MEDICINE", text: "All India College Predictor-PG-MD-TROPICAL-MEDICINE" },
-{ id: "All India College Predictor-PG-MD-LABORATORY-MEDICINE", text: "All India College Predictor-PG-MD-LABORATORY-MEDICINE" },
-{ id: "All India College Predictor-PG-MD-FAMILY-MEDICINE", text: "All India College Predictor-PG-MD-FAMILY-MEDICINE" },
-{ id: "All India College Predictor-PG-MD-HOSPITAL-ADMINISTRATION", text: "All India College Predictor-PG-MD-HOSPITAL-ADMINISTRATION" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-PSYCHIATRY", text: "All India College Predictor-PG-DIPLOMA-IN-PSYCHIATRY" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-FORENSIC-MEDICINE", text: "All India College Predictor-PG-DIPLOMA-IN-FORENSIC-MEDICINE" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-ENT", text: "All India College Predictor-PG-DIPLOMA-IN-ENT" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-DERMATOLOGY", text: "All India College Predictor-PG-DIPLOMA-IN-DERMATOLOGY" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-RADIATION-MEDICINE", text: "All India College Predictor-PG-DIPLOMA-IN-RADIATION-MEDICINE" },
-{ id: "All India College Predictor-PG-MS-TRAUMATOLOGY-AND-SURGERY", text: "All India College Predictor-PG-MS-TRAUMATOLOGY-AND-SURGERY" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-RADIOTHERAPY", text: "All India College Predictor-PG-DIPLOMA-IN-RADIOTHERAPY" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-RADIOLOGY", text: "All India College Predictor-PG-DIPLOMA-IN-RADIOLOGY" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-PUBLIC-HEALTH", text: "All India College Predictor-PG-DIPLOMA-IN-PUBLIC-HEALTH" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-TB-AND-CHEST", text: "All India College Predictor-PG-DIPLOMA-IN-TB-AND-CHEST" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-DIABETOLOGY", text: "All India College Predictor-PG-DIPLOMA-IN-DIABETOLOGY" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-SPORTS-MEDICINE", text: "All India College Predictor-PG-DIPLOMA-IN-SPORTS-MEDICINE" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-BACTERIOLOGY", text: "All India College Predictor-PG-DIPLOMA-IN-BACTERIOLOGY" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-TRANSFUSION-MEDICINE", text: "All India College Predictor-PG-DIPLOMA-IN-TRANSFUSION-MEDICINE" },
-{ id: "All India College Predictor-PG-MCH-NEURO-SURGERY", text: "All India College Predictor-PG-MCH-NEURO-SURGERY" },
-{ id: "All India College Predictor-PG-MD-COMMUNITY-HEALTH-ADMINSTRATION", text: "All India College Predictor-PG-MD-COMMUNITY-HEALTH-ADMINSTRATION" },
-{ id: "All India College Predictor-PG-DIPLOMA-IN-HEALTH-ADMINISTRATION", text: "All India College Predictor-PG-DIPLOMA-IN-HEALTH-ADMINISTRATION" },
-
-
-
-
-
-
-{ id: "State College Predictor-PG-ALL", text: "State College Predictor-PG-ALL" },
-{ id: "State College Predictor-PG-MD-DERMATOLOGY", text: "State College Predictor-PG-MD-DERMATOLOGY" },
-{ id: "State College Predictor-PG-MS-ORTHOPEDICS", text: "State College Predictor-PG-MS-ORTHOPEDICS" },
-{ id: "State College Predictor-PG-MD-PHARMACOLOGY", text: "State College Predictor-PG-MD-PHARMACOLOGY" },
-{ id: "State College Predictor-PG-MS-OBS-AND-GYNAE", text: "State College Predictor-PG-MS-OBS-AND-GYNAE" },
-{ id: "State College Predictor-PG-MD-PATHOLOGY", text: "State College Predictor-PG-MD-PATHOLOGY" },
-{ id: "State College Predictor-PG-MS-GENERAL-SURGERY", text: "State College Predictor-PG-MS-GENERAL-SURGERY" },
-{ id: "State College Predictor-PG-MD-PAEDIATRICS", text: "State College Predictor-PG-MD-PAEDIATRICS" },
-{ id: "State College Predictor-PG-MD-GENERAL-MEDICINE", text: "State College Predictor-PG-MD-GENERAL-MEDICINE" },
-{ id: "State College Predictor-PG-MD-ANATOMY", text: "State College Predictor-PG-MD-ANATOMY" },
-{ id: "State College Predictor-PG-MD-COMMUNITY-MEDICINE", text: "State College Predictor-PG-MD-COMMUNITY-MEDICINE" },
-{ id: "State College Predictor-PG-MD-PHYSIOLOGY", text: "State College Predictor-PG-MD-PHYSIOLOGY" },
-{ id: "State College Predictor-PG-MD-BIOCHEMISTRY", text: "State College Predictor-PG-MD-BIOCHEMISTRY" },
-{ id: "State College Predictor-PG-MD-MICROBIOLOGY", text: "State College Predictor-PG-MD-MICROBIOLOGY" },
-{ id: "State College Predictor-PG-MD-TB-AND-CHEST", text: "State College Predictor-PG-MD-TB-AND-CHEST" },
-{ id: "State College Predictor-PG-MD-RADIOLOGY", text: "State College Predictor-PG-MD-RADIOLOGY" },
-{ id: "State College Predictor-PG-MD-PSYCHIATRY", text: "State College Predictor-PG-MD-PSYCHIATRY" },
-{ id: "State College Predictor-PG-MD-EMERGENCY-MEDICINE", text: "State College Predictor-PG-MD-EMERGENCY-MEDICINE" },
-{ id: "State College Predictor-PG-MS-OPHTHALMOLOGY", text: "State College Predictor-PG-MS-OPHTHALMOLOGY" },
-{ id: "State College Predictor-PG-MS-ENT", text: "State College Predictor-PG-MS-ENT" },
-{ id: "State College Predictor-PG-MD-ANAESTHESIA", text: "State College Predictor-PG-MD-ANAESTHESIA" },
-{ id: "State College Predictor-PG-MD-FORENSIC-MEDICINE", text: "State College Predictor-PG-MD-FORENSIC-MEDICINE" },
-{ id: "State College Predictor-PG-MD-NUCLEAR-MEDICINE", text: "State College Predictor-PG-MD-NUCLEAR-MEDICINE" },
-{ id: "State College Predictor-PG-MD-RADIOTHERAPY", text: "State College Predictor-PG-MD-RADIOTHERAPY" },
-{ id: "State College Predictor-PG-MD-PMR", text: "State College Predictor-PG-MD-PMR" },
-{ id: "State College Predictor-PG-MD-GERIATRIC", text: "State College Predictor-PG-MD-GERIATRIC" },
-{ id: "State College Predictor-PG-MD-PALLIATIVE-MEDICINE", text: "State College Predictor-PG-MD-PALLIATIVE-MEDICINE" },
-{ id: "State College Predictor-PG-MPH-EPIDEIMOLOGY", text: "State College Predictor-PG-MPH-EPIDEIMOLOGY" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-PAEDIATRICS", text: "State College Predictor-PG-DIPLOMA-IN-PAEDIATRICS" },
-{ id: "State College Predictor-PG-MD-TRANSFUSION-MEDICINE", text: "State College Predictor-PG-MD-TRANSFUSION-MEDICINE" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-ANAESTHESIA", text: "State College Predictor-PG-DIPLOMA-IN-ANAESTHESIA" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-ORTHOPAEDICS", text: "State College Predictor-PG-DIPLOMA-IN-ORTHOPAEDICS" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-OBS-AND-GYNAE", text: "State College Predictor-PG-DIPLOMA-IN-OBS-AND-GYNAE" },
-{ id: "State College Predictor-PG-MD-SPORTS-MEDICINE", text: "State College Predictor-PG-MD-SPORTS-MEDICINE" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-OPHTHALMOLOGY", text: "State College Predictor-PG-DIPLOMA-IN-OPHTHALMOLOGY" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-PATHOLOGY", text: "State College Predictor-PG-DIPLOMA-IN-PATHOLOGY" },
-{ id: "State College Predictor-PG-MD-TROPICAL-MEDICINE", text: "State College Predictor-PG-MD-TROPICAL-MEDICINE" },
-{ id: "State College Predictor-PG-MD-LABORATORY-MEDICINE", text: "State College Predictor-PG-MD-LABORATORY-MEDICINE" },
-{ id: "State College Predictor-PG-MD-FAMILY-MEDICINE", text: "State College Predictor-PG-MD-FAMILY-MEDICINE" },
-{ id: "State College Predictor-PG-MD-HOSPITAL-ADMINISTRATION", text: "State College Predictor-PG-MD-HOSPITAL-ADMINISTRATION" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-PSYCHIATRY", text: "State College Predictor-PG-DIPLOMA-IN-PSYCHIATRY" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-FORENSIC-MEDICINE", text: "State College Predictor-PG-DIPLOMA-IN-FORENSIC-MEDICINE" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-ENT", text: "State College Predictor-PG-DIPLOMA-IN-ENT" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-DERMATOLOGY", text: "State College Predictor-PG-DIPLOMA-IN-DERMATOLOGY" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-RADIATION-MEDICINE", text: "State College Predictor-PG-DIPLOMA-IN-RADIATION-MEDICINE" },
-{ id: "State College Predictor-PG-MS-TRAUMATOLOGY-AND-SURGERY", text: "State College Predictor-PG-MS-TRAUMATOLOGY-AND-SURGERY" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-RADIOTHERAPY", text: "State College Predictor-PG-DIPLOMA-IN-RADIOTHERAPY" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-RADIOLOGY", text: "State College Predictor-PG-DIPLOMA-IN-RADIOLOGY" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-PUBLIC-HEALTH", text: "State College Predictor-PG-DIPLOMA-IN-PUBLIC-HEALTH" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-TB-AND-CHEST", text: "State College Predictor-PG-DIPLOMA-IN-TB-AND-CHEST" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-DIABETOLOGY", text: "State College Predictor-PG-DIPLOMA-IN-DIABETOLOGY" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-SPORTS-MEDICINE", text: "State College Predictor-PG-DIPLOMA-IN-SPORTS-MEDICINE" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-BACTERIOLOGY", text: "State College Predictor-PG-DIPLOMA-IN-BACTERIOLOGY" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-TRANSFUSION-MEDICINE", text: "State College Predictor-PG-DIPLOMA-IN-TRANSFUSION-MEDICINE" },
-{ id: "State College Predictor-PG-MCH-NEURO-SURGERY", text: "State College Predictor-PG-MCH-NEURO-SURGERY" },
-{ id: "State College Predictor-PG-MD-COMMUNITY-HEALTH-ADMINSTRATION", text: "State College Predictor-PG-MD-COMMUNITY-HEALTH-ADMINSTRATION" },
-{ id: "State College Predictor-PG-DIPLOMA-IN-HEALTH-ADMINISTRATION", text: "State College Predictor-PG-DIPLOMA-IN-HEALTH-ADMINISTRATION" },
-
-// mds
-
-
-
-{ id: "All India College Predictor-MDS-ALL", text: "All India College Predictor-MDS-ALL" },
-{ id: "All India College Predictor-MDS-ORAL-MEDICINE-AND-RADIOLOGY", text: "All India College Predictor-MDS-ORAL-MEDICINE-AND-RADIOLOGY" },
-{ id: "All India College Predictor-MDS-ENDODONTICS", text: "All India College Predictor-MDS-ENDODONTICS" },
-{ id: "All India College Predictor-MDS-PUBLIC-HEALTH-DENTISTRY", text: "All India College Predictor-MDS-PUBLIC-HEALTH-DENTISTRY" },
-{ id: "All India College Predictor-MDS-PERIODONTOLOGY", text: "All India College Predictor-MDS-PERIODONTOLOGY" },
-{ id: "All India College Predictor-MDS-ORAL-AND-MAXILLOFACIAL-SURGERY", text: "All India College Predictor-MDS-ORAL-AND-MAXILLOFACIAL-SURGERY" },
-{ id: "All India College Predictor-MDS-PROSTHODONTICS", text: "All India College Predictor-MDS-PROSTHODONTICS" },
-{ id: "All India College Predictor-MDS-PEDODONTICS", text: "All India College Predictor-MDS-PEDODONTICS" },
-{ id: "All India College Predictor-MDS-ORTHODONTICS", text: "All India College Predictor-MDS-ORTHODONTICS" },
-{ id: "All India College Predictor-MDS-ORAL-PATHOLOGY-AND-MICROBIOLOGY", text: "All India College Predictor-MDS-ORAL-PATHOLOGY-AND-MICROBIOLOGY" },
-
-{ id: "State College Predictor-MDS-ALL", text: "State College Predictor-MDS-ALL" },
-{ id: "State College Predictor-MDS-ORAL-MEDICINE-AND-RADIOLOGY", text: "State College Predictor-MDS-ORAL-MEDICINE-AND-RADIOLOGY" },
-{ id: "State College Predictor-MDS-ENDODONTICS", text: "State College Predictor-MDS-ENDODONTICS" },
-{ id: "State College Predictor-MDS-PUBLIC-HEALTH-DENTISTRY", text: "State College Predictor-MDS-PUBLIC-HEALTH-DENTISTRY" },
-{ id: "State College Predictor-MDS-PERIODONTOLOGY", text: "State College Predictor-MDS-PERIODONTOLOGY" },
-{ id: "State College Predictor-MDS-ORAL-AND-MAXILLOFACIAL-SURGERY", text: "State College Predictor-MDS-ORAL-AND-MAXILLOFACIAL-SURGERY" },
-{ id: "State College Predictor-MDS-PROSTHODONTICS", text: "State College Predictor-MDS-PROSTHODONTICS" },
-{ id: "State College Predictor-MDS-PEDODONTICS", text: "State College Predictor-MDS-PEDODONTICS" },
-{ id: "State College Predictor-MDS-ORTHODONTICS", text: "State College Predictor-MDS-ORTHODONTICS" },
-{ id: "State College Predictor-MDS-ORAL-PATHOLOGY-AND-MICROBIOLOGY", text: "State College Predictor-MDS-ORAL-PATHOLOGY-AND-MICROBIOLOGY" },
-
-// DNB
-
-
-
-
-
-  {id:"All India College Predictor-DNB-ALL",text: "All India College Predictor-DNB-ALL"},
-
-  {id: "All India College Predictor-DNB-ANAESTHESIOLOGY", text: "All India College Predictor-DNB-ANAESTHESIOLOGY"},
-  {id: "All India College Predictor-DNB-RADIODIAGNOSIS", text: "All India College Predictor-DNB-RADIODIAGNOSIS"},
-  {id: "All India College Predictor-DNB-GENERAL-SURGERY", text: "All India College Predictor-DNB-GENERAL-SURGERY"},
-  {id: "All India College Predictor-DNB-ORTHOPAEDICS", text: "All India College Predictor-DNB-ORTHOPAEDICS"},
-  {id: "All India College Predictor-DNB-OBS-AND-GYNAE", text: "All India College Predictor-DNB-OBS-AND-GYNAE"},
-  {id: "All India College Predictor-DNB-RADIATION-ONCOLOGY", text: "All India College Predictor-DNB-RADIATION-ONCOLOGY"},
-  {id: "All India College Predictor-DNB-PAEDIATRICS", text: "All India College Predictor-DNB-PAEDIATRICS"},
-  {id: "All India College Predictor-DNB-GENERAL-MEDICINE", text: "All India College Predictor-DNB-GENERAL-MEDICINE"},
-  {id: "All India College Predictor-DNB-RADIODIAGNOSIS-DIPLOMA", text: "All India College Predictor-DNB-RADIODIAGNOSIS-DIPLOMA"},
-  {id: "All India College Predictor-DNB-ANAESTHESIOLOGY-DIPLOMA", text: "All India College Predictor-DNB-ANAESTHESIOLOGY-DIPLOMA"},
-  {id: "All India College Predictor-DNB-EMERGENCY-MEDICINE", text: "All India College Predictor-DNB-EMERGENCY-MEDICINE"},
-  {id: "All India College Predictor-DNB-OPHTHALMOLOGY-DIPLOMA", text: "All India College Predictor-DNB-OPHTHALMOLOGY-DIPLOMA"},
-  {id: "All India College Predictor-DNB-NEURO-SURGERY", text: "All India College Predictor-DNB-NEURO-SURGERY"},
-  {id: "All India College Predictor-DNB-OBS-AND-GYNAE-DIPLOMA", text: "All India College Predictor-DNB-OBS-AND-GYNAE-DIPLOMA"},
-  {id: "All India College Predictor-DNB-FAMILY-MEDICINE", text: "All India College Predictor-DNB-FAMILY-MEDICINE"},
-  {id: "All India College Predictor-DNB-ENT", text: "All India College Predictor-DNB-ENT"},
-  {id: "All India College Predictor-DNB-OPHTHALMOLOGY", text: "All India College Predictor-DNB-OPHTHALMOLOGY"},
-  {id: "All India College Predictor-DNB-FAMILY-MEDICINE-DIPLOMA", text: "All India College Predictor-DNB-FAMILY-MEDICINE-DIPLOMA"},
-  {id: "All India College Predictor-DNB-PAEDIATRICS-DIPLOMA", text: "All India College Predictor-DNB-PAEDIATRICS-DIPLOMA"},
-  {id: "All India College Predictor-DNB-NUCLEAR-MEDICINE", text: "All India College Predictor-DNB-NUCLEAR-MEDICINE"},
-  {id: "All India College Predictor-DNB-TB-AND-CHEST", text: "All India College Predictor-DNB-TB-AND-CHEST"},
-  {id: "All India College Predictor-DNB-TB-AND-CHEST-DIPLOMA", text: "All India College Predictor-DNB-TB-AND-CHEST-DIPLOMA"},
-  {id: "All India College Predictor-DNB-PLASTIC-AND-RECONSTRUCTIVE-SURGERY", text: "All India College Predictor-DNB-PLASTIC-AND-RECONSTRUCTIVE-SURGERY"},
-  {id: "All India College Predictor-DNB-PATHOLOGY", text: "All India College Predictor-DNB-PATHOLOGY"},
-  {id: "All India College Predictor-DNB-TRANSFUSION-MEDICINE", text: "All India College Predictor-DNB-TRANSFUSION-MEDICINE"},
-  {id: "All India College Predictor-DNB-CARDIO-VASCULARAND-THORACIC-SURGERY", text: "All India College Predictor-DNB-CARDIO-VASCULARAND-THORACIC-SURGERY"},
-  {id: "All India College Predictor-DNB-MICROBIOLOGY", text: "All India College Predictor-DNB-MICROBIOLOGY"},
-  {id: "All India College Predictor-DNB-PSYCHIATRY", text: "All India College Predictor-DNB-PSYCHIATRY"},
-  {id: "All India College Predictor-DNB-PHYSIOLOGY", text: "All India College Predictor-DNB-PHYSIOLOGY"},
-  {id: "All India College Predictor-DNB-COMMUNITY-MEDICINE", text: "All India College Predictor-DNB-COMMUNITY-MEDICINE"},
-  {id: "All India College Predictor-DNB-PHARMACOLOGY", text: "All India College Predictor-DNB-PHARMACOLOGY"},
-  {id: "All India College Predictor-DNB-DERMATOLOGY", text: "All India College Predictor-DNB-DERMATOLOGY"},
-  {id: "All India College Predictor-DNB-PALLIATIVE-MEDICINE", text: "All India College Predictor-DNB-PALLIATIVE-MEDICINE"},
-  {id: "All India College Predictor-DNB-PAEDIATRIC-SURGERY", text: "All India College Predictor-DNB-PAEDIATRIC-SURGERY"},
-  {id: "All India College Predictor-DNB-GERIATRIC-MEDICINE", text: "All India College Predictor-DNB-GERIATRIC-MEDICINE"},
-  {id: "All India College Predictor-DNB-BIOCHEMISTRY", text: "All India College Predictor-DNB-BIOCHEMISTRY"},
-  {id: "All India College Predictor-DNB-FORENSIC-MEDICINE", text: "All India College Predictor-DNB-FORENSIC-MEDICINE"},
-  {id: "All India College Predictor-DNB-HOSPITAL-ADMINISTRATION", text: "All India College Predictor-DNB-HOSPITAL-ADMINISTRATION"},
-  {id: "All India College Predictor-DNB-PMR", text: "All India College Predictor-DNB-PMR"},
-  {id: "All India College Predictor-DNB-ANATOMY", text: "All India College Predictor-DNB-ANATOMY"},
-  {id: "All India College Predictor-DNB-EMERGENCY-MEDICINE-DIPLOMA", text: "All India College Predictor-DNB-EMERGENCY-MEDICINE-DIPLOMA"},
-
-  
   { id: "Single College Closing Rank - UG", text: "Single College Closing Rank - UG" },
   { id: "Single College Closing Rank - PG", text: "Single College Closing Rank - PG" },
   { id: "Single College Closing Rank - MDS", text: "Single College Closing Rank - MDS" },
@@ -299,7 +276,7 @@ const dropDownType: IOption[] = [
   { id: "Single College Closing Rank - DNB", text: "Single College Closing Rank - DNB" },
   { id: "Single College Closing Rank - INICET", text: "Single College Closing Rank - INICET" },
   { id: "Single College Closing Rank - AIAPGET", text: "Single College Closing Rank - AIAPGET (Ayurved)" },
-  
+
   { id: "State Closing Rank - UG", text: "State Closing Rank - UG" },
   { id: "State Closing Rank - PG", text: "State Closing Rank - PG" },
   { id: "State Closing Rank - MDS", text: "State Closing Rank - MDS" },
@@ -315,8 +292,15 @@ const dropDownType: IOption[] = [
   { id: "All India Closing Rank - INICET", text: "All India Closing Rank - INICET" },
   { id: "All India Closing Rank - AIAPGET", text: "All India Closing Rank - AIAPGET (Ayurveda)" },
   { id: "All India Closing Rank - SS", text: "All India Closing Rank - SS" },
-  
+
   { id: "Packages", text: "Packages" },
+]
+
+const courseTypes: IOption[] = [
+  { id: "UG", text: "UG Courses" },
+  { id: "PG", text: "PG Courses" },
+  { id: "MDS", text: "MDS Courses" },
+  { id: "DNB", text: "DNB Courses" },
 ]
 
 export default function ConfigurePricesPage() {
@@ -328,6 +312,10 @@ export default function ConfigurePricesPage() {
   const [editIndex, setEditIndex] = useState<number | null>(null)
   const [editValue, setEditValue] = useState<string>("")
   const [addValues, setAddValues] = useState<{ [code: string]: string }>({})
+  const [selectedCourseType, setSelectedCourseType] = useState<IOption>()
+  const [selectedCourse, setSelectedCourse] = useState<IOption>()
+  const [selectedCategory, setSelectedCategory] = useState<IOption>()
+  const [selectedLevel, setSelectedLevel] = useState<IOption>()
 
   const {
     control,
@@ -362,6 +350,42 @@ export default function ConfigurePricesPage() {
     setConfigList((prev) =>
       prev.map((item, i) => (i === index ? { ...item, price: text } : item)),
     )
+  }
+
+  const categorizedOptions = {
+    cutoff: dropDownType.filter(item => item.id.includes("Cutoff")),
+    predictor: dropDownType.filter(item => item.id.includes("Predictor")),
+    closingRank: dropDownType.filter(item => item.id.includes("Closing Rank")),
+    packages: dropDownType.filter(item => item.id === "Packages"),
+  }
+
+  const categories = [
+    { id: "cutoff", text: "Cutoff" },
+    { id: "predictor", text: "Predictor" },
+    { id: "closingRank", text: "Closing Rank" },
+    { id: "packages", text: "Packages" },
+  ]
+
+  const levels = [
+    { id: "UG", text: "UG" },
+    { id: "PG", text: "PG" },
+    { id: "MDS", text: "MDS" },
+    { id: "DNB", text: "DNB" },
+  ]
+
+  const getFilteredOptions = () => {
+    if (!selectedCategory) return []
+
+    let list =
+      categorizedOptions[
+      selectedCategory.id as keyof typeof categorizedOptions
+      ] || []   // 🔥 important
+
+    if (selectedLevel) {
+      list = list.filter(item => item.id?.includes(selectedLevel.id))
+    }
+
+    return list
   }
 
   // Single update
@@ -455,6 +479,24 @@ export default function ConfigurePricesPage() {
     setAddValues((prev) => ({ ...prev, [state?.code]: "" }))
   }
 
+  const filteredCourses = dropDownType.filter((item) => {
+    if (!selectedCourseType) return false
+
+    return (
+      item.id.includes("Predictor") &&
+      item.id.includes(`-${selectedCourseType.id}-`)
+    )
+  })
+
+  const formattedCourses = filteredCourses.map((item) => {
+    const parts = item.id.split("-")
+
+    return {
+      ...item,
+      text: parts.slice(2).join(" ") || item.text, // remove prefix
+    }
+  })
+
   // States for which price is already set
   const statesWithPrice = new Set(configList.map((c) => c.item?.code))
 
@@ -464,14 +506,49 @@ export default function ConfigurePricesPage() {
 
       <Card className="mt-4 p-6 min-h-[500px]">
         <div className="w-full max-w-96">
+          {/* // 1. Category */}
           <SearchAndSelect
+            name="category"   // ✅ ADD THIS
+            label="Select Category"
+            value={selectedCategory}
+            onChange={({ selectedValue }) => setSelectedCategory(selectedValue)}
+            options={categories}
+            control={control}
+            setValue={setValue}
+            errors={errors}
+          />
+
+          {/* // 2. Level */}
+          <SearchAndSelect
+            name="level"   // ✅ ADD THIS
+            label="Select Level"
+            value={selectedLevel}
+            control={control}
+            onChange={({ selectedValue }) => setSelectedLevel(selectedValue)}
+            options={levels}
+            setValue={setValue}
+            errors={errors}
+          />
+
+          {/* // 3. Final options (filtered) */}
+          <SearchAndSelect
+            name="type"   // ✅ ADD THIS
+            label="Select Option"
+            value={selectedType}
+            control={control}
+            onChange={({ selectedValue }) => setSelectedType(selectedValue)}
+            options={getFilteredOptions()}
+            setValue={setValue}
+            errors={errors}
+          />
+          {/* <SearchAndSelect
             name="dropDownType"
             label="Select Option"
             placeholder="Select Option"
             listOptionClass="max-h-96"
             value={selectedType}
             onChange={({ name, selectedValue }) => {
-              onOptionSelected(name, selectedValue, () => {})
+              onOptionSelected(name, selectedValue, () => { })
               setSelectedType(selectedValue)
             }}
             control={control}
@@ -483,7 +560,40 @@ export default function ConfigurePricesPage() {
               autoComplete(text, dropDownType, setOptions)
             }
             errors={errors}
+          /> */}
+          {/* <SearchAndSelect
+            name="courseType"
+            label="Select Course Type"
+            placeholder="Select UG / PG / MDS"
+            value={selectedCourseType}
+            onChange={({ selectedValue }) => {
+              setSelectedCourseType(selectedValue)
+              setSelectedCourse(undefined)
+            }}
+            control={control}
+            setValue={setValue}
+            options={courseTypes}
+            errors={errors}
           />
+
+          <SearchAndSelect
+            className="mt-5"
+            name="course"
+            label="Select Course"
+            placeholder={
+              selectedCourseType ? "Select course" : "Select type first"
+            }
+            value={selectedCourse}
+            onChange={({ selectedValue }) => {
+              setSelectedCourse(selectedValue)
+              setSelectedType(selectedValue)
+            }}
+            control={control}
+            setValue={setValue}
+            options={formattedCourses}
+            disabled={!selectedCourseType}
+            errors={errors}
+          /> */}
         </div>
 
         {shouldRenderComponent([selectedType], "AND") && (
@@ -509,7 +619,7 @@ export default function ConfigurePricesPage() {
                     setValue={setValue}
                     boxWrapperClass="h-[40px]"
                     wrapperClass="w-[200px]"
-                  errors={errors}
+                    errors={errors}
                   />
                   <Button
                     type="button"
@@ -527,7 +637,7 @@ export default function ConfigurePricesPage() {
                       name={`state-${index}`}
                       placeholder="Enter price"
                       type="number"
-                        errors={errors}
+                      errors={errors}
                       value={addValues[state?.code] || ""}
                       onChange={(e) =>
                         setAddValues((prev) => ({
@@ -632,7 +742,7 @@ export default function ConfigurePricesPage() {
                   setValue={setValue}
                   boxWrapperClass="h-[40px]"
                   wrapperClass="w-[200px]"
-                    errors={errors}
+                  errors={errors}
                 />
                 <Button
                   type="button"

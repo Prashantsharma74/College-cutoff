@@ -42,6 +42,7 @@ export default function ConfigureCoursesPage() {
   const [coursesList, setCoursesList] = useState<IOption[]>([])
 
   const [courseTypeList, setCourseTypeList] = useState<IOption[]>([])
+  const [searchText, setSearchText] = useState("");
 
   const {
     control,
@@ -122,6 +123,10 @@ export default function ConfigureCoursesPage() {
     courseType()
   }, [])
 
+  const filteredList = configList.filter((item) =>
+    item.text.toLowerCase().includes(searchText.toLowerCase())
+  );
+
   async function getData(type: string) {
     const res = await fetchData({
       url: "/api/admin/configure/courses/get",
@@ -143,7 +148,7 @@ export default function ConfigureCoursesPage() {
     listRef.current?.scrollTo({ top: 0, behavior: "smooth" })
   }
 
-  
+
   //   add
   async function addNewCourse() {
     if (!newCourse) return
@@ -180,7 +185,7 @@ export default function ConfigureCoursesPage() {
     })
 
     if (res?.success) {
-    //  getData()
+      //  getData()
       showToast("success", "Updated successfully")
       getData(res?.payload?.data.type)
     }
@@ -201,7 +206,7 @@ export default function ConfigureCoursesPage() {
 
     if (res?.success) {
       showToast("success", res?.payload?.msg)
- getData(formData?.courseType?.type)
+      getData(formData?.courseType?.type)
       setPopupOpen(false)
     } else {
       showToast("error", "Failed to delete")
@@ -277,96 +282,163 @@ export default function ConfigureCoursesPage() {
 
         {renderTable && (
           <div
-            className="w-full max-w-[500px]"
-            // onSubmit={handleSubmit(addNewCourse)}
+            className="w-full "
+          // onSubmit={handleSubmit(addNewCourse)}
           >
             <div className="text-xl text-color-text mt-8 mb-4 flex items-center justify-between">
               Courses Options
               <TableAddButton title="Add More" onClick={addNewRow} />
+
+              {/* Added Search feature  */}
+              {/* <div className="flex items-center gap-3">
+
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Search courses..."
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    className="pl-9 pr-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-[200px]"
+                  />
+
+                  <span className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-400">
+                    🔍
+                  </span>
+                </div>
+
+                <TableAddButton title="Add More" onClick={addNewRow} />
+
+              </div> */}
             </div>
 
             {shouldRenderComponent(
               [isEmpty(configList), !appState.isLoading],
               "AND",
             ) && (
-              <div className="text-color-subtext text-center mt-10 mb-2 w-full border border-color-border py-10">
-                No options to show <br /> Please add some...
-              </div>
-            )}
+                <div className="text-color-subtext text-center mt-10 mb-2 w-full border border-color-border py-10">
+                  No options to show <br /> Please add some...
+                </div>
+              )}
 
             <ul
               ref={listRef}
-              className="flex flex-col gap-3 w-full max-w-[500px] max-h-[calc(100vh-500px)] overflow-y-auto"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border border-gray-200 rounded-xl overflow-hidden"
             >
               {configList?.map((item, index) => (
-                // <li
-                //   key={index}
-                //   className="flex items-center justify-between gap-2 text-color-subtext py-2 mr-4 text-sm"
-                // >
-                //   <Input
-                //     name={String(index)}
-                //     placeholder="Enter here"
-                //     value={item.text}
-                //     setValue={setValue}
-                //     onChange={(e) => {
-                //       updateText(index, e.target.value)
-                //     }}
-                //     onFocus={(e) => {
-                //       console.log("Item",item)
-                //       if (item?.id) {
-                //         setUpdateMode(e.target.name)
-                //         if (buttonText === "Update Changes") return
-                //         setButtonText("Update Changes")
-                //       } else {
-                //         if (buttonText === "Save Changes") return
-                //         setButtonText("Save Changes")
-                //       }
-                //     }}
-                //     onBlur={() => {
-                //       console.log("test")
-                //       if (item?.id) {
-                //         setUpdateMode("")
-                //         if (item.text !== initialConfigList?.[index]?.text)
-                //           updateData(item.id, item.text)
-                //       }
-                //     }}
-                //     control={control}
-                //     errors={errors}
-                //     wrapperClass={cn(
-                //       "w-full",
-                //       String(index) === updateMode && "z-[1001]",
-                //     )}
-                //   />
-
-                //   {item.id ? (
-                //     <X
-                //       className={cn(
-                //         "text-color-subtext hover:text-red-600 cursor-pointer border-none outline-none",
-                //         initialConfigList?.length === 1 && "opacity-50",
-                //       )}
-                //       size={20}
-                //       data-tooltip-id={
-                //         initialConfigList?.length === 1 ? "tooltip" : ""
-                //       }
-                //       data-tooltip-content="You Can't Delete the Last Option"
-                //       onClick={() => {
-                //         if (initialConfigList?.length === 1) return
-
-                //         setDeleteId(item.id)
-                //         setPopupOpen(true)
-                //       }}
-                //     />
-                //   ) : (
-                //     <X
-                //       className="text-color-subtext hover:text-red-600 cursor-pointer border-none outline-none"
-                //       size={20}
-                //       onClick={() => removeNewRow(index)}
-                //     />
-                //   )}
-                // </li>
                 <li
                   key={index}
-                  className="flex items-center justify-between gap-2 text-color-subtext py-2 mr-4 text-sm"
+                  className="border-b border-r border-gray-200 p-3 flex flex-col gap-3"
+                >
+
+                  {/* TEXT / INPUT */}
+                  {item.editing ? (
+                    <Input
+                      name={String(index)}
+                      placeholder="Enter course name"
+                      value={item.text}
+                      setValue={setValue}
+                      onChange={(e) => setNewCourse(e.target.value)}
+                      control={control}
+                      errors={errors}
+                      wrapperClass="w-full"
+                    />
+                  ) : (
+                    <div className="text-gray-800 font-medium text-sm">
+                      {item.text}
+                    </div>
+                  )}
+
+                  {/* ACTIONS */}
+                  <div className="flex gap-2 flex-wrap">
+
+                    {item.id ? (
+                      item.editing ? (
+                        <>
+                          <Button
+                            size="sm"
+                            className="bg-blue-600 text-white px-3 py-1.5"
+                            onClick={() => updateData(item.id, newCourse)}
+                          >
+                            Save
+                          </Button>
+
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="text-gray-500"
+                            onClick={() => {
+                              const updated = [...configList]
+                              updated[index] = {
+                                ...initialConfigList[index],
+                                editing: false,
+                              }
+                              setConfigList(updated)
+                            }}
+                          >
+                            Cancel
+                          </Button>
+                        </>
+                      ) : (
+                        <>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => {
+                              const updated = [...configList]
+                              updated[index].editing = true
+                              setConfigList(updated)
+                            }}
+                          >
+                            Edit
+                          </Button>
+
+                          <Button
+                            size="sm"
+                            variant="destructive"
+                            disabled={initialConfigList?.length === 1}
+                            onClick={() => {
+                              setDeleteId(item.id)
+                              setPopupOpen(true)
+                            }}
+                          >
+                            Delete
+                          </Button>
+                        </>
+                      )
+                    ) : (
+                      <>
+                        <Button
+                          size="sm"
+                          className="bg-blue-600 text-white"
+                          onClick={addNewCourse}
+                        >
+                          Add
+                        </Button>
+
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => removeNewRow(index)}
+                        >
+                          Cancel
+                        </Button>
+                      </>
+                    )}
+
+                  </div>
+
+                </li>
+              ))}
+            </ul>
+
+            {/* <ul
+              ref={listRef}
+              className="flex flex-col gap-3 max-h-[calc(100vh-100px)] overflow-y-auto"
+            >
+              {configList?.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex items-center justify-between gap-2 text-color-subtext py-2 mr-4 text-sm max-w-[450px]"
                 >
                   {item.editing ? (
                     <Input
@@ -483,7 +555,7 @@ export default function ConfigureCoursesPage() {
                   </div>
                 </li>
               ))}
-            </ul>
+            </ul> */}
             {/* 
             <div className="flex mt-8 items-center justify-end mb-8">
               <Button className="py-2" type="submit" disabled={isSaveDisabled}>

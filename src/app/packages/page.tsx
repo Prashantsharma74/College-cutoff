@@ -249,6 +249,7 @@ export default function PackagesPage() {
       body: JSON.stringify({ amount }),
     })
     const data = await response.json()
+    
     if (!response.ok) throw new Error("Failed to create order")
     return data.orderId
   }

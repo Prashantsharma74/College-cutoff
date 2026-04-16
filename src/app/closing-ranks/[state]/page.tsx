@@ -66,6 +66,43 @@ export default function CollegeListClosingRanksPage() {
   const [statePaymentPopup, setStatePaymentPopup] = useState(false)
   const [paymentChecker, setPaymentChecker] = useState(false)
   const [statePurchaseMode, setStatePurchaseMode] = useState(false)
+  const [userPurchases, setUserPurchases] = useState([])
+  const isNewUser = userPurchases.length === 0
+
+  const fetchPurchases = async () => {
+    try {
+      const res = await fetch("/api/purchase/all-purchase")
+      const data = await res.json()
+
+      setUserPurchases(data?.data || [])
+    } catch (err) {
+      console.error("Error fetching purchases", err)
+    }
+  }
+
+  useEffect(() => {
+    fetchPurchases()
+  }, [])
+
+  const getFinalAmount = (amount) => {
+    if (!isNewUser) return amount
+
+    if (amount === 49) return 9
+    if (amount === 99) return 19
+
+    return amount
+  }
+
+  // useEffect(() => {
+  //   async function fetchPurchases() {
+  //     const res = await fetch("/api/purchase/all-purchase")
+  //     const data = await res.json()
+  //     console.log("Data", data)
+  //     setUserPurchases(data?.data || [])
+  //   }
+
+  //   fetchPurchases()
+  // }, [])
 
   //changes made on 3feb2026
   // const currentYear = new Date().getFullYear()-1
@@ -85,7 +122,6 @@ export default function CollegeListClosingRanksPage() {
   const course = searchParams.get("course")
   const stateCode = decodeURIComponent(params.state as any)
   const state = searchParams.get("state")
-  const [isNewUser, setIsNewUser] = useState(false)
 
   const [pageSize, setPageSize] = useState(
     Number(searchParams.get("size") || 20),
@@ -126,28 +162,28 @@ export default function CollegeListClosingRanksPage() {
     return () => clearTimeout(timeout)
   }, [updateUI, selectedInstituteType, selectedState, pageSize, currentPage])
 
-  useEffect(() => {
-    async function checkUser() {
-      const user = await fetchData({
-        url: "/api/user",
-        method: "GET",
-        noToast: true,
-      })
+  // useEffect(() => {
+  //   async function checkUser() {
+  //     const user = await fetchData({
+  //       url: "/api/user",
+  //       method: "GET",
+  //       noToast: true,
+  //     })
 
-      if (!user?.success) return
+  //     if (!user?.success) return
 
-      const res = await fetchData({
-        url: "/api/purchase/all-purchase",
-        method: "POST",
-        data: { phone: user?.payload?.phone },
-        noToast: true,
-      })
+  //     const res = await fetchData({
+  //       url: "/api/purchase/all-purchase",
+  //       method: "GET",
+  //       data: { phone: user?.payload?.phone },
+  //       noToast: true,
+  //     })
 
-      setIsNewUser(!res?.data?.length)
-    }
+  //     setIsNewUser(!res?.data?.length)
+  //   }
 
-    checkUser()
-  }, [])
+  //   checkUser()
+  // }, [])
 
   const finalAmount = isNewUser
     ? amount === 49
@@ -298,7 +334,7 @@ export default function CollegeListClosingRanksPage() {
           // console.log("ResP ",res.payload)
           setTableData(res?.payload)
         }
-      } s
+      }
 
     } catch (error) {
       console.log("error", error)
@@ -311,7 +347,8 @@ export default function CollegeListClosingRanksPage() {
   function buttonText(rowData: any) {
     return processingPayment === rowData?.id
       ? "Processing..."
-      : `Unlock @ ₹${finalAmount}`
+      // : `Unlock @ ₹${finalAmount}`
+      : `Unlock @ ₹${getFinalAmount(amount)}`
     // : `Unlock @ ₹${amount}`
   }
 
@@ -499,7 +536,8 @@ export default function CollegeListClosingRanksPage() {
     const payload = {
       orderId,
       // amount,
-      amount: finalAmount,
+      // amount: finalAmount,
+      amount: getFinalAmount(amount),
       payment_type: paymentType?.SINGLE_COLLEGE_CLOSING_RANK,
       closing_rank_details: {
         instituteName: rowData?.instituteName,
@@ -544,6 +582,7 @@ export default function CollegeListClosingRanksPage() {
 
   async function successCallbackStatePayment(orderId: string) {
     setShowPaymentPopup(false)
+    await fetchPurchases()
     showToast(
       "success",
       <p>
@@ -628,12 +667,12 @@ export default function CollegeListClosingRanksPage() {
         <section className="w-full py-12 md:py-16 bg-gradient-to-r from-yellow-50 to-emerald-50 relative overflow-hidden">
           <Container className="container px-4 md:px-6">
             {/* <Link
-              href={backURL()}
-              className="inline-flex items-center text-yellow-600 hover:text-yellow-700 mb-6"
-            >
-              <ChevronLeft className="h-4 w-4 mr-1" />
-              Back to All States
-            </Link> */}
+                href={backURL()}
+                className="inline-flex items-center text-yellow-600 hover:text-yellow-700 mb-6"
+              >
+                <ChevronLeft className="h-4 w-4 mr-1" />
+                Back to All States
+              </Link> */}
 
             {/* ➡️ Right: Breadcrumbs */}
             <div className="md:text-right">
@@ -686,7 +725,7 @@ export default function CollegeListClosingRanksPage() {
                   name="instituteType"
                   labelNode={
                     <div className="md:text-lg text-sm font-bold text-nowrap">
-                      Select InstituteType
+                      Select Institute Type
                     </div>
                   }
                   // boxWrapperClass="border-color-accent"
@@ -911,12 +950,12 @@ export default function CollegeListClosingRanksPage() {
 
               {/* 🚀 CTA BUTTON */}
               {/* <Link
-              href="https://wa.me/919028009835"
-              className="relative z-10 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-7 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300"
-            >
-              <Users className="h-5 w-5" />
-              Book Counselling
-            </Link> */}
+                href="https://wa.me/919028009835"
+                className="relative z-10 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-7 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300"
+              >
+                <Users className="h-5 w-5" />
+                Book Counselling
+              </Link> */}
 
               <Link
                 href="https://wa.me/919028009835"

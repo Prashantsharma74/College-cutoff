@@ -10,30 +10,26 @@ import { isMobile } from "react-device-detect"
 
 interface IUnlockPopoverProps {
   isOpen: boolean
-  // generic fallback title (used if specific tab titles are not provided)
   title?: ReactNode
 
-  // optional tab-specific titles
   titleSingle?: ReactNode
   titleState?: ReactNode
 
-  // generic fallback "what you'll get" content
   whatWillYouGet?: ReactNode
 
-  // optional tab-specific "what you'll get" content (overrides default)
   whatWillYouGetSingle?: ReactNode
   whatWillYouGetState?: ReactNode
 
   btnText?: string | ReactNode
   paymentDescription?: string
-  amount: number // price for single
-  stateAmount?: number // price for state/all
+  amount: number
+  stateAmount?: number
   stateName?: string
   stateCode?: string
   collegeCount?: number
   onClose: () => void
-  onConfirm?: (meta?: any) => void // called after successful verification (optional)
-  onBuySingle?: () => void // parent hook to toggle payment UI / mark row as processing
+  onConfirm?: (meta?: any) => void
+  onBuySingle?: () => void
   onBuyState?: () => void
   initialTab?: "single" | "state"
   courseType?: string | null
@@ -61,7 +57,7 @@ export function UnlockPopover({
   const [loading, setLoading] = useState(false)
   const [activeTab, setActiveTab] = useState<"single" | "state">(initialTab)
   const { showToast, setAppState } = useAppState()
-// console.log("State Code; ",stateCode,stateName)
+  // console.log("State Code; ",stateCode,stateName)
   useEffect(() => {
     setActiveTab(initialTab)
   }, [initialTab, isOpen])
@@ -73,13 +69,12 @@ export function UnlockPopover({
     if (type.includes("UG")) {
       return `Access All Round's Category and Quota-wise ${course} Cut-off (Rank/Marks) Details (NEET UG 2025) for your Selected College.`
     } else if (type.includes("PG")) {
-      return `Access All Rounds MD/MS/Diploma Cut-off Rank / Marks / Percentile Details (NEET PG ${
-  ["all", "br", "ka"].includes(stateCode?.toLowerCase() ?? "")
-    ? " 2025 & 2024"
-    // : "2024"
-    //commented above one and added new one
-    : "2025 & 2024"
-})- Specialization, Category & Quota Wise for Your Selected College.`
+      return `Access All Rounds MD/MS/Diploma Cut-off Rank / Marks / Percentile Details (NEET PG ${["all", "br", "ka"].includes(stateCode?.toLowerCase() ?? "")
+          ? " 2025 & 2024"
+          // : "2024"
+          //commented above one and added new one
+          : "2025 & 2024"
+        })- Specialization, Category & Quota Wise for Your Selected College.`
     } else if (type.includes("SS")) {
       return `Access All Round's Specialization Wise DM/MCH/DNBSS Cut-off Rank/Marks Details (NEET SS 2024) for Your Selected College or Hospital.`
     } else if (type.includes("MDS")) {
@@ -105,12 +100,11 @@ export function UnlockPopover({
     if (type.includes("UG")) {
       return `Access All Rounds of ${course} Cut-off (Rank/Marks) details (NEET UG 2025) for every college in ${location}, covering all categories and quotas across ${institution} institutions.`
     } else if (type.includes("PG")) {
-      return `Access All Round's of MD/MS/Diploma Cut-off Rank / Marks / Percentile Details (NEET PG ${
-  ["all", "br", "ka"].includes(stateCode?.toLowerCase() ?? "")
-    ? " 2025 & 2024"
-    // : "2024"
-   : "2025 & 2024" 
-}) for every college in ${stateName}, covering all specialization, category, and quota across Government & Private institutions.`
+      return `Access All Round's of MD/MS/Diploma Cut-off Rank / Marks / Percentile Details (NEET PG ${["all", "br", "ka"].includes(stateCode?.toLowerCase() ?? "")
+          ? " 2025 & 2024"
+          // : "2024"
+          : "2025 & 2024"
+        }) for every college in ${stateName}, covering all specialization, category, and quota across Government & Private institutions.`
     } else if (type.includes("SS")) {
       return `Access All Round's Specialization Wise DM/MCH/DNBSS Cut-off Rank/Marks Details (NEET SS 2024) for Your Selected College or Hospital.`
     } else if (type.includes("MDS")) {
@@ -241,8 +235,8 @@ export function UnlockPopover({
 
             // successful verification -> notify parent
             showToast("success", "Payment verified!")
-          //  await onConfirm?.(verifyData)
-           await onConfirm?.({ verifyData, activeTab }); 
+            //  await onConfirm?.(verifyData)
+            await onConfirm?.({ verifyData, activeTab });
             onClose()
           } catch (error) {
             console.error("Verification error:", error)
@@ -296,8 +290,15 @@ export function UnlockPopover({
       closeIconClass="text-white hover:text-white"
     >
       <div className="w-full max-w-[560px] overflow-hidden rounded-xl bg-white shadow-xl">
+
         {/* Header - now dynamic based on active tab */}
-        <div className="bg-[#0054A4] p-4 text-white relative">
+        <div className="bg-[#0054A4] p-2 text-white relative">
+          <div className="flex items-center justify-center bg-green-50 border border-green-200 text-green-800 rounded-xl px-2 py-3 mb-6 text-sm sm:text-base font-medium">
+            <span className="mr-2">🎉</span>
+            Unlock your first college at just
+            <span className="mx-1 font-bold text-green-700">₹9</span>
+            <span className="text-gray-500 ml-1">(Limited Offer)</span>
+          </div>
           {/* renderHeaderTitle returns a ReactNode already styled (or uses provided title props) */}
           <div>{renderHeaderTitle()}</div>
         </div>
@@ -314,11 +315,10 @@ export function UnlockPopover({
               <button
                 type="button"
                 onClick={() => setActiveTab("single")}
-                className={`flex-1 p-2 text-[15px] rounded-lg transition ${
-                  activeTab === "single"
+                className={`flex-1 p-2 text-[15px] rounded-lg transition ${activeTab === "single"
                     ? "bg-[#0F63BF] text-white"
                     : "bg-white border border-blue-800 text-gray-700"
-                }`}
+                  }`}
               >
                 <div className="font-semibold pt-1">CONTINUE WITH</div>
                 <div className="mt-1 font-semibold">THIS COLLEGE</div>
@@ -330,27 +330,26 @@ export function UnlockPopover({
               <button
                 type="button"
                 onClick={() => setActiveTab("state")}
-                className={`relative flex-1 p-2 rounded-lg text-[15px] transition ${
-                  activeTab === "state"
+                className={`relative flex-1 p-2 rounded-lg text-[15px] transition ${activeTab === "state"
                     ? "bg-[#0F63BF] text-white"
                     : "bg-white border border-blue-800 text-gray-700"
-                }`}
+                  }`}
                 disabled={stateAmount == null}
               >
-                    <p className="font-medium flex items-center justify-start gap-1">
-                      <span className="absolute -top-2.5 right-2 text-xs bg-color-accent text-white px-2 py-0.5 rounded">
-                       Special Offer
-                      </span>
-                    </p>
-                 
+                <p className="font-medium flex items-center justify-start gap-1">
+                  <span className="absolute -top-2.5 right-2 text-xs bg-color-accent text-white px-2 py-0.5 rounded">
+                    Special Offer
+                  </span>
+                </p>
+
                 <div className="font-semibold pt-1">
                   BUY ALL {collegeCount}{" "}
                   {stateName?.toUpperCase()} COLLEGES IN ONE CLICK
                 </div>
                 {stateAmount != null && (
-                     <p className={`text-xl font-bold ${activeTab === "state"?"text-white":"text-color-accent "}`}>
-                      <strong> ₹{stateAmount} /-</strong>
-                    </p>
+                  <p className={`text-xl font-bold ${activeTab === "state" ? "text-white" : "text-color-accent "}`}>
+                    <strong> ₹{stateAmount} /-</strong>
+                  </p>
                 )}
               </button>
             </div>

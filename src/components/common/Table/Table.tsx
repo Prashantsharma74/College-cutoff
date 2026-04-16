@@ -130,7 +130,7 @@ export function Table({
           className,
         )}
       >
-        <table className="min-w-full border-collapse table-fixed">
+        {/* <table className="min-w-full border-collapse table-fixed">
           <thead className="sticky top-0 z-[11] bg-color-table-header">
             <tr>
               {selectable && (
@@ -236,6 +236,120 @@ export function Table({
               </tr>
             ))}
           </tbody>
+        </table> */}
+
+        <table className="min-w-full table-fixed border-separate border-spacing-y-2">
+
+          {/* 🔹 HEADER */}
+          <thead className="sticky top-0 z-[11]">
+            <tr className="bg-orange-500 text-white text-xs uppercase">
+
+              {selectable && (
+                <th
+                  className={cn(
+                    "border-b border-color-border p-3 tableCheckboxStatic bg-color-table-header",
+                  )}
+                >
+                  <input
+                    className="translate-y-[2px]"
+                    type="checkbox"
+                    checked={
+                      selectedRows?.size === data?.length && !isEmpty(data)
+                    }
+                    onChange={handleSelectAll}
+                  />
+                </th>
+              )}
+
+              {!hideSLNo && (
+                <th className="px-4 py-3 text-left rounded-l-lg">#</th>
+              )}
+
+              {columns?.map((column, index) => (
+                <th
+                  key={index}
+                  className={cn(
+                    "uppercase",
+                    "px-4 py-3 text-left",
+                    index === columns.length - 1 && "rounded-r-lg"
+                  )}
+                >
+                  {column?.title}
+                </th>
+              ))}
+            </tr>
+          </thead>
+
+          {/* 🔹 BODY */}
+          <tbody>
+            {data?.map((row, rowIndex) => (
+              <tr
+                key={rowIndex}
+                className="bg-white shadow-sm hover:shadow-md transition rounded-lg cursor-pointer group
+                  border-b border-color-border"
+              >
+
+                {selectable && (
+                  <td className="p-3 bg-color-form-background tableCheckboxStatic">
+                    <input
+                      className="translate-y-[2px]"
+                      type="checkbox"
+                      checked={selectedRows.has(rowIndex)}
+                    />
+                  </td>
+                )}
+
+                {!hideSLNo && (
+                  <td className="px-4 py-3 text-[13px] rounded-l-lg">
+                    {getRowSLNumber(rowIndex)}
+                  </td>
+                )}
+
+                {columns?.map((column, colIndex) => {
+                  // const cellData = row[column?.tableKey]
+
+                  return (
+                    <td
+                      key={colIndex}
+                      className={cn(
+                        "px-4 py-3 text-[13px]",
+                        colIndex === columns.length - 1 && "rounded-r-lg",
+                        "px-4 py-3 text-left text-[13px] bg-color-white_black",
+                        // column?.overrideInternalClick && "cursor-auto",
+                        // column?.tableKey === "action" &&
+                        "tableActionStatic px-0 py-0",
+                        handleStaticLeft(column, false),
+                      )}
+                      onClick={(e) =>
+                        column?.overrideInternalClick
+                          ? e.stopPropagation()
+                          : null
+                      }
+                    >
+                      <div className="flex items-center">
+
+                        {/* 🔥 ACTION COLUMN DESIGN */}
+                        {column?.renderer
+                          ? column?.renderer({
+                            rowData: row,
+                            cellData: row[column?.tableKey],
+                          })
+                          : shouldRenderComponent(
+                            [
+                              row[column?.tableKey] === "-",
+                              !row[column?.tableKey],
+                            ],
+                            "OR",
+                          )
+                            ? "NA"
+                            : row[column?.tableKey]}
+                      </div>
+                    </td>
+                  )
+                })}
+              </tr>
+            ))}
+          </tbody>
         </table>
 
         {renderBelowTable}
@@ -243,4 +357,3 @@ export function Table({
     </div>
   )
 }
-

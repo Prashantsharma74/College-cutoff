@@ -348,8 +348,45 @@ export default function CollegeListClosingRanksPage() {
     return processingPayment === rowData?.id
       ? "Processing..."
       // : `Unlock @ ₹${finalAmount}`
-      : `Unlock @ ₹${getFinalAmount(amount)}`
-    // : `Unlock @ ₹${amount}`
+      // : `Unlock @ ₹${getFinalAmount(amount)}`
+
+      :
+      <>
+
+        {/* Price */}
+        <span className="font-bold">
+          ₹{finalAmount}
+        </span>
+
+        {/* Old price */}
+        {isNewUser && (
+          <span className="line-through text-white/70 text-[10px]">
+            ₹{amount}
+          </span>
+        )}
+
+        {/* Arrow */}
+        <span>→</span>
+
+        {/* Badge */}
+        {isNewUser && (
+          <span className="bg-yellow-400 text-black text-[9px] px-2 py-[2px] rounded-md font-semibold">
+            First Unlock Offer
+          </span>
+        )}
+      </>
+    {/* // : `Unlock @ ₹${amount}`
+    // : <div className="inline-flex flex-col items-center">
+
+    //   <div className="bg-gradient-to-r from-[#1f7a5a] to-[#2e9b74] text-white px-6 py-2 rounded-md shadow-[0_2px_6px_rgba(0,0,0,0.25)] font-semibold text-sm">
+    //     Unlock @ ₹{finalAmount}
+    //   </div>
+
+    //   <div className="mt-[-6px] bg-[#f5e6b3] text-[#3a3a3a] text-[11px] px-3 py-[3px] rounded-full font-medium border border-black/10">
+    //     First Unlock Offer
+    //   </div>
+
+    // </div> */}
   }
 
   function generateCols() {
@@ -380,7 +417,7 @@ export default function CollegeListClosingRanksPage() {
             `payment-${state?.replaceAll(" ", "-").toLowerCase()}-${courseType?.replaceAll(" ", "-").toLowerCase()}-${rowData.instituteName.toLowerCase().trim().split(" ").join("-")}`,
           )
           return (
-            <div className="w-[120px] md:m-3">
+            <div className="">
               {rowData?.purchased || paymentStatus ? (
                 <Link
                   href={`/closing-ranks/${stateCode}/college-details?state=${state}&college=${rowData?.instituteName}&courseType=${courseType}&course=${course || ""}&collegeCount=${tableData?.totalItems || 0}`}
@@ -406,7 +443,8 @@ export default function CollegeListClosingRanksPage() {
                 </Link>
               ) : (
                 <Button
-                  className="py-2 px-2 text-[14px] w-fit disabled:bg-color-table-header disabled:text-white disabled:cursor-not-allowed min-w-[100px] flex items-center gap-2"
+                  className="flex items-center gap-2 bg-orange-500 hover:bg-orange-500 text-white px-3 py-1.5 rounded-lg text-xs font-medium transition"
+                  // className="py-2 px-2 text-[14px] w-fit disabled:bg-color-table-header disabled:text-white disabled:cursor-not-allowed min-w-[100px] flex items-center gap-2"
                   variant="primary"
                   onClick={() => {
                     setPaymentChecker(true)
@@ -1037,7 +1075,7 @@ export default function CollegeListClosingRanksPage() {
         isOpen={showUnlockPopover}
         onClose={() => {
           setShowUnlockPopover(false);
-          setProcessingPayment(false);      // ensure UI resets if user closes modal
+          setProcessingPayment(false);
           setStatePurchaseMode(false);
         }}
         // You can pass tab-specific header text:

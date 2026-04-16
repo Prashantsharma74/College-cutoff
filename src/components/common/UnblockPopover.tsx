@@ -7,6 +7,7 @@ import { cn, saveToLocalStorage } from "@/utils/utils"
 import { ArrowRight, CircleCheckBig } from "lucide-react"
 import React, { ReactNode, useEffect, useState } from "react"
 import { isMobile } from "react-device-detect"
+  import {motion} from "framer-motion"
 
 interface IUnlockPopoverProps {
   isOpen: boolean
@@ -70,10 +71,10 @@ export function UnlockPopover({
       return `Access All Round's Category and Quota-wise ${course} Cut-off (Rank/Marks) Details (NEET UG 2025) for your Selected College.`
     } else if (type.includes("PG")) {
       return `Access All Rounds MD/MS/Diploma Cut-off Rank / Marks / Percentile Details (NEET PG ${["all", "br", "ka"].includes(stateCode?.toLowerCase() ?? "")
-          ? " 2025 & 2024"
-          // : "2024"
-          //commented above one and added new one
-          : "2025 & 2024"
+        ? " 2025 & 2024"
+        // : "2024"
+        //commented above one and added new one
+        : "2025 & 2024"
         })- Specialization, Category & Quota Wise for Your Selected College.`
     } else if (type.includes("SS")) {
       return `Access All Round's Specialization Wise DM/MCH/DNBSS Cut-off Rank/Marks Details (NEET SS 2024) for Your Selected College or Hospital.`
@@ -101,9 +102,9 @@ export function UnlockPopover({
       return `Access All Rounds of ${course} Cut-off (Rank/Marks) details (NEET UG 2025) for every college in ${location}, covering all categories and quotas across ${institution} institutions.`
     } else if (type.includes("PG")) {
       return `Access All Round's of MD/MS/Diploma Cut-off Rank / Marks / Percentile Details (NEET PG ${["all", "br", "ka"].includes(stateCode?.toLowerCase() ?? "")
-          ? " 2025 & 2024"
-          // : "2024"
-          : "2025 & 2024"
+        ? " 2025 & 2024"
+        // : "2024"
+        : "2025 & 2024"
         }) for every college in ${stateName}, covering all specialization, category, and quota across Government & Private institutions.`
     } else if (type.includes("SS")) {
       return `Access All Round's Specialization Wise DM/MCH/DNBSS Cut-off Rank/Marks Details (NEET SS 2024) for Your Selected College or Hospital.`
@@ -292,15 +293,59 @@ export function UnlockPopover({
       <div className="w-full max-w-[560px] overflow-hidden rounded-xl bg-white shadow-xl">
 
         {/* Header - now dynamic based on active tab */}
-        <div className="bg-[#0054A4] p-2 text-white relative">
+        {/* <div className="bg-[#0054A4] p-2 text-white relative">
           <div className="flex items-center justify-center bg-green-50 border border-green-200 text-green-800 rounded-xl px-2 py-3 mb-6 text-sm sm:text-base font-medium">
             <span className="mr-2">🎉</span>
             Unlock your first college at just
-            <span className="mx-1 font-bold text-green-700">₹9</span>
+            <span className="mx-1 font-bold text-green-700">₹{amount}</span>
             <span className="text-gray-500 ml-1">(Limited Offer)</span>
           </div>
-          {/* renderHeaderTitle returns a ReactNode already styled (or uses provided title props) */}
           <div>{renderHeaderTitle()}</div>
+        </div> */}
+
+      
+
+        <div className="bg-gradient-to-r from-[#0A5092] to-[#2563EB] p-4 sm:p-6 text-white relative overflow-hidden">
+
+          {/* ✨ Glow effect */}
+          <div className="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-400/20 rounded-full blur-3xl" />
+
+          {/* 🎉 Offer Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center justify-center bg-white/90 backdrop-blur-md border border-white/30 text-gray-800 rounded-2xl px-4 py-3 mb-6 text-sm sm:text-base font-medium shadow-md"
+          >
+            <motion.span
+              animate={{ rotate: [0, 15, -10, 15, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+              className="mr-2 text-lg"
+            >
+              🎉
+            </motion.span>
+
+            Unlock your first college at just
+
+            <span className="mx-2 font-bold text-orange-600 text-base sm:text-lg">
+              ₹{amount}
+            </span>
+
+            <span className="text-gray-500 ml-1 text-xs sm:text-sm">
+              (Limited Offer)
+            </span>
+          </motion.div>
+
+          {/* 🔥 Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            {renderHeaderTitle()}
+          </motion.div>
+
         </div>
 
         <div
@@ -316,8 +361,8 @@ export function UnlockPopover({
                 type="button"
                 onClick={() => setActiveTab("single")}
                 className={`flex-1 p-2 text-[15px] rounded-lg transition ${activeTab === "single"
-                    ? "bg-[#0F63BF] text-white"
-                    : "bg-white border border-blue-800 text-gray-700"
+                  ? "bg-[#0F63BF] text-white"
+                  : "bg-white border border-blue-800 text-gray-700"
                   }`}
               >
                 <div className="font-semibold pt-1">CONTINUE WITH</div>
@@ -331,8 +376,8 @@ export function UnlockPopover({
                 type="button"
                 onClick={() => setActiveTab("state")}
                 className={`relative flex-1 p-2 rounded-lg text-[15px] transition ${activeTab === "state"
-                    ? "bg-[#0F63BF] text-white"
-                    : "bg-white border border-blue-800 text-gray-700"
+                  ? "bg-[#0F63BF] text-white"
+                  : "bg-white border border-blue-800 text-gray-700"
                   }`}
                 disabled={stateAmount == null}
               >

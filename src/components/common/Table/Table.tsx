@@ -242,7 +242,7 @@ export function Table({
 
           {/* 🔹 HEADER */}
           <thead className="sticky top-0 z-[11]">
-            <tr className="bg-orange-500 text-white text-xs uppercase">
+            <tr className="bg-blue-500 text-white text-xs uppercase">
 
               {selectable && (
                 <th

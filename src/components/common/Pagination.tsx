@@ -143,7 +143,7 @@ interface PaginationProps {
   onPageChange: (page: number) => void
   wrapperClass?: string
   showOnlyOnePage?: boolean
-   disabled?: boolean 
+  disabled?: boolean
 }
 
 // Define the ref type for the imperative handle
@@ -160,7 +160,7 @@ export const Pagination = forwardRef<PaginationHandle, PaginationProps>(
       onPageChange,
       wrapperClass,
       showOnlyOnePage,
-      disabled=false
+      disabled = false
     },
 
     ref,
@@ -184,7 +184,7 @@ export const Pagination = forwardRef<PaginationHandle, PaginationProps>(
     }, [currentPage])
 
     function handlePageChange(pageNumber: number) {
-       if (disabled) return
+      if (disabled) return
       if (pageNumber < 1 || pageNumber > totalPages) return
       updateQueryParams(router, { page: pageNumber })
       setActivePage(pageNumber)
@@ -198,117 +198,123 @@ export const Pagination = forwardRef<PaginationHandle, PaginationProps>(
       return activePage * itemsCountPerPage
     }
 
-function renderPageNumbers() {
-  const totalPages = Math.ceil(totalItems / itemsCountPerPage)
-  const pages: (number | string)[] = []
+    function renderPageNumbers() {
+      const totalPages = Math.ceil(totalItems / itemsCountPerPage)
+      const pages: (number | string)[] = []
 
-  if (totalPages <= 5) {
-    // Small dataset, show all pages
-    for (let i = 1; i <= totalPages; i++) pages.push(i)
-  } else {
-    // Always show first two
-    pages.push(1, 2)
+      if (totalPages <= 5) {
+        for (let i = 1; i <= totalPages; i++) pages.push(i)
+      } else {
+        pages.push(1, 2)
 
-    if (activePage > 3) {
-      pages.push("...")
-    }
+        if (activePage > 3) {
+          pages.push("...")
+        }
 
-    // Always show activePage (if it's not near start/end)
-    if (activePage > 2 && activePage < totalPages - 1) {
-      pages.push(activePage)
-    }
+        if (activePage > 2 && activePage < totalPages - 1) {
+          pages.push(activePage)
+        }
 
-    if (activePage < totalPages - 2) {
-      pages.push("...")
-    }
+        if (activePage < totalPages - 2) {
+          pages.push("...")
+        }
 
-    // Always show last two
-    pages.push(totalPages - 1, totalPages)
-  }
+        pages.push(totalPages - 1, totalPages)
+      }
 
-  // Remove duplicates like "..., ..."
-  const finalPages: (number | string)[] = []
-  for (let i = 0; i < pages.length; i++) {
-    if (!(pages[i] === "..." && pages[i - 1] === "...")) {
-      finalPages.push(pages[i])
-    }
-  }
+      const finalPages: (number | string)[] = []
+      for (let i = 0; i < pages.length; i++) {
+        if (!(pages[i] === "..." && pages[i - 1] === "...")) {
+          finalPages.push(pages[i])
+        }
+      }
 
-  return finalPages.map((p, i) =>
-    p === "..." ? (
-      <span key={i} className="px-2">...</span>
-    ) : (
-      <button
-        key={i}
-        // className={cn(
-        //   "size-[32px] text-color-text cursor-pointer text-[12px] font-normal grid place-items-center hover:bg-color-accent/40 rounded-full",
-        //   p === activePage && "!bg-color-accent !text-white !rounded-full",
-        // )}
-           className={cn(
-              "size-[32px] text-color-text cursor-pointer text-[12px] font-normal grid place-items-center hover:bg-color-accent/40 rounded-full",
-              p === activePage && "!bg-color-accent !text-white !rounded-full",
-              disabled && "cursor-not-allowed opacity-50"
-            )}
-        onClick={() => handlePageChange(p as number)}
-      >
-        {p}
-      </button>
-    )
+      return finalPages.map((p, i) =>
+  p === "..." ? (
+    <span
+      key={i}
+      className="px-2 text-gray-400 text-sm select-none"
+    >
+      ...
+    </span>
+  ) : (
+    <button
+      key={i}
+      onClick={() => handlePageChange(p as number)}
+      disabled={disabled}
+      className={cn(
+        "min-w-[34px] h-[34px] px-2 text-sm font-medium rounded-lg transition-all duration-200",
+
+        // 👉 active
+        p === activePage
+          ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow"
+          : "text-gray-600 hover:bg-orange-100 hover:text-orange-600",
+
+        // 👉 disabled
+        disabled && "cursor-not-allowed opacity-50"
+      )}
+    >
+      {p}
+    </button>
   )
-}
+)
+    }
 
 
     return (
       <div
         className={cn(
-          "pt-[16px] xl:pt-[18px] pb-16 tab:flex justify-between items-center w-full",
+          "mt-6 flex flex-col md:flex-row justify-between items-center gap-4 w-full",
           wrapperClass,
         )}
       >
-        {/* Navigation */}
-        <div className="flex items-center gap-2">
+        {/* 🔹 Pagination Controls */}
+        <div className="flex items-center gap-2 bg-white border border-gray-200 shadow-sm rounded-xl px-3 py-2">
+
           {/* First */}
           <button
-            className="size-[32px] grid place-items-center rounded-full hover:bg-color-accent/40 disabled:opacity-50"
+            className="size-[34px] grid place-items-center rounded-lg text-gray-500 hover:bg-orange-100 hover:text-orange-600 transition disabled:opacity-40"
             onClick={() => handlePageChange(1)}
             disabled={disabled || activePage === 1}
           >
-            <ChevronFirst className="!text-color-subtext" size={20} strokeWidth={1.5} />
+            <ChevronFirst size={18} />
           </button>
 
           {/* Prev */}
           <button
-            className="size-[32px] grid place-items-center rounded-full hover:bg-color-accent/40 disabled:opacity-50"
+            className="size-[34px] grid place-items-center rounded-lg text-gray-500 hover:bg-orange-100 hover:text-orange-600 transition disabled:opacity-40"
             onClick={() => handlePageChange(activePage - 1)}
-            disabled={disabled ||activePage === 1}
+            disabled={disabled || activePage === 1}
           >
-            <ChevronLeft className="!text-color-subtext" size={20} strokeWidth={1.5} />
+            <ChevronLeft size={18} />
           </button>
 
           {/* Page Numbers */}
-          {renderPageNumbers()}
+          <div className="flex items-center gap-1">
+            {renderPageNumbers()}
+          </div>
 
           {/* Next */}
           <button
-            className="size-[32px] grid place-items-center rounded-full hover:bg-color-accent/40 disabled:opacity-50"
+            className="size-[34px] grid place-items-center rounded-lg text-gray-500 hover:bg-orange-100 hover:text-orange-600 transition disabled:opacity-40"
             onClick={() => handlePageChange(activePage + 1)}
-          disabled={disabled || activePage === totalPages}
+            disabled={disabled || activePage === totalPages}
           >
-            <ChevronRight className="!text-color-subtext" size={20} strokeWidth={1.5} />
+            <ChevronRight size={18} />
           </button>
 
           {/* Last */}
           <button
-            className="size-[32px] grid place-items-center rounded-full hover:bg-color-accent/40 disabled:opacity-50"
+            className="size-[34px] grid place-items-center rounded-lg text-gray-500 hover:bg-orange-100 hover:text-orange-600 transition disabled:opacity-40"
             onClick={() => handlePageChange(totalPages)}
-           disabled={disabled || activePage === totalPages}
+            disabled={disabled || activePage === totalPages}
           >
-            <ChevronLast className="!text-color-subtext" size={20} strokeWidth={1.5} />
+            <ChevronLast size={18} />
           </button>
         </div>
 
-        {/* Showing text */}
-        <p className="text-xs text-color-subtext tab:pr-3 pl-2 tab:pl-0 pt-4">
+        {/* 🔹 Showing Text */}
+        <p className="text-xs text-gray-500">
           {`Showing ${calcShowing()} of ${totalItems} results`}
         </p>
       </div>

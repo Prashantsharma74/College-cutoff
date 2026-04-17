@@ -177,7 +177,7 @@
 import Link from "next/link"
 import { Logo } from "../common/Logo"
 import { Container } from "./Container"
-import { Instagram, Linkedin, MessageCircle } from "lucide-react"
+import { Instagram, Linkedin, Facebook, MessageCircle } from "lucide-react"
 
 const privacyPoliciesPages = [
   { title: "Pricing Policy", href: "/pricing-policy" },
@@ -207,21 +207,34 @@ export function Footer() {
             {/* 🔗 Social Links */}
             <div className="flex gap-3 pt-2">
               <Link
-                href="#"
+                href="https://www.instagram.com/collegecutoffdotnet?utm_source=qr&igsh=MWMyNDNvZmo2bWc0dw=="
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 bg-white/5 rounded-md hover:bg-white/10 transition"
               >
                 <Instagram size={18} />
               </Link>
 
-              <Link
+              {/* <Link
                 href="#"
                 className="p-2 bg-white/5 rounded-md hover:bg-white/10 transition"
               >
                 <Linkedin size={18} />
+              </Link> */}
+
+              <Link
+                href="https://facebook.com/your-page"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-white/5 rounded-md hover:bg-white/10 transition"
+              >
+                <Facebook size={18} />
               </Link>
 
               <Link
-                href="#"
+                href="https://whatsapp.com/channel/0029Vb7ZTYVHgZWWYkHWL627"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 bg-white/5 rounded-md hover:bg-white/10 transition"
               >
                 <MessageCircle size={18} />

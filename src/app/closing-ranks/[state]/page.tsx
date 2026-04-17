@@ -443,7 +443,7 @@ export default function CollegeListClosingRanksPage() {
                 </Link>
               ) : (
                 <Button
-                  className="flex items-center gap-2 bg-blue-500 hover:bg-blue-500 text-white px-3 py-1.5 rounded-lg text-xs font-medium transition"
+                  className="flex items-center gap-2  bg-orange-500 hover:bg-orange-600 text-white px-3 py-1.5 rounded-lg text-xs font-medium transition"
                   // className="py-2 px-2 text-[14px] w-fit disabled:bg-color-table-header disabled:text-white disabled:cursor-not-allowed min-w-[100px] flex items-center gap-2"
                   variant="primary"
                   onClick={() => {

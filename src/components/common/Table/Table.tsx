@@ -109,251 +109,334 @@ export function Table({
   console.log("Columns", columns)
 
   return (
-    <div className={cn("relative")}>
-      {/* {isEmpty(data) && (
-        <div className="defaultTextStyles font-normal absolute top-1/2 left-1/2 -translate-x-1/2">
-          No Data Available...
-        </div>
-      )} */}
+    // <div className={cn("relative")}>
+    //   <div
+    //     className={cn(
+    //       "overflow-auto border rounded-lg border-color-border relative min-h-[543px] max-h-[750px]",
+    //       data?.length === 10 && "min-h-0",
+    //       isMobile &&
+    //       "landscape:min-h-[250px] landscape:max-h-[calc(100vh-10px)]",
+    //       className,
+    //     )}
+    //   >
+    //     <table className="min-w-full table-fixed border-separate border-spacing-y-2">
 
-      {loading ? <div className="defaultTextStyles font-normal absolute top-1/2 left-1/2 -translate-x-1/2">
-        <Loader2Icon className="animate-spin text-color-accent" />
-      </div> : <div className="defaultTextStyles font-normal absolute top-1/2 left-1/2 -translate-x-1/2">
-        No Data Available...
-      </div>}
-      <div
-        className={cn(
-          "overflow-auto border rounded-lg border-color-border relative min-h-[543px] max-h-[750px]",
-          data?.length === 10 && "min-h-0",
-          isMobile &&
-          "landscape:min-h-[250px] landscape:max-h-[calc(100vh-10px)]",
-          className,
-        )}
-      >
-        {/* <table className="min-w-full border-collapse table-fixed">
-          <thead className="sticky top-0 z-[11] bg-color-table-header">
-            <tr>
-              {selectable && (
-                <th
-                  className={cn(
-                    "border-b border-color-border p-3 tableCheckboxStatic bg-color-table-header",
-                  )}
-                >
-                  <input
-                    className="translate-y-[2px]"
-                    type="checkbox"
-                    checked={
-                      selectedRows?.size === data?.length && !isEmpty(data)
-                    }
-                    onChange={handleSelectAll}
-                  />
-                </th>
-              )}
-              {!hideSLNo && <th className={cn(headerTHClass, "px-3")}>#</th>}
-              {columns?.map((column, index) => (
-                <th
-                  key={index}
-                  className={cn(
-                    headerTHClass,
-                    "uppercase",
-                    column?.tableKey === "action" &&
-                    "tableActionStatic bg-color-table-header",
-                    handleStaticLeft(column, true),
-                  )}
-                  style={{ minWidth: column?.width }}
-                >
-                  {column?.title}
-                </th>
-              ))}
-            </tr>
-          </thead>
+    //       {/* 🔹 HEADER */}
+    //       <thead className="sticky top-0 z-[11]">
+    //         <tr className="bg-blue-500 text-white text-xs uppercase">
 
-          <tbody>
-            {data?.map((row, rowIndex) => (
-              <tr
-                key={rowIndex}
-                className={cn(
-                  "cursor-pointer group",
-                  "border-b border-color-border",
-                )}
-                onClick={() => handleSelectRow(rowIndex)}
-              >
-                {selectable && (
-                  <td className="p-3 bg-color-form-background tableCheckboxStatic">
-                    <input
-                      className="translate-y-[2px]"
-                      type="checkbox"
-                      checked={selectedRows.has(rowIndex)}
-                    />
-                  </td>
-                )}
-                {!hideSLNo && (
-                  <td className="p-3 text-left text-[13px] bg-color-white_black">
-                    <div>{getRowSLNumber(rowIndex)}</div>
-                  </td>
-                )}
-                {columns?.map((column, colIndex) => {
-                  return (
-                    <td
-                      key={colIndex}
-                      className={cn(
-                        "px-4 py-3 text-left text-[13px] bg-color-white_black",
-                        column?.overrideInternalClick && "cursor-auto",
-                        column?.tableKey === "action" &&
-                        "tableActionStatic px-0 py-0",
-                        handleStaticLeft(column, false),
-                      )}
-                      onClick={(e) =>
-                        column?.overrideInternalClick
-                          ? e.stopPropagation()
-                          : null
-                      }
-                    >
-                      <div
-                        className={cn(
-                          "min-h-8 flex items-center text-[13px]",
-                          handleBold(column?.tableKey),
-                        )}
-                      >
-                        {column?.renderer
-                          ? column?.renderer({
-                            rowData: row,
-                            cellData: row[column?.tableKey],
-                          })
-                          : shouldRenderComponent(
-                            [
-                              row[column?.tableKey] === "-",
-                              !row[column?.tableKey],
-                            ],
-                            "OR",
-                          )
-                            ? "NA"
-                            : row[column?.tableKey]}
-                      </div>
-                    </td>
-                  )
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table> */}
+    //           {selectable && (
+    //             <th
+    //               className={cn(
+    //                 "border-b border-color-border p-3 tableCheckboxStatic bg-color-table-header",
+    //               )}
+    //             >
+    //               <input
+    //                 className="translate-y-[2px]"
+    //                 type="checkbox"
+    //                 checked={
+    //                   selectedRows?.size === data?.length && !isEmpty(data)
+    //                 }
+    //                 onChange={handleSelectAll}
+    //               />
+    //             </th>
+    //           )}
 
-        <table className="min-w-full table-fixed border-separate border-spacing-y-2">
+    //           {!hideSLNo && (
+    //             <th className="px-4 py-3 text-left rounded-l-lg">#</th>
+    //           )}
 
-          {/* 🔹 HEADER */}
-          <thead className="sticky top-0 z-[11]">
-            <tr className="bg-blue-500 text-white text-xs uppercase">
+    //           {columns?.map((column, index) => (
+    //             <th
+    //               key={index}
+    //               className={cn(
+    //                 "uppercase",
+    //                 "px-4 py-3 text-left",
+    //                 index === columns.length - 1 && "rounded-r-lg"
+    //               )}
+    //             >
+    //               {column?.title}
+    //             </th>
+    //           ))}
+    //         </tr>
+    //       </thead>
 
-              {selectable && (
-                <th
-                  className={cn(
-                    "border-b border-color-border p-3 tableCheckboxStatic bg-color-table-header",
-                  )}
-                >
-                  <input
-                    className="translate-y-[2px]"
-                    type="checkbox"
-                    checked={
-                      selectedRows?.size === data?.length && !isEmpty(data)
-                    }
-                    onChange={handleSelectAll}
-                  />
-                </th>
-              )}
+    //       <tbody>
+    //         {loading ? (
+    //           <tr>
+    //             <td
+    //               colSpan={(columns?.length || 0) + (hideSLNo ? 0 : 1)}
+    //               className="py-16 text-center"
+    //             >
+    //               <div className="flex flex-col items-center justify-center gap-3 text-gray-500">
+
+    //                 <Loader2Icon className="animate-spin text-orage-500 w-8 h-8" />
+
+    //                 <p className="text-sm font-medium">
+    //                   Loading data...
+    //                 </p>
+
+    //               </div>
+    //             </td>
+    //           </tr>
+    //         ) : data?.length > 0 ? (
+    //           data.map((row, rowIndex) => (
+    //             <tr
+    //               key={rowIndex}
+    //               className="bg-white shadow-sm hover:shadow-md transition rounded-lg"
+    //             >
+    //               {!hideSLNo && (
+    //                 <td className="px-4 py-3 text-[13px] rounded-l-lg">
+    //                   {getRowSLNumber(rowIndex)}
+    //                 </td>
+    //               )}
+
+    //               {columns?.map((column, colIndex) => {
+    //                 return (
+    //                   <td
+    //                     key={colIndex}
+    //                     className={cn(
+    //                       "px-4 py-3 text-[13px]",
+    //                       colIndex === columns.length - 1 && "rounded-r-lg"
+    //                     )}
+    //                   >
+    //                     <div className="flex items-center">
+    //                       {column?.renderer
+    //                         ? column?.renderer({
+    //                           rowData: row,
+    //                           cellData: row[column?.tableKey],
+    //                         })
+    //                         : shouldRenderComponent(
+    //                           [
+    //                             row[column?.tableKey] === "-",
+    //                             !row[column?.tableKey],
+    //                           ],
+    //                           "OR",
+    //                         )
+    //                           ? "NA"
+    //                           : row[column?.tableKey]}
+    //                     </div>
+    //                   </td>
+    //                 )
+    //               })}
+    //             </tr>
+    //           ))
+    //         ) : (
+    //           <tr>
+    //             <td
+    //               colSpan={(columns?.length || 0) + (hideSLNo ? 0 : 1)}
+    //               className="py-16 text-center"
+    //             >
+    //               <div className="flex flex-col items-center justify-center gap-2 text-gray-500">
+
+    //                 <span className="text-3xl">📭</span>
+
+    //                 <p className="text-sm font-medium">
+    //                   No data available
+    //                 </p>
+
+    //                 <p className="text-xs text-gray-400">
+    //                   Try changing filters or search
+    //                 </p>
+
+    //               </div>
+    //             </td>
+    //           </tr>
+    //         )}
+    //       </tbody>
+
+    //     </table>
+
+    //     {renderBelowTable}
+    //   </div>
+    // </div>
+
+    <div className="w-full">
+
+      {/* 🔹 DESKTOP TABLE */}
+      <div className="hidden md:block overflow-x-auto">
+
+        <table className="min-w-full border-separate border-spacing-y-2">
+
+          {/* HEADER */}
+          <thead className="sticky top-0 z-10">
+            <tr className="bg-gradient-to-r from-orange-600 to-orange-500 text-white text-xs uppercase">
 
               {!hideSLNo && (
                 <th className="px-4 py-3 text-left rounded-l-lg">#</th>
               )}
 
-              {columns?.map((column, index) => (
-                <th
-                  key={index}
-                  className={cn(
-                    "uppercase",
-                    "px-4 py-3 text-left",
-                    index === columns.length - 1 && "rounded-r-lg"
-                  )}
-                >
-                  {column?.title}
+              {columns.map((col, i) => (
+                <th key={i} className="px-4 py-3 text-left">
+                  {col.title}
                 </th>
               ))}
+
             </tr>
           </thead>
 
-          {/* 🔹 BODY */}
+          {/* BODY */}
           <tbody>
-            {data?.map((row, rowIndex) => (
-              <tr
-                key={rowIndex}
-                className="bg-white shadow-sm hover:shadow-md transition rounded-lg cursor-pointer group
-                  border-b border-color-border"
-              >
-
-                {selectable && (
-                  <td className="p-3 bg-color-form-background tableCheckboxStatic">
-                    <input
-                      className="translate-y-[2px]"
-                      type="checkbox"
-                      checked={selectedRows.has(rowIndex)}
-                    />
-                  </td>
-                )}
-
-                {!hideSLNo && (
-                  <td className="px-4 py-3 text-[13px] rounded-l-lg">
-                    {getRowSLNumber(rowIndex)}
-                  </td>
-                )}
-
-                {columns?.map((column, colIndex) => {
-                  // const cellData = row[column?.tableKey]
-
-                  return (
-                    <td
-                      key={colIndex}
-                      className={cn(
-                        "px-4 py-3 text-[13px]",
-                        colIndex === columns.length - 1 && "rounded-r-lg",
-                        "px-4 py-3 text-left text-[13px] bg-color-white_black",
-                        // column?.overrideInternalClick && "cursor-auto",
-                        // column?.tableKey === "action" &&
-                        "tableActionStatic px-0 py-0",
-                        handleStaticLeft(column, false),
-                      )}
-                      onClick={(e) =>
-                        column?.overrideInternalClick
-                          ? e.stopPropagation()
-                          : null
-                      }
-                    >
-                      <div className="flex items-center">
-
-                        {/* 🔥 ACTION COLUMN DESIGN */}
-                        {column?.renderer
-                          ? column?.renderer({
-                            rowData: row,
-                            cellData: row[column?.tableKey],
-                          })
-                          : shouldRenderComponent(
-                            [
-                              row[column?.tableKey] === "-",
-                              !row[column?.tableKey],
-                            ],
-                            "OR",
-                          )
-                            ? "NA"
-                            : row[column?.tableKey]}
-                      </div>
-                    </td>
-                  )
-                })}
+            {loading ? (
+              <tr>
+                <td colSpan={columns.length + 1} className="py-16 text-center">
+                  <Loader2Icon className="animate-spin mx-auto text-orange-500" />
+                </td>
               </tr>
-            ))}
+            ) : data?.length > 0 ? (
+              data.map((row, i) => (
+                <tr
+                  key={i}
+                  className="bg-white shadow-sm hover:shadow-lg transition rounded-xl"
+                >
+
+                  {!hideSLNo && (
+                    <td className="px-4 py-3 rounded-l-xl">
+                      {getRowSLNumber(i)}
+                    </td>
+                  )}
+
+                  {columns?.map((column, colIndex) => {
+                    return (
+                      <td
+                        key={colIndex}
+                        className={cn(
+                          "px-4 py-3 text-[13px]",
+                          colIndex === columns.length - 1 && "rounded-r-lg"
+                        )}
+                      >
+                        <div className="flex items-center">
+                          {column?.renderer
+                            ? column?.renderer({
+                              rowData: row,
+                              cellData: row[column?.tableKey],
+                            })
+                            : shouldRenderComponent(
+                              [
+                                row[column?.tableKey] === "-",
+                                !row[column?.tableKey],
+                              ],
+                              "OR",
+                            )
+                              ? "NA"
+                              : row[column?.tableKey]}
+                        </div>
+                      </td>
+                    )
+                  })}
+
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={columns.length + 1} className="py-16 text-center">
+                  No data available
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
-
-        {renderBelowTable}
       </div>
+
+      {/* 🔹 MOBILE CARD VIEW */}
+      {/* <div className="md:hidden flex flex-col gap-3">
+
+        {loading ? (
+          <div className="text-center py-10">
+            <Loader2Icon className="animate-spin mx-auto text-orange-500" />
+          </div>
+        ) : data?.length > 0 ? (
+          data.map((row, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-xl shadow p-4 flex flex-col gap-2"
+            >
+
+              <div className="flex justify-between text-xs text-gray-500">
+                <span>#{getRowSLNumber(i)}</span>
+              </div>
+
+              {columns.map((col, j) =>
+                col.tableKey !== "action" ? (
+                  <div key={j} className="flex justify-between text-sm">
+                    <span className="text-gray-500">{col.title}</span>
+                    <span className="font-medium">
+                      {row[col.tableKey] || "NA"}
+                    </span>
+                  </div>
+                ) : null
+              )}
+            </div>
+          ))
+        ) : (
+          <div className="text-center py-10 text-gray-500">
+            No data available
+          </div>
+        )}
+
+      </div> */}
+
+      <div className="md:hidden flex flex-col gap-3">
+
+        {loading ? (
+          <div className="text-center py-10">
+            <Loader2Icon className="animate-spin mx-auto text-orange-500" />
+          </div>
+        ) : data?.length > 0 ? (
+          data.map((row, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-xl shadow p-4 flex flex-col gap-3"
+            >
+
+              {/* 🔹 SL */}
+              <div className="flex justify-between text-xs text-gray-500">
+                <span>#{getRowSLNumber(i)}</span>
+              </div>
+
+              {/* 🔹 DATA */}
+              {/* {columns.map((col, j) =>
+                col.tableKey !== "action" ? (
+                  <div key={j} className="flex justify-between text-sm">
+                    <span className="text-gray-500">{col.title}</span>
+                    <span className="font-medium">
+                      {row[col.tableKey] || "NA"}
+                    </span>
+                  </div>
+                ) : null
+              )} */}
+
+              {columns.map((col, j) => {
+                const cellData = row[col.tableKey]
+
+                return (
+                  <div key={j} className="flex justify-between text-sm items-center">
+
+                    <span className="text-gray-500">{col.title}</span>
+
+                    <span className="font-medium text-right">
+                      {col.renderer
+                        ? col.renderer({
+                          rowData: row,
+                          cellData: cellData,
+                        })
+                        : cellData || "NA"}
+                    </span>
+
+                  </div>
+                )
+              })}
+
+            </div>
+          ))
+        ) : (
+          <div className="text-center py-10 text-gray-500">
+            No data available
+          </div>
+        )}
+
+      </div>
+
     </div>
   )
 }

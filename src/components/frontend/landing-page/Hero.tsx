@@ -25,7 +25,7 @@ export function Hero() {
 
 
 
-          {/* <span className="inline-block bg-gradient-to-r from-[#ffedd5] to-transparent text-[#0A5092] text-xs sm:text-sm font-medium pl-4 pr-8 py-[6px] rounded-full">
+          <span className="inline-block bg-gradient-to-r from-[#ffedd5] to-transparent text-[#0A5092] text-xs sm:text-sm font-medium pl-4 pr-8 py-[6px] rounded-full">
             India’s Most Accurate NEET College Predictor
           </span>
 
@@ -68,72 +68,11 @@ export function Hero() {
             <span className="text-[10px] sm:text-[14px] md:text-[15px] font-semibold text-gray-700">
               12,000+ Students<span className="font-normal"> Already Checked Their Chances</span>
             </span>
-          </div> */}
-
-          <div className="space-y-6 max-w-[620px]">
-
-            {/* 🔵 Badge */}
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 text-xs sm:text-sm font-medium bg-blue-100 text-blue-700 rounded-full shadow-sm">
-              <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-              India’s Most Accurate NEET Predictor
-            </span>
-
-            {/* 🔥 Heading */}
-            <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
-              Check Which Medical
-              <br className="hidden sm:block" />
-              Colleges You Can Get
-            </h1>
-
-            {/* ✨ Subheading */}
-            <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
-              Find your{" "}
-              <span className="font-semibold text-blue-600">
-                NEET 2026 college
-              </span>{" "}
-              using official closing rank data from AIQ & State counselling.
-            </p>
-
-            {/* ✅ Features */}
-            <div className="space-y-3 pt-2">
-              {[
-                "Based on official 2025 cutoff data",
-                "Covers AIQ & State Quota",
-                "Includes Govt & Private Colleges",
-                "Shows last 2 years trends",
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-
-                  {/* Icon */}
-                  <div className="w-5 h-5 flex items-center justify-center rounded-full bg-orange-100 text-orange-500">
-                    ✓
-                  </div>
-
-                  {/* Text */}
-                  <span className="text-gray-700 text-sm sm:text-base">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* 📊 Trust Strip */}
-            <div className="flex items-center gap-3 px-4 py-2.5 rounded-full bg-blue-50 w-fit border border-blue-100">
-
-              <Search className="w-4 h-4 text-blue-600" />
-
-              <span className="text-sm text-gray-700">
-                <span className="font-semibold text-blue-600">12,000+</span>{" "}
-                students already checked their chances
-              </span>
-
-            </div>
-
           </div>
 
-          {/* <div className="pc:hidden mt-6 mb-8 w-full">
+          <div className="pc:hidden mt-6 mb-8 w-full">
             <CollegePredictorTest />
-          </div> */}
+          </div>
 
           {/* <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] border border-white/50 p-5 w-full sm:w-[600px] relative mt-4 pc:mt-8">
             <div className="grid grid-cols-5 text-[11px] md:text-[14px] font-bold text-gray-500 border-b border-gray-200 pb-3">

@@ -57,21 +57,21 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <FELayout>
-      {/*<div className="py-16 pc:py-20 relative bg-gradient-to-b from-white via-yellow-50 to-yellow-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 min-h-dvh">
+      {/* <div className="py-16 pc:py-20 relative bg-gradient-to-b from-white via-yellow-50 to-yellow-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 min-h-dvh">
         <Container className=" max-w-[1600px]">
           <Hero />
         </Container>
-      </div>*/}
+      </div> */}
 
       <div className="py-12 pc:py-16 relative bg-gradient-to-b from-white via-yellow-50 to-yellow-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 min-h-dvh overflow-hidden">
         {/* CSS Dot Pattern with Bottom-to-Top Fade */}
         <div
           className="absolute inset-0 z-0 opacity-60 pointer-events-none dark:opacity-10"
           style={{
-            // backgroundImage: 'radial-gradient(#9ca3af 2px, transparent 1.5px)', 
-            // backgroundSize: '26px 26px',
-            // maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 85%)',
-            // WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 85%)'
+            backgroundImage: 'radial-gradient(#9ca3af 2px, transparent 1.5px)',
+            backgroundSize: '26px 26px',
+            maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 85%)',
+            WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 85%)'
           }}
         ></div>
 
@@ -85,21 +85,21 @@ export default function Home() {
         <TrustedBy />
       </Container> */}
 
-      {/* <Container className="max-w-[1600px]">
-        <Container className="max-w-[1600px]"> */}
+      <Container className="max-w-[1600px]">
+        <Container className="max-w-[1600px]">
           <HowItWorks />
-        {/* </Container>
-      </Container> */}
+        </Container>
+      </Container>
 
-      {/* <div className="py-16 pc:py-20 relative bg-gradient-to-b from-white via-yellow-50 to-yellow-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700"> */}
+      <div className="py-16 pc:py-20 relative bg-gradient-to-b from-white via-yellow-50 to-yellow-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700">
         <StatsSection />
-      {/* </div> */}
+      </div>
 
-      {/* <div className="py-16 pc:py-20 relative bg-gradient-to-b from-white via-yellow-50 to-yellow-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700"> */}
-        {/* <Container className="max-w-[1600px]"> */}
+      <div className="py-16 pc:py-20 relative bg-gradient-to-b from-white via-yellow-50 to-yellow-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700">
+        <Container className="max-w-[1600px]">
           <WhyChooseUs />
-        {/* </Container> */}
-      {/* </div> */}
+        </Container>
+      </div>
 
       {/* <Container className="max-w-[1600px]">
         <TestimonialsSection />
@@ -111,9 +111,9 @@ export default function Home() {
         </Container>
       </div> */}
 
-      {/* <Container className="max-w-[1600px]"> */}
+      <Container className="max-w-[1600px]">
       <FAQSection />
-      {/* </Container> */}
+      </Container>
 
       <SignInPopup />
     </FELayout>

@@ -1,5 +1,7 @@
+"use client"
+
 import { Check, Search, Lock } from "lucide-react"
-import React from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 
 import { CollegePredictorTest } from "../college-predictor/CollegePredictorTest"
@@ -15,8 +17,28 @@ const roboto = Roboto({
   weight: ["400", "500", "700"],
 });
 
+const exams = [
+  { label: "NEET UG", color: "bg-orange-100 text-orange-500" },
+  { label: "NEET PG", color: "bg-blue-100 text-blue-500" },
+  { label: "NEET MDS", color: "bg-purple-100 text-purple-600" },
+  { label: "NEET SS", color: "bg-pink-100 text-pink-600" },
+  { label: "INICET", color: "bg-indigo-100 text-indigo-600" },
+  { label: "DNB", color: "bg-green-100 text-green-600" },
+  { label: "DNB - PDCET", color: "bg-green-100 text-green-600" },
+  { label: "AIAPGET", color: "bg-yellow-100 text-yellow-600" },
+]
 
 export function Hero() {
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % exams.length)
+    }, 2000) // change every 2 sec
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section id="predict" className="grid pc:grid-cols-[50%_50%] gap-6 lg:gap-12 pt-4 pb-12 pc:pt-8 relative w-full -mt-16 sm:-mt-0">
       {/* LEFT SIDE CONTENT */}
@@ -37,10 +59,17 @@ export function Hero() {
 
           <p className="text-[14px] sm:text-[18px] text-gray-700">
             Find Your{" "}
-            <span className="font-semibold text-[#f97316]">
+            {/* <span className="font-semibold text-[#f97316]">
               NEET 2026 College
-            </span>{" "}
-            Based on Official Closing Ranks
+            </span>{" "} */}
+            {/* 🔥 Animated Pill */}
+            <span
+              key={index}
+              className={`px-4 py-1 rounded-full font-semibold ${exams[index].color} animate-slideUp`}
+            >
+              {exams[index].label}
+            </span>
+            {" "} Colleges Based on Official Closing Ranks
           </p>
 
 
@@ -74,8 +103,8 @@ export function Hero() {
             <CollegePredictorTest />
           </div>
 
-          {/* <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] border border-white/50 p-5 w-full sm:w-[600px] relative mt-4 pc:mt-8">
-            <div className="grid grid-cols-5 text-[11px] md:text-[14px] font-bold text-gray-500 border-b border-gray-200 pb-3">
+          <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] border border-white/50 p-5 w-full sm:w-[600px] relative mt-4 pc:mt-8">
+            <div className="grid grid-cols-5 text-[11px] md:text-[14px] font-bold text-black-500 border-b border-gray-200 pb-3">
               <span className="text-center">College Name <span className="text-gray-400 font-normal">↕</span></span>
               <span className="text-center">Course</span>
               <span className="text-center">Quota</span>
@@ -85,24 +114,24 @@ export function Hero() {
 
             <div className="space-y-4 mt-4">
               {[
-                { clg: "AIIMS, New Delhi", course: "MBBS", quota: "Open", rank1: "48/657", rank2: "57/500" },
+                { clg: "AIIMS, Delhi", course: "MBBS", quota: "Open", rank1: "48/657", rank2: "57/500" },
                 { clg: "AIIMS, Bhopal", course: "MBBS", quota: "Open", rank1: "98/618", rank2: "277/450" },
                 { clg: "AIIMS, Patna", course: "MBBS", quota: "Open", rank1: "86/598", rank2: "607/440" },
               ].map((row, i) => (
                 <div key={i} className="grid grid-cols-5 items-center">
-                  <span className="text-center text-[14px] sm:text-[15px] text-gray-700 font-medium">
+                  <span className="text-center text-[14px] sm:text-[15px] text-gray-600 font-medium">
                     {row.clg}
                   </span>
-                  <span className="text-center text-[14px] sm:text-[15px] text-gray-700 font-medium">
+                  <span className="text-center text-[14px] sm:text-[15px] text-gray-600 font-medium">
                     {row.course}
                   </span>
-                  <span className="text-center text-[14px] sm:text-[15px] text-gray-700 font-medium">
+                  <span className="text-center text-[14px] sm:text-[15px] text-gray-600 font-medium">
                     {row.quota}
                   </span>
-                  <span className="text-center text-[14px] sm:text-[15px] text-gray-700 font-medium">
+                  <span className="text-center text-[14px] sm:text-[15px] text-gray-600 font-medium">
                     {row.rank1}
                   </span>
-                  <span className="text-center text-[14px] sm:text-[15px] text-gray-700 font-medium">
+                  <span className="text-center text-[14px] sm:text-[15px] text-gray-600 font-medium">
                     {row.rank2}
                   </span>
                 </div>
@@ -116,66 +145,6 @@ export function Hero() {
                 </button>
               </Link>
             </div>
-          </div> */}
-          <div className="relative w-full max-w-[650px] mt-8">
-
-            {/* Card */}
-            <div className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
-
-              {/* Header */}
-              <div className="grid grid-cols-5 bg-blue-50 text-xs sm:text-sm font-semibold text-gray-600 px-4 py-3">
-                <span className="text-center">College Name <span className="text-gray-400 font-normal">↕</span></span>
-                <span className="text-center">Course</span>
-                <span className="text-center">Quota</span>
-                <span className="text-center">Closing Rank/ Marks R1 2025</span>
-                <span className="text-center">Closing Rank/ Marks R1 2024</span>
-              </div>
-
-              {/* Rows */}
-              <div className="divide-y">
-                {[
-                  { clg: "AIIMS, New Delhi", course: "MBBS", quota: "Open", rank1: "48/657", rank2: "57/500" },
-                  { clg: "AIIMS, Bhopal", course: "MBBS", quota: "Open", rank1: "98/618", rank2: "277/450" },
-                  { clg: "AIIMS, Patna", course: "MBBS", quota: "Open", rank1: "86/598", rank2: "607/440" },
-                ].map((row, i) => (
-                  <div
-                    key={i}
-                    className="grid grid-cols-5 items-center px-4 py-3 text-sm hover:bg-blue-50 transition"
-                  >
-                    <span className="font-medium text-gray-800">
-                      {row.clg}
-                    </span>
-
-                    <span className="text-center text-gray-600">
-                      {row.course}
-                    </span>
-
-                    <span className="text-center text-gray-600">
-                      {row.quota}
-                    </span>
-
-                    <span className="text-center font-semibold text-blue-600">
-                      {row.rank1}
-                    </span>
-
-                    <span className="text-center text-orange-500">
-                      {row.rank2}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-            </div>
-
-            {/* CTA */}
-            <div className="flex justify-center mt-5">
-              <Link href="#how-it-works">
-                <button className="px-6 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold shadow-md hover:bg-blue-700 transition">
-                  See How It Works →
-                </button>
-              </Link>
-            </div>
-
           </div>
         </div>
       </div>

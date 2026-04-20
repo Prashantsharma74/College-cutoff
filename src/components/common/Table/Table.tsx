@@ -4,6 +4,12 @@ import React, { ReactNode, useEffect, useState } from "react"
 import { isMobile } from "react-device-detect"
 import { Loader } from "../Loader"
 import { Loader2Icon } from "lucide-react"
+import { Poppins } from "next/font/google"
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+})
 
 interface TableProps {
   columns: TableColumn[]
@@ -106,10 +112,8 @@ export function Table({
     }
   }
 
-  console.log("Columns", columns)
-
   return (
-    <div className={cn("relative")}>
+    <div className={cn("relative mt-2")}>
       <div
         className={cn(
           "overflow-auto border rounded-lg border-color-border relative min-h-[543px] max-h-[750px]",
@@ -119,13 +123,13 @@ export function Table({
           className,
         )}
       >
-        <table className="min-w-full table-fixed border-separate border-spacing-y-2">
+        <table className="min-w-full table-fixed border-separate">
 
           {/* 🔹 HEADER */}
           <thead className="sticky top-0 z-[11]">
-            <tr className="bg-orange-500 text-white text-xs uppercase">
+            <tr className="bg-[#1a6fc2] hover:bg-[#004080] text-white text-xs uppercase">
 
-              {selectable && (
+              {/* {selectable && (
                 <th
                   className={cn(
                     "border-b border-color-border p-3 tableCheckboxStatic bg-color-table-header",
@@ -140,18 +144,28 @@ export function Table({
                     onChange={handleSelectAll}
                   />
                 </th>
-              )}
+              )} */}
 
               {!hideSLNo && (
                 <th className="px-4 py-3 text-left rounded-l-lg">#</th>
               )}
 
               {columns?.map((column, index) => (
+                // <th
+                //   key={index}
+                //   className={cn(
+                //     poppins.className,   // ✅ THIS IS IMPORTANT
+                //     "uppercase px-4 py-3 text-left text-[18px] font-medium",
+                //     index === columns.length - 1 && "rounded-r-lg"
+                //   )}
+                // >
+                //   {column?.title}
+                // </th>
                 <th
                   key={index}
                   className={cn(
-                    "uppercase",
-                    "px-4 py-3 text-left",
+                    poppins.className,
+                    "uppercase px-4 py-3 text-left text-[18px] font-medium tracking-wider",
                     index === columns.length - 1 && "rounded-r-lg"
                   )}
                 >
@@ -183,7 +197,7 @@ export function Table({
               data.map((row, rowIndex) => (
                 <tr
                   key={rowIndex}
-                  className="bg-white shadow-sm hover:shadow-md transition rounded-lg"
+                  className="bg-white shadow-sm hover:shadow-md transition rounded-lg text-[14px]"
                 >
                   {!hideSLNo && (
                     <td className="px-4 py-3 text-[13px] rounded-l-lg">
@@ -196,7 +210,7 @@ export function Table({
                       <td
                         key={colIndex}
                         className={cn(
-                          "px-4 py-3 text-[13px]",
+                          "px-4 py-3 text-[16px]",
                           colIndex === columns.length - 1 && "rounded-r-lg"
                         )}
                       >

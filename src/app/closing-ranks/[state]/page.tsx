@@ -347,46 +347,65 @@ export default function CollegeListClosingRanksPage() {
   function buttonText(rowData: any) {
     return processingPayment === rowData?.id
       ? "Processing..."
-      // : `Unlock @ ₹${finalAmount}`
-      // : `Unlock @ ₹${getFinalAmount(amount)}`
+      : <>
 
-      :
-      <>
-
-        {/* Price */}
-        <span className="font-bold">
-          ₹{finalAmount}
-        </span>
+        {isNewUser && (
+          <>
+            {/* Mobile */}
+            <span className="font-bold text-[14px] md:hidden text-[12px] font-medium">
+              Unlock
+            </span>
+          </>
+        )}
 
         {/* Old price */}
         {isNewUser && (
-          <span className="line-through text-white/70 text-[10px]">
+          <span className="line-through text-[14px] text-white/70 text-[10px]">
             ₹{amount}
           </span>
         )}
 
-        {/* Arrow */}
-        <span>→</span>
-
-        {/* Badge */}
-        {isNewUser && (
-          <span className="bg-yellow-400 text-black text-[9px] px-2 py-[2px] rounded-md font-semibold">
-            First Unlock Offer
+        {/* Price */}
+        {!isNewUser && (
+          <span className="font-bold text-[14px]">
+            Unlock ₹{finalAmount}
           </span>
         )}
+
+        {isNewUser && (
+          <span className="font-bold text-[14px]">
+            ₹{finalAmount}
+          </span>
+        )}
+
+        {/* Arrow */}
+
+        {/* Badge */}
+        {/* {isNewUser && (
+          <>
+            <span className="text-[14px]">→</span>
+            <span className="bg-[#1a6fc2] text-[14px] text-white px-2 py-[2px] rounded-md font-semibold">
+              First Unlock Offer
+            </span>
+          </>
+        )} */}
+        {isNewUser && (
+          <>
+            {/* Desktop */}
+            <span className="hidden md:flex items-center gap-1">
+              <span>→</span>
+              <span className="bg-[#1a6fc2] text-white px-2 py-[2px] rounded-md text-[12px]">
+                First Unlock Offer
+              </span>
+            </span>
+
+            {/* Mobile */}
+            <span className="md:hidden text-[12px] text-blue-500 font-medium">
+
+            </span>
+          </>
+        )}
       </>
-    {/* // : `Unlock @ ₹${amount}`
-    // : <div className="inline-flex flex-col items-center">
-
-    //   <div className="bg-gradient-to-r from-[#1f7a5a] to-[#2e9b74] text-white px-6 py-2 rounded-md shadow-[0_2px_6px_rgba(0,0,0,0.25)] font-semibold text-sm">
-    //     Unlock @ ₹{finalAmount}
-    //   </div>
-
-    //   <div className="mt-[-6px] bg-[#f5e6b3] text-[#3a3a3a] text-[11px] px-3 py-[3px] rounded-full font-medium border border-black/10">
-    //     First Unlock Offer
-    //   </div>
-
-    // </div> */}
   }
 
   function generateCols() {
@@ -443,7 +462,7 @@ export default function CollegeListClosingRanksPage() {
                 </Link>
               ) : (
                 <Button
-                  className="flex items-center gap-2  bg-orange-500 hover:bg-orange-500 text-white px-3 py-1.5 rounded-lg text-xs font-medium transition"
+                  className="flex items-center gap-2 bg-[#f37a3a] hover:bg-[#ef6820] text-white px-3 py-1.5 rounded-lg text-xs font-medium transition w-fit"
                   // className="py-2 px-2 text-[14px] w-fit disabled:bg-color-table-header disabled:text-white disabled:cursor-not-allowed min-w-[100px] flex items-center gap-2"
                   variant="primary"
                   onClick={() => {
@@ -758,7 +777,7 @@ export default function CollegeListClosingRanksPage() {
                   }}
                 />
               </div>
-              <div className="flex relative items-end md:justify-end flex-col md:flex-row w-full mb-4 gap-2 md:gap-8">
+              <div className="flex relative items-end md:justify-end flex-col md:flex-row w-full mb-4 mt-2 gap-2 md:gap-8">
                 <SearchAndSelect
                   name="instituteType"
                   labelNode={
@@ -766,7 +785,7 @@ export default function CollegeListClosingRanksPage() {
                       Select Institute Type
                     </div>
                   }
-                  // boxWrapperClass="border-color-accent"
+                  // boxWrapperclassName="border-color-accent"
                   placeholder="Institute Type"
                   value={selectedInstituteType}
                   onChange={({ selectedValue }) => {
@@ -796,7 +815,7 @@ export default function CollegeListClosingRanksPage() {
                       setOptions,
                     )
                   }
-                  wrapperClass="w-full md:max-w-[200px]"
+                  wrapperclassName="w-full md:max-w-[200px]"
                   errors={errors}
                 />
                 {stateCode?.toLowerCase() === "all" && (
@@ -809,7 +828,7 @@ export default function CollegeListClosingRanksPage() {
                     }
                     placeholder="Select state"
                     value={selectedState}
-                    // boxWrapperClass="border-color-accent"
+                    // boxWrapperclassName="border-color-accent"
                     onChange={({ selectedValue }) => {
                       setSelectedState(selectedValue)
                       setCurrentPage(1) // reset page
@@ -823,10 +842,10 @@ export default function CollegeListClosingRanksPage() {
                       text: "",
                     }}
                     required
-                    errorClass="absolute"
+                    errorclassName="absolute"
                     options={states}
                     debounceDelay={0}
-                    wrapperClass="w-full md:max-w-[200px]"
+                    wrapperclassName="w-full md:max-w-[200px]"
                     searchAPI={(text, setOptions) =>
                       autoComplete(text, states, setOptions)
                     }
@@ -848,6 +867,57 @@ export default function CollegeListClosingRanksPage() {
                 )}
               </div>
             </div>
+
+            <div className="offer-design">
+              <div className="offer-banner">
+                <span className="emoji" style={{ fontSize: "28px" }}>🎉</span>
+                <span className="emoji2" style={{ fontSize: "18px" }}>🎁</span>
+                <span className="text">
+                  <span className="text-black first-unlock" >First Unlock @</span>
+                  <span className="price text-orange-500" > ₹9</span>
+                  <span className="dot"> • </span>
+                  <span className="first-unlock">Then</span>
+                  <span className="price highlight text-orange-500" > ₹49 </span>
+                  <span className="sub first-unlock">per college</span>
+                  <span className="emoji1" style={{ fontSize: "18px" }}>🎁</span>
+                </span>
+              </div>
+            </div>
+
+            <div className="offer-design-mobile">
+              <div className="offer-banner-mobile">
+                <span className="text-mobile">
+                  <span className="text-black first-unlock" >First Unlock @</span>
+                  <span className="price-mobile text-orange-500"> ₹9</span>
+                  <span> Then</span>
+                  <span className="price-mobile highlight text-orange-500" > ₹49 </span>
+                  <span className="sub-mobile">per college</span>
+                  <span className="emoji1-mobile" style={{ fontSize: "18px" }}>🎁</span>
+                </span>
+              </div>
+            </div>
+
+            {/* <div className="offer-design">
+              <div className="offer-banner">
+
+                <div className="offer-icons">
+                  <span>🎉</span>
+                  <span>🎁</span>
+                </div>
+
+                <div className="offer-text">
+                  <span>
+                    First Unlock @ <span className="price">₹9</span> 
+                  </span>
+{" "}
+                  <span className="then-text">
+                    Then <span className="price">₹49</span> <span className="sub">per college</span>
+                  </span>
+                </div>
+
+              </div>
+            </div> */}
+
             <Table
               columns={generateCols()}
               data={tableData?.data}
@@ -859,7 +929,7 @@ export default function CollegeListClosingRanksPage() {
               currentPage={currentPage}
               totalItems={tableData?.totalItems}
               itemsCountPerPage={pageSize}
-              wrapperClass="pb-[20px]"
+              wrapperclassName="pb-[20px]"
               onPageChange={(page) => {
                 setCurrentPage(page)
               }}

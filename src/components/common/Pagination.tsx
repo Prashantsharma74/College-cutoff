@@ -230,34 +230,34 @@ export const Pagination = forwardRef<PaginationHandle, PaginationProps>(
       }
 
       return finalPages.map((p, i) =>
-  p === "..." ? (
-    <span
-      key={i}
-      className="px-2 text-gray-400 text-sm select-none"
-    >
-      ...
-    </span>
-  ) : (
-    <button
-      key={i}
-      onClick={() => handlePageChange(p as number)}
-      disabled={disabled}
-      className={cn(
-        "min-w-[34px] h-[34px] px-2 text-sm font-medium rounded-lg transition-all duration-200",
+        p === "..." ? (
+          <span
+            key={i}
+            className="px-2 text-gray-400 text-sm select-none"
+          >
+            ...
+          </span>
+        ) : (
+          <button
+            key={i}
+            onClick={() => handlePageChange(p as number)}
+            disabled={disabled}
+            className={cn(
+              "min-w-[34px] h-[34px] px-2 text-sm font-medium rounded-lg transition-all duration-200",
 
-        // 👉 active
-        p === activePage
-          ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow"
-          : "text-gray-600 hover:bg-orange-100 hover:text-orange-600",
+              // 👉 active
+              p === activePage
+                ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow"
+                : "text-gray-600 hover:bg-orange-100 hover:text-orange-600",
 
-        // 👉 disabled
-        disabled && "cursor-not-allowed opacity-50"
-      )}
-    >
-      {p}
-    </button>
-  )
-)
+              // 👉 disabled
+              disabled && "cursor-not-allowed opacity-50"
+            )}
+          >
+            {p}
+          </button>
+        )
+      )
     }
 
 
@@ -314,8 +314,19 @@ export const Pagination = forwardRef<PaginationHandle, PaginationProps>(
         </div>
 
         {/* 🔹 Showing Text */}
-        <p className="text-xs text-gray-500">
+        {/* <p className="text-xs text-gray-500">
           {`Showing ${calcShowing()} of ${totalItems} results`}
+        </p> */}
+        <p className="text-sm text-gray-600 flex items-center gap-1">
+          Showing
+          <span className="font-semibold text-blue-600">
+            {calcShowing()}
+          </span>
+          of
+          <span className="font-semibold text-orange-500">
+            {totalItems}
+          </span>
+          results
         </p>
       </div>
     )

@@ -123,13 +123,13 @@ export function UnlockPopover({
   const renderHeaderTitle = (): ReactNode => {
     if (activeTab === "single") {
       return (
-        <h1 className="text-center text-xl font-bold leading-tight text-white md:py-6">
+        <h1 className="text-center text-xl font-bold leading-tight text-white md:py-3">
           {titleSingle ? titleSingle : "Please make payment to unlock"}
         </h1>
       )
     } else {
       return (
-        <h1 className="text-center text-xl font-bold leading-tight text-white md:py-6">
+        <h1 className="text-center text-xl font-bold leading-tight text-white md:py-3">
           {titleState ? titleState : "Please make payment to unlock all"}
         </h1>
       )
@@ -300,7 +300,7 @@ export function UnlockPopover({
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center justify-center bg-white/90 backdrop-blur-md border border-white/30 text-gray-800 rounded-2xl px-1 py-1 mb-6 text-sm sm:text-base font-medium shadow-md"
+            className="flex items-center justify-center bg-white/90 backdrop-blur-md border border-white/30 text-gray-800 rounded-2xl px-1 py-1 mb-2 text-sm sm:text-base font-medium shadow-md"
           >
             <motion.span
               animate={{ rotate: [0, 15, -10, 15, 0] }}

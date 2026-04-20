@@ -76,7 +76,7 @@ export default function Home() {
         ></div>
 
         {/* Increased max width from 1200px to 1400px to reduce empty side space */}
-        <Container className="max-w-[1400px] relative z-10 px-2 sm:px-6">
+        <Container className="max-w-[1400px] relative z-10 sm:px-6">
           <Hero />
         </Container>
       </div>

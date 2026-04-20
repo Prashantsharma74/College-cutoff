@@ -34,7 +34,7 @@ export function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % exams.length)
-    }, 2000) // change every 2 sec
+    }, 2000) 
 
     return () => clearInterval(interval)
   }, [])
@@ -44,8 +44,6 @@ export function Hero() {
       {/* LEFT SIDE CONTENT */}
       <div className="flex flex-col justify-center items-start w-full text-left px-5 sm:px-0">
         <div className="space-y-2 sm:space-y-6 w-full max-w-[650px]">
-
-
 
           <span className="inline-block bg-gradient-to-r from-[#ffedd5] to-transparent text-[#0A5092] text-xs sm:text-sm font-medium pl-4 pr-8 py-[6px] rounded-full">
             India’s Most Accurate NEET College Predictor
@@ -104,7 +102,7 @@ export function Hero() {
           </div>
 
           <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] border border-white/50 p-5 w-full sm:w-[600px] relative mt-4 pc:mt-8">
-            <div className="grid grid-cols-5 text-[11px] md:text-[14px] font-bold text-black-500 border-b border-gray-200 pb-3">
+            <div className="grid grid-cols-5 text-[12px] md:text-[14px] font-bold text-black-500 border-b border-gray-200 pb-3">
               <span className="text-center">College Name <span className="text-gray-400 font-normal">↕</span></span>
               <span className="text-center">Course</span>
               <span className="text-center">Quota</span>

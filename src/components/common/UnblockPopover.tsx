@@ -291,32 +291,16 @@ export function UnlockPopover({
       closeIconClass="text-white hover:text-white"
     >
       <div className="w-full max-w-[560px] overflow-hidden rounded-xl bg-white shadow-xl">
-
-        {/* Header - now dynamic based on active tab */}
-        {/* <div className="bg-[#0054A4] p-2 text-white relative">
-          <div className="flex items-center justify-center bg-green-50 border border-green-200 text-green-800 rounded-xl px-2 py-3 mb-6 text-sm sm:text-base font-medium">
-            <span className="mr-2">🎉</span>
-            Unlock your first college at just
-            <span className="mx-1 font-bold text-green-700">₹{amount}</span>
-            <span className="text-gray-500 ml-1">(Limited Offer)</span>
-          </div>
-          <div>{renderHeaderTitle()}</div>
-        </div> */}
-
-      
-
         <div className="bg-gradient-to-r from-[#0A5092] to-[#2563EB] p-4 sm:p-6 text-white relative overflow-hidden">
 
-          {/* ✨ Glow effect */}
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
           <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-400/20 rounded-full blur-3xl" />
 
-          {/* 🎉 Offer Banner */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center justify-center bg-white/90 backdrop-blur-md border border-white/30 text-gray-800 rounded-2xl px-4 py-3 mb-6 text-sm sm:text-base font-medium shadow-md"
+            className="flex items-center justify-center bg-white/90 backdrop-blur-md border border-white/30 text-gray-800 rounded-2xl px-1 py-1 mb-6 text-sm sm:text-base font-medium shadow-md"
           >
             <motion.span
               animate={{ rotate: [0, 15, -10, 15, 0] }}
@@ -337,7 +321,6 @@ export function UnlockPopover({
             </span>
           </motion.div>
 
-          {/* 🔥 Header */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -354,7 +337,6 @@ export function UnlockPopover({
             isMobile && "landscape:h-[240px] overflow-y-auto",
           )}
         >
-          {/* Tabs header */}
           <div className="mb-4">
             <div className="flex gap-4 font-semibold items-center">
               <button
@@ -399,16 +381,6 @@ export function UnlockPopover({
               </button>
             </div>
 
-            {/* Tab content description */}
-            {/* <div className="mt-4">
-              {activeTab === "single" ? (
-                <p className="text-sm text-gray-600">Unlock data for a single college.</p>
-              ) : (
-                <div>
-                  <p className="text-sm text-gray-600">Unlock all {collegeCount} colleges in {stateName}.</p>
-                </div>
-              )}
-            </div> */}
           </div>
 
           <div className="border-t border-gray-200 my-4"></div>

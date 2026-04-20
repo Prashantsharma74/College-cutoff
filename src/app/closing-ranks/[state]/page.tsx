@@ -1148,11 +1148,8 @@ export default function CollegeListClosingRanksPage() {
           setProcessingPayment(false);
           setStatePurchaseMode(false);
         }}
-        // You can pass tab-specific header text:
         titleSingle={<p className="p-0 uppercase poppinsFont">Please make payment to Unlock: {rowData?.instituteName}</p>}
         titleState={<p className="p-0 uppercase poppinsFont">Please make payment to Unlock: All {state?.toUpperCase()} Colleges</p>}
-        // props
-        // amount={amount}
         amount={finalAmount}
         stateAmount={stateAmount}
         stateName={state || ""}
@@ -1160,23 +1157,17 @@ export default function CollegeListClosingRanksPage() {
         paymentDescription="CollegeCutOff.net Payment for Closing Ranks"
         courseType={courseType}
         course={course}
-        initialTab="single" // optional: 'single' or 'state'
+        initialTab="single"
         onBuySingle={() => {
-          // called immediately before starting payment when user confirms the "single" tab
           setProcessingPayment(rowData?.id);
           setPaymentChecker(true);
         }}
         onBuyState={() => {
-          // called immediately before starting payment when user confirms "state" tab
           setProcessingPayment(rowData?.id);
           setStatePurchaseMode(true);
           setPaymentChecker(true);
         }}
         onConfirm={(verifyData) => {
-          // verifyData is the object returned by your /api/verify
-          // prefer handling the full payload rather than assuming fields
-          // const orderId = verifyData?.orderId ?? verifyData?.razorpay_order_id ?? "";
-          // successCallback(orderId); // or pass entire verifyData if your successCallback supports it
           setShowUnlockPopover(false);
         }}
         stateCode={stateCode}

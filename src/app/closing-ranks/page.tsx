@@ -349,6 +349,7 @@ export default function ClosingRanks() {
                 placeholder="Select Course Type"
                 label="Course Type"
                 value={selectedType}
+                inputProps={{ readOnly: true }}
                 onChange={({ selectedValue }) => {
                   setSelectedType(selectedValue)
                   setSelectedCourse(undefined)

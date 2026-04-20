@@ -342,14 +342,18 @@ export default function ClosingRanks() {
           {/* Filters */}
           {/* <div className=" flex flex-col md:flex-row justify-between gap-4 mb-4"> */}
           <div className="bg-white/70 border border-gray-200 rounded-2xl p-4 md:p-5 shadow-sm flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
-            <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex flex-col md:flex-row gap-4"
+              onClick={(e) => {
+                const input = e.currentTarget.querySelector("input");
+                if (input) input.blur();
+              }}
+            >
               <SearchAndSelect
                 name="courseType"
                 setValue={setValue}
                 placeholder="Select Course Type"
                 label="Course Type"
                 value={selectedType}
-                inputProps={{ readOnly: true }}
                 onChange={({ selectedValue }) => {
                   setSelectedType(selectedValue)
                   setSelectedCourse(undefined)

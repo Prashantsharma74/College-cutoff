@@ -333,11 +333,26 @@ export const SearchAndSelect = ({
                     disabled={props?.disabled}
                     autoComplete="off"
                     readOnly={isPureDropdown}  // ← ADD THIS (very important)
-                    onFocus={() => {
+                    // onFocus={() => {
+                    //   if (isPureDropdown) {
+                    //     toggleDropdown();                           // ← open dropdown instead of search
+                    //     return;
+                    //   }
+                    //   if (input?.length >= minInputLengthToCallAPI) {
+                    //     setInput("")
+                    //     setListOptions(options)
+                    //     setOptionListOpen(true)
+                    //     setIsLoading(false)
+                    //     setActiveOptionIndex(-1)
+                    //   }
+                    // }}
+                    onFocus={(e) => {
                       if (isPureDropdown) {
-                        toggleDropdown();                           // ← open dropdown instead of search
+                        e.target.blur();           // 🔥 THIS LINE (IMPORTANT)
+                        toggleDropdown();          // open dropdown
                         return;
                       }
+
                       if (input?.length >= minInputLengthToCallAPI) {
                         setInput("")
                         setListOptions(options)

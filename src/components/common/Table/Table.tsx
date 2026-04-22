@@ -151,21 +151,11 @@ export function Table({
               )}
 
               {columns?.map((column, index) => (
-                // <th
-                //   key={index}
-                //   className={cn(
-                //     poppins.className,   // ✅ THIS IS IMPORTANT
-                //     "uppercase px-4 py-3 text-left text-[18px] font-medium",
-                //     index === columns.length - 1 && "rounded-r-lg"
-                //   )}
-                // >
-                //   {column?.title}
-                // </th>
                 <th
                   key={index}
                   className={cn(
                     poppins.className,
-                    "uppercase px-4 py-3 text-left text-[18px] font-medium tracking-wider",
+                    "uppercase px-4 py-3 text-left text-[17px] md:text-[18px] font-medium tracking-wider",
                     index === columns.length - 1 && "rounded-r-lg"
                   )}
                 >
@@ -210,7 +200,7 @@ export function Table({
                       <td
                         key={colIndex}
                         className={cn(
-                          "px-4 py-3 text-[16px]",
+                          "px-4 py-3 text-[15px] md:text-[16px]",
                           colIndex === columns.length - 1 && "rounded-r-lg"
                         )}
                       >

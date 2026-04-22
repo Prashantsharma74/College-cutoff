@@ -16,6 +16,14 @@ import { useAppState } from "@/hooks/useAppState"
 import useFetch from "@/hooks/useFetch"
 import { useInternalSearchParams } from "@/hooks/useInternalSearchParams"
 import { IOption } from "@/types/GlobalTypes"
+import { Building2 } from "lucide-react"
+import { ShieldCheck } from "lucide-react"
+import { Tag } from "lucide-react"
+import { CheckCircle } from "lucide-react"
+import { RefreshCcw } from "lucide-react"
+import { Zap } from "lucide-react"
+import { Headphones } from "lucide-react"
+import { Gift } from "lucide-react"
 import {
   allInstituteTypes,
   paymentType,
@@ -93,19 +101,6 @@ export default function CollegeListClosingRanksPage() {
     return amount
   }
 
-  // useEffect(() => {
-  //   async function fetchPurchases() {
-  //     const res = await fetch("/api/purchase/all-purchase")
-  //     const data = await res.json()
-  //     console.log("Data", data)
-  //     setUserPurchases(data?.data || [])
-  //   }
-
-  //   fetchPurchases()
-  // }, [])
-
-  //changes made on 3feb2026
-  // const currentYear = new Date().getFullYear()-1
   const currentYear = new Date().getFullYear()
   const prevYear = currentYear - 1
   const [selectedInstituteType, setSelectedInstituteType] = useState<
@@ -937,12 +932,11 @@ export default function CollegeListClosingRanksPage() {
           </Container>
         </section>
 
-        {tableData?.data?.length > 0 &&
+        {/* {tableData?.data?.length > 0 &&
           !tableData?.data?.[0]?.statePurchased && (
             <section className="w-full py-12 px-3 flex justify-center">
               <div className="max-w-5xl w-full grid md:grid-cols-2 gap-6 items-stretch">
 
-                {/* 🔵 LEFT CONTENT */}
                 <div className="bg-gradient-to-br from-blue-600 to-blue-500 text-white rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-xl">
 
                   <div>
@@ -951,7 +945,6 @@ export default function CollegeListClosingRanksPage() {
                     </h2>
 
                     <p className="mt-3 text-blue-100 text-sm">
-                      {/* Get access to <strong>{tableData?.total_table_count || 0}</strong> colleges across ALL INDIA . */}
                       Get access to <strong>{tableData?.total_table_count || 0}</strong>{" "}
                       colleges across <br className="md:hidden" />
                       <strong>{state}</strong> round-wise closing ranks in one
@@ -959,7 +952,6 @@ export default function CollegeListClosingRanksPage() {
                     </p>
                   </div>
 
-                  {/* 💰 Value */}
                   <div className="mt-6">
                     <p className="text-sm text-blue-200">
                       Worth ₹{totalCost} If unlocked One by one, now just
@@ -971,13 +963,10 @@ export default function CollegeListClosingRanksPage() {
 
                 </div>
 
-                {/* 💎 RIGHT PRICING PANEL */}
                 <div className="bg-white border border-blue-100 rounded-3xl p-6 md:p-8 shadow-xl flex flex-col justify-between">
 
-                  {/* Options */}
                   <div className="space-y-4">
 
-                    {/* Single */}
                     <div className="flex justify-between items-center border rounded-xl p-4 hover:border-blue-400 transition">
                       <div>
                         <p className="font-medium text-gray-900">Single College</p>
@@ -986,10 +975,8 @@ export default function CollegeListClosingRanksPage() {
                       <p className="font-bold text-gray-900">₹{finalAmount}</p>
                     </div>
 
-                    {/* Pack */}
                     <div className="flex justify-between items-center border-2 border-blue-500 rounded-xl p-4 bg-blue-50 relative">
 
-                      {/* Badge */}
                       <span className="absolute -top-2.5 right-2 text-xs bg-color-accent text-white px-2 py-0.5 rounded">
                         Most Popular
                       </span>
@@ -1004,7 +991,6 @@ export default function CollegeListClosingRanksPage() {
 
                   </div>
 
-                  {/* CTA */}
                   <button
                     className="mt-6 w-full py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
                     onClick={() => {
@@ -1027,7 +1013,6 @@ export default function CollegeListClosingRanksPage() {
                     <ArrowRight size={18} />
                   </button>
 
-                  {/* Trust */}
                   <p className="text-xs text-gray-400 text-center mt-3">
                     🔒 Secure • Instant Access
                   </p>
@@ -1036,7 +1021,479 @@ export default function CollegeListClosingRanksPage() {
 
               </div>
             </section>
-          )}
+          )} */}
+
+        <section className="hidden md:block w-full py-5 px-3 flex justify-center" style={{ display: "flex" }}>
+
+          {/* Desktop View */}
+          <div className="hidden md:block max-w-6xl w-full bg-white rounded-2xl shadow-md p-4 md:p-8">
+
+            <div className="grid md:grid-cols-2 gap-6 items-center">
+
+              <div>
+
+                <span>
+                  <h2 className="text-[22px] md:text-[45px] font-bold leading-snug">
+
+                    <span className="text-blue-900">Unlock </span>
+
+                    <span className="text-orange-500">All {state}’s</span>
+
+                    <br className="hidden md:block" />
+
+                  </h2>
+
+                  <h2 className="text-2xl md:text-[45px] font-bold text-blue-900 leading-snug">
+                    NEET PG Closing Ranks
+                  </h2>
+                </span>
+
+
+                {/* 🔹 ACCESS TEXT */}
+                <div className="mt-5 flex items-start gap-3">
+
+                  {/* Icon Box */}
+
+
+                  <div className="bg-blue-50 p-3 rounded-xl text-blue-600 flex items-center justify-center">
+                    <Building2 size={40} />
+                  </div>
+
+                  {/* Text */}
+                  <p className="text-gray-700 text-[14px] md:text-[18px] leading-relaxed">
+                    Get access to{" "}
+                    <span className="font-semibold text-blue-600">
+                      {tableData?.total_table_count || 0} colleges
+                    </span>{" "}
+                    across {state} round-wise closing ranks in one place.
+                  </p>
+                </div>
+
+                {/* Divider */}
+                <div className="border-t border-dashed my-5"></div>
+
+                {/* 🔹 PRICE INFO */}
+                <div className="flex items-start gap-3">
+
+                  {/* Gift Icon */}
+                  <div className="bg-orange-50 p-3 rounded-xl text-orange-500 flex items-center justify-center">
+                    <Gift size={40} />
+                  </div>
+
+                  {/* Text */}
+                  <p className="text-gray-700 text-[14px] md:text-[18px] leading-relaxed">
+                    Worth{" "}
+                    <span className="line-through text-gray-400">
+                      ₹{totalCost}
+                    </span>{" "}
+                    if unlocked one by one, now just{" "}
+                    <span className="text-orange-500 font-bold text-lg">
+                      ₹{stateAmount}
+                    </span>
+                  </p>
+                </div>
+
+                {/* 🔹 FEATURES */}
+                <div className="mt-6 flex items-center justify-between border-t pt-4">
+
+                  {/* Item 1 */}
+                  <div className="flex items-center gap-3 flex-1">
+
+                    <div className="bg-blue-100 p-2 rounded-lg text-blue-600">
+                      <ShieldCheck size={25} />
+                    </div>
+
+                    <div>
+                      <p className="text-[13px] font-medium text-gray-800">
+                        Secure Payment
+                      </p>
+                      <p className="text-[10px] text-gray-400">
+                        100% Safe & Secure
+                      </p>
+                    </div>
+
+                  </div>
+
+                  {/* Divider */}
+                  <div className="h-8 w-px bg-gray-200"></div>
+
+                  {/* Item 2 */}
+                  <div className="flex items-center gap-3 flex-1 justify-center">
+
+                    <div className="bg-orange-100 p-2 rounded-lg text-orange-500">
+                      <Zap size={25} />
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-medium text-gray-800">
+                        Instant Access
+                      </p>
+                      <p className="text-[10px] text-gray-400">
+                        Get access instantly
+                      </p>
+                    </div>
+
+                  </div>
+
+                  {/* Divider */}
+                  <div className="h-8 w-px bg-gray-200"></div>
+
+                  {/* Item 3 */}
+                  <div className="flex items-center gap-3 flex-1 justify-end">
+
+                    <div className="bg-blue-100 p-2 rounded-lg text-blue-600">
+                      <Headphones size={25} />
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-medium text-gray-800">
+                        24/7 Support
+                      </p>
+                      <p className="text-[10px] text-gray-400">
+                        We’re here to help
+                      </p>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+              {/* 💎 RIGHT PANEL */}
+              <div className="flex flex-col gap-4">
+
+                <div className="grid grid-cols-2 gap-4" style={{ height: "290px" }}>
+
+                  {/* SINGLE */}
+                  <div className="border border-gray-200 rounded-2xl text-center shadow-sm bg-white" style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+
+                    <p className="text-[24px] font-semibold font-medium text-gray-700">
+                      Single College
+                    </p>
+
+                    <p className="text-[14px] text-gray-400 mt-1">
+                      Pay per college
+                    </p>
+
+                    {/* Divider */}
+                    <div className="border-t border-dashed my-1"></div>
+
+                    <p className="text-[32px] font-bold text-blue-900">
+                      ₹{finalAmount}
+                    </p>
+
+                    <p className="text-xs text-gray-400 mt-1">
+                      each
+                    </p>
+
+                    <div className="mt-4 inline-flex items-center gap-1 bg-gray-100 px-3 py-1 rounded-full text-[16px] text-gray-600">
+                      <CheckCircle size={16} className="text-blue-600" />
+                      <span>Pay as you go</span>
+                    </div>
+
+                  </div>
+
+                  {/* PACK */}
+                  <div className="relative border-2 border-blue-600 rounded-2xl p-5 text-center bg-blue-50 shadow-sm" style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+
+                    {/* Badge */}
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[16px] bg-orange-500 text-white px-3 py-1 rounded-md shadow">
+                      Most Popular
+                    </span>
+
+                    <p className="text-[26px] font-semibold text-blue-900">
+                      All {state} Pack
+                    </p>
+
+                    <p className="text-[14px] text-blue-600 mt-1">
+                      Best value for all colleges
+                    </p>
+
+                    {/* Divider */}
+                    <div className="border-t border-dashed my-1 border-blue-200"></div>
+
+                    <p className="text-[32px] font-bold text-orange-500">
+                      ₹{stateAmount}
+                    </p>
+
+                    <div className="mt-4 inline-flex items-center gap-1 bg-blue-200 text-blue-700 px-3 py-1 rounded-full text-[16px] font-semibold">
+                      <Tag size={16} className="text-blue-700" />
+                      <span className="font-bold">
+                        Save ₹{totalCost - stateAmount}+
+                      </span>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                {/* CTA BUTTON */}
+                <button
+                  className="mt-2 w-full py-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition"
+                  onClick={() => {
+                    fetchData({
+                      url: "/api/user",
+                      method: "GET",
+                      noToast: true,
+                    }).then((user) => {
+                      if (user?.success) {
+                        setStatePurchaseMode(true)
+                        setStatePaymentPopup(true)
+                        setPaymentChecker(true)
+                      } else {
+                        setAppState({ signInModalOpen: true })
+                      }
+                    })
+                  }}
+                >
+                  <span className="text-[16px] md:text-[18px] font-medium">
+                    Unlock All Colleges @
+                  </span>
+
+                  <span className="text-[18px] md:text-[20px] font-bold">
+                    ₹{stateAmount}
+                  </span>
+
+                  <ArrowRight size={25} />
+                </button>
+
+                <p className="text-[14px] text-gray-400 text-center flex justify-center gap-5 flex-wrap">
+                  <span>🔒 One-time payment</span>
+                  <span><span>• </span>No hidden charges</span>
+                  <span><span>• </span> Valid for all rounds</span>
+                </p>
+
+              </div>
+            </div>
+
+            {/* BOTTOM STRIP */}
+            <div className="mt-6 bg-white border rounded-2xl shadow-sm px-4 py-3 flex items-center justify-between">
+
+              {/* Item 1 */}
+              <div className="flex items-center gap-2 flex-1 justify-center">
+                <div className="p-2 rounded-lg text-blue-600">
+                  <ShieldCheck size={20} />
+                </div>
+                <p className="text-[9px] md:text-[12px] text-gray-700">
+                  Trusted by <br />
+                  <span className="font-semibold text-blue-600">
+                    50,000+ Students
+                  </span>
+                </p>
+              </div>
+
+              {/* Divider */}
+              <div className="h-8 w-px bg-gray-200"></div>
+
+              {/* Item 2 */}
+              <div className="flex items-center gap-2 flex-1 justify-center">
+                <div className=" p-2 rounded-lg text-blue-600">
+                  <Users size={20} />
+                </div>
+                <p className="text-[9px] md:text-[12px] text-gray-700">
+                  {tableData?.total_table_count || 0} Colleges <br />
+                  Across All India
+                </p>
+              </div>
+
+              {/* Divider */}
+              <div className="h-8 w-px bg-gray-200"></div>
+
+              {/* Item 3 */}
+              <div className="flex items-center gap-2 flex-1 justify-center">
+                <div className=" p-2 rounded-lg text-blue-600">
+                  <RefreshCcw size={20} />
+                </div>
+                <p className="text-[9px] md:text-[12px] text-gray-700">
+                  Round-wise <br />
+                  Closing Ranks
+                </p>
+              </div>
+
+              {/* Divider */}
+              <div className="h-8 w-px bg-gray-200"></div>
+
+              {/* Item 4 */}
+              <div className="flex items-center gap-2 flex-1 justify-center">
+                <div className="p-2 rounded-lg text-blue-600">
+                  <CheckCircle size={20} />
+                </div>
+                <p className="text-[9px] md:text-[12px] text-gray-700">
+                  Accurate & Updated <br />
+                  Real-time Data
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* Mobile View */}
+        <section className="md:hidden w-full py-3 px-3">
+          <div className="px-2 py-2 bg-white rounded-2xl shadow-md p-4 space-y-4">
+
+            {/* 🔵 HEADER */}
+            <div className="flex justify-between items-start">
+
+              <h2 className="text-[25px] font-bold leading-snug">
+                <span className="text-blue-900">Unlock </span>
+                <span className="text-orange-500">All India’s</span>
+                <br />
+                <span className="text-blue-900">
+                  NEET PG Closing Ranks
+                </span>
+              </h2>
+
+              {/* Trusted Box */}
+              <div className="bg-blue-50 px-2 py-2 rounded-xl text-center text-[10px] text-blue-700" style={{ width: "70px", display: "flex", alignItems: "center", flexDirection: "column" }}>
+                <ShieldCheck size={25} />
+                Trusted by
+                <span className="font-semibold">50,000+</span>
+                Students
+              </div>
+
+            </div>
+
+            {/* 🔹 ACCESS */}
+            <div className="flex items-center gap-3">
+              <div className="bg-blue-100 p-2 rounded-lg text-blue-600">
+                <Building2 size={16} />
+              </div>
+              <p className="text-sm text-gray-600">
+                Get access to{" "}
+                <span className="text-blue-600 font-semibold">
+                  {tableData?.total_table_count || 0} colleges
+                </span>{" "}
+                across {state} round-wise closing ranks in one place.
+              </p>
+            </div>
+
+            {/* 🔹 PRICE INFO */}
+            <div className="flex items-center gap-3 border-t pt-3">
+              <div className="bg-orange-100 p-2 rounded-lg text-orange-500">
+                <Gift size={16} />
+              </div>
+              <p className="text-sm text-gray-600">
+                If unlocked one by one, now just{" "}
+                <span className="line-through text-gray-400">
+                  ₹{totalCost}
+                </span>{" "}
+                now just{" "}
+                <span className="text-orange-500 font-bold">
+                  ₹{stateAmount}
+                </span>
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+
+              {/* SINGLE */}
+              <div className="border rounded-xl p-3 text-center shadow-sm">
+                <p className="text-[15px] text-gray-500">Single College</p>
+                <p className="text-[12px] text-gray-400">Pay per college</p>
+
+                <p className="text-[25px] font-bold mt-2 text-blue-900">
+                  ₹{finalAmount}
+                </p>
+                <p className="text-[12px] text-gray-400">each</p>
+              </div>
+
+              {/* PACK */}
+              <div className="border-2 border-blue-600 rounded-xl p-3 text-center bg-blue-50 relative">
+
+                <span className="absolute -top-2 right-2 text-[12px] bg-orange-500 text-white px-2 py-0.5 rounded">
+                  Most Popular
+                </span>
+
+                <p className="text-[15px] text-blue-900 font-semibold">
+                  All India Pack
+                </p>
+                <p className="text-[12px] text-blue-600">Best value</p>
+
+                <p className="text-[25px] font-bold mt-2 text-orange-500">
+                  ₹{stateAmount}
+                </p>
+
+                <div className="mt-2 inline-flex items-center gap-1 bg-blue-200 text-blue-700 px-2 py-0.5 rounded-full text-[14px] font-bold">
+                  <Tag size={12} />
+                  Save ₹{totalCost - stateAmount}+
+                </div>
+              </div>
+
+            </div>
+
+            {/* 🔵 CTA */}
+            <button className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold flex items-center justify-center gap-2 shadow-md">
+              Unlock All Colleges @ ₹{stateAmount}
+              <ArrowRight size={18} />
+            </button>
+
+            {/* 🔹 FEATURES */}
+
+            <div className="mt-4 flex items-center justify-between">
+
+              {/* Item 1 */}
+              <div className="flex items-center gap-2 flex-1 justify-center">
+                <div className="bg-blue-100 p-2 rounded-lg text-blue-600">
+                  <ShieldCheck size={16} />
+                </div>
+                <div>
+                  <p className="text-[12px] font-medium text-gray-800">
+                    Secure Payment
+                  </p>
+                  <p className="text-[8px] text-gray-400">
+                    100% Safe & Secure
+                  </p>
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="h-6 w-px bg-gray-200"></div>
+
+              {/* Item 2 */}
+              <div className="flex items-center gap-2 flex-1 justify-center">
+                <div className="bg-orange-100 p-2 rounded-lg text-orange-500">
+                  <Zap size={16} />
+                </div>
+                <div>
+                  <p className="text-[12px] font-medium text-gray-800">
+                    Instant Access
+                  </p>
+                  <p className="text-[8px] text-gray-400">
+                    Get access instantly
+                  </p>
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="h-6 w-px bg-gray-200"></div>
+
+              {/* Item 3 */}
+              <div className="flex items-center gap-2 flex-1 justify-center">
+                <div className="bg-blue-100 p-2 rounded-lg text-blue-600">
+                  <Headphones size={16} />
+                </div>
+                <div>
+                  <p className="text-[12px] font-medium text-gray-800">
+                    24/7 Support
+                  </p>
+                  <p className="text-[8px] text-gray-400">
+                    We’re here to help
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* 🔹 FOOTER */}
+            <p className="text-[11px] text-gray-400 text-center">
+              One-time payment • No hidden charges • Valid for all rounds
+            </p>
+
+          </div>
+        </section>
 
         <section className="w-full my-10">
           <Container className="container px-4 md:px-6">

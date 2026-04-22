@@ -19,6 +19,7 @@ import { IOption } from "@/types/GlobalTypes"
 import { Building2 } from "lucide-react"
 import { ShieldCheck } from "lucide-react"
 import { Tag } from "lucide-react"
+import { Sparkles } from "lucide-react"
 import { CheckCircle } from "lucide-react"
 import { RefreshCcw } from "lucide-react"
 import { Zap } from "lucide-react"
@@ -1384,6 +1385,15 @@ export default function CollegeListClosingRanksPage() {
                 <span className="text-orange-500 font-bold">
                   ₹{stateAmount}
                 </span>
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3 border-t pt-3">
+              <div className="bg-yellow-100 p-2 rounded-lg text-yellow-500">
+                <Sparkles size={16} />
+              </div>
+              <p className="text-sm text-gray-600">
+                Real information & No AI chatbot data
               </p>
             </div>
 

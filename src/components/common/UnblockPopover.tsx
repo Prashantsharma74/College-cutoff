@@ -395,9 +395,9 @@ export function UnlockPopover({
 
       // ❗ OFFER CHECK
       if (amount !== 9) {
-        showToast("error", "Offer not applicable for this number");
+        showToast("error", "Offer not applicable for this number Try to login!!!");
         setLoading(false);
-        return; // ❌ Razorpay open mat karo
+        return;
       }
 
       saveToLocalStorage("orderId", orderId);

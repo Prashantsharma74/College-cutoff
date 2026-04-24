@@ -893,26 +893,6 @@ export default function CollegeListClosingRanksPage() {
               </div>
             </div>
 
-            {/* <div className="offer-design">
-              <div className="offer-banner">
-
-                <div className="offer-icons">
-                  <span>🎉</span>
-                  <span>🎁</span>
-                </div>
-
-                <div className="offer-text">
-                  <span>
-                    First Unlock @ <span className="price">₹9</span> 
-                  </span>
-{" "}
-                  <span className="then-text">
-                    Then <span className="price">₹49</span> <span className="sub">per college</span>
-                  </span>
-                </div>
-
-              </div>
-            </div> */}
 
             <Table
               columns={generateCols()}
@@ -1106,10 +1086,10 @@ export default function CollegeListClosingRanksPage() {
 
                     <div>
                       <p className="text-[13px] font-medium text-gray-800">
-                        Secure Payment
+                        No AI Data
                       </p>
                       <p className="text-[10px] text-gray-400">
-                        100% Safe & Secure
+                        100% Real Data
                       </p>
                     </div>
 
@@ -1260,7 +1240,7 @@ export default function CollegeListClosingRanksPage() {
 
                 <p className="text-[14px] text-gray-400 text-center flex justify-center gap-5 flex-wrap">
                   <span>🔒 One-time payment</span>
-                  <span><span>• </span>No hidden charges</span>
+                  <span><span>• </span>Secure Payment</span>
                   <span><span>• </span> Valid for all rounds</span>
                 </p>
 
@@ -1388,15 +1368,6 @@ export default function CollegeListClosingRanksPage() {
               </p>
             </div>
 
-            <div className="flex items-center gap-3 border-t pt-3">
-              <div className="bg-yellow-100 p-2 rounded-lg text-yellow-500">
-                <Sparkles size={16} />
-              </div>
-              <p className="text-sm text-gray-600">
-                Real information & No AI chatbot data
-              </p>
-            </div>
-
             <div className="grid grid-cols-2 gap-3">
 
               {/* SINGLE */}
@@ -1451,10 +1422,10 @@ export default function CollegeListClosingRanksPage() {
                 </div>
                 <div>
                   <p className="text-[12px] font-medium text-gray-800">
-                    Secure Payment
+                    No AI Data
                   </p>
                   <p className="text-[8px] text-gray-400">
-                    100% Safe & Secure
+                    100% Real Data
                   </p>
                 </div>
               </div>
@@ -1499,7 +1470,7 @@ export default function CollegeListClosingRanksPage() {
 
             {/* 🔹 FOOTER */}
             <p className="text-[11px] text-gray-400 text-center">
-              One-time payment • No hidden charges • Valid for all rounds
+              One-time payment • Secure Payment • Valid for all rounds
             </p>
 
           </div>

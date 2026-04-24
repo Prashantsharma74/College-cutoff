@@ -139,18 +139,18 @@ export default function ClosingRanks() {
   }
 
   // useEffect(() => {
-  //   if (selectedType) {
-  //     fetchStateSummary(selectedType.text)
+  //   if (!selectedType && predictorTypeList.length > 0) {
+  //     const defaultType = predictorTypeList[0] 
+  //     setSelectedType(defaultType)
+  //     fetchStateSummary(defaultType.text)
   //   }
-  // }, [selectedType])
+  // }, [predictorTypeList])
 
   useEffect(() => {
-    if (!selectedType && predictorTypeList.length > 0) {
-      const defaultType = predictorTypeList[0] // ya "NEET UG"
-      setSelectedType(defaultType)
-      fetchStateSummary(defaultType.text)
+    if (selectedType) {
+      fetchStateSummary(selectedType.text)
     }
-  }, [predictorTypeList])
+  }, [selectedType])
 
   const updateURL = useCallback((params: Record<string, string>, replace = true) => {
     const query = new URLSearchParams(params).toString();

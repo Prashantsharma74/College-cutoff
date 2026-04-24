@@ -7,7 +7,7 @@ import { cn, saveToLocalStorage } from "@/utils/utils"
 import { ArrowRight, CircleCheckBig } from "lucide-react"
 import React, { ReactNode, useEffect, useState } from "react"
 import { isMobile } from "react-device-detect"
-  import {motion} from "framer-motion"
+import { motion } from "framer-motion"
 
 interface IUnlockPopoverProps {
   isOpen: boolean
@@ -62,6 +62,9 @@ export function UnlockPopover({
   useEffect(() => {
     setActiveTab(initialTab)
   }, [initialTab, isOpen])
+
+  // by prashant 
+  const [phone, setPhone] = useState("")
 
   // compute feature description for individual college (used as default single content)
   const getFeatureDescriptionSingle = () => {
@@ -191,94 +194,250 @@ export function UnlockPopover({
     }
   }
 
-  const createOrder = async (paymentAmount: number) => {
+  // const createOrder = async (paymentAmount: number) => {
+  //   const response = await fetch("/api/order", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ amount: paymentAmount }),
+  //   })
+  //   const data = await response.json()
+  //   if (!response.ok) throw new Error("Failed to create order")
+  //   return data.orderId
+  // }
+
+  // By prashant 
+  const createOrder = async (phone: string) => {
     const response = await fetch("/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: paymentAmount }),
-    })
-    const data = await response.json()
-    if (!response.ok) throw new Error("Failed to create order")
-    return data.orderId
-  }
+      body: JSON.stringify({ phone }),
+    });
 
-  const processPayment = async (paymentAmount: number) => {
-    setLoading(true)
+    const data = await response.json();
+    if (!response.ok) throw new Error("Failed to create order");
+
+    return data;
+  };
+
+  // const processPayment = async (phone: string) => {
+  //   setLoading(true);
+  //   try {
+  //     const { orderId, amount } = await createOrder(phone);
+
+  //     saveToLocalStorage("orderId", orderId);
+  //     setAppState({ paymentRedirectPopupOpen: true });
+
+  //     const options = {
+  //       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+  //       amount: amount * 100,
+  //       currency: "INR",
+  //       name: "College Cutoff",
+  //       description: paymentDescription,
+  //       order_id: orderId,
+
+  //       prefill: {
+  //         contact: phone,
+  //       },
+
+  //       notes: {
+  //         phone: phone,
+  //       },
+
+  //       handler: async function (response: any) {
+  //         try {
+  //           const verifyResponse = await fetch("/api/verify", {
+  //             method: "POST",
+  //             headers: { "Content-Type": "application/json" },
+  //             body: JSON.stringify({
+  //               orderId: response.razorpay_order_id,
+  //               paymentId: response.razorpay_payment_id,
+  //               signature: response.razorpay_signature,
+  //               phone: phone,
+  //             })
+  //           });
+
+  //           const verifyData = await verifyResponse.json();
+
+  //           if (!verifyData.isOk) {
+  //             showToast("error", "Payment verification failed!");
+  //             return;
+  //           }
+
+  //           showToast("success", "Payment verified!");
+  //           await onConfirm?.({ verifyData, activeTab });
+  //           onClose();
+  //         } catch (error) {
+  //           console.error("Verification error:", error);
+  //           showToast("error", "Payment verification failed!");
+  //         }
+  //       },
+
+  //       theme: { color: "#E67817" },
+
+  //       method: {
+  //         upi_intent: true,
+  //         card: true,
+  //         netbanking: true,
+  //         wallet: true,
+  //       },
+
+  //       modal: {
+  //         ondismiss: () =>
+  //           setAppState({ paymentRedirectPopupOpen: false }),
+  //       },
+  //     };
+
+  //     const paymentObject = new (window as any).Razorpay(options);
+
+  //     paymentObject.on("payment.failed", (response: any) => {
+  //       showToast(
+  //         "error",
+  //         `Payment failed: ${response?.error?.description || "Unknown"
+  //         }`
+  //       );
+  //     });
+
+  //     paymentObject.open();
+  //   } catch (error) {
+  //     console.error("Payment error:", error);
+  //     showToast("error", "Internal Server Error. Please try again.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // const processPayment = async (paymentAmount: number) => {
+  //   setLoading(true)
+  //   try {
+  //     const orderId = await createOrder(paymentAmount)
+  //     saveToLocalStorage("orderId", orderId)
+  //     setAppState({ paymentRedirectPopupOpen: true })
+
+  //     const options = {
+  //       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+  //       amount: paymentAmount * 100,
+  //       currency: "INR",
+  //       name: "College Cutoff",
+  //       description: paymentDescription,
+  //       order_id: orderId,
+  //       handler: async function (response: any) {
+  //         try {
+  //           const verifyResponse = await fetch("/api/verify", {
+  //             method: "POST",
+  //             headers: { "Content-Type": "application/json" },
+  //             body: JSON.stringify({
+  //               orderId: response.razorpay_order_id,
+  //               paymentId: response.razorpay_payment_id,
+  //               signature: response.razorpay_signature,
+  //             }),
+  //           })
+  //           const verifyData = await verifyResponse.json()
+
+  //           if (!verifyData.isOk) {
+  //             showToast("error", "Payment verification failed!")
+  //             return
+  //           }
+
+  //           // successful verification -> notify parent
+  //           showToast("success", "Payment verified!")
+  //           //  await onConfirm?.(verifyData)
+  //           await onConfirm?.({ verifyData, activeTab });
+  //           onClose()
+  //         } catch (error) {
+  //           console.error("Verification error:", error)
+  //           showToast("error", "Payment verification failed!")
+  //         }
+  //       },
+  //       theme: { color: "#E67817" },
+  //       method: {
+  //         upi_intent: true,
+  //         card: true,
+  //         netbanking: true,
+  //         wallet: true,
+  //       },
+  //       modal: {
+  //         ondismiss: () => setAppState({ paymentRedirectPopupOpen: false }),
+  //       },
+  //     }
+
+  //     const paymentObject = new (window as any).Razorpay(options)
+  //     paymentObject.on("payment.failed", (response: any) => {
+  //       showToast(
+  //         "error",
+  //         `Payment failed: ${response?.error?.description || "Unknown"}`,
+  //       )
+  //     })
+  //     paymentObject.open()
+  //   } catch (error: unknown) {
+  //     console.error("Payment error:", error)
+  //     showToast("error", "Internal Server Error. Please try again.")
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }
+
+  // const handleConfirm = () => {
+  //   if (activeTab === "single") {
+  //     onBuySingle?.()
+  //     processPayment(amount)
+  //   } else {
+  //     onBuyState?.()
+  //     processPayment(stateAmount ?? amount)
+  //   }
+  // }
+
+  // By prashant 
+
+  const processPayment = async (phone: string) => {
+    setLoading(true);
     try {
-      const orderId = await createOrder(paymentAmount)
-      saveToLocalStorage("orderId", orderId)
-      setAppState({ paymentRedirectPopupOpen: true })
+      const { orderId, amount } = await createOrder(phone);
+
+      // ❗ OFFER CHECK
+      if (amount !== 9) {
+        showToast("error", "Offer not applicable for this number");
+        setLoading(false);
+        return; // ❌ Razorpay open mat karo
+      }
+
+      saveToLocalStorage("orderId", orderId);
+      setAppState({ paymentRedirectPopupOpen: true });
 
       const options = {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-        amount: paymentAmount * 100,
+        amount: amount * 100,
         currency: "INR",
         name: "College Cutoff",
-        description: paymentDescription,
         order_id: orderId,
-        handler: async function (response: any) {
-          try {
-            const verifyResponse = await fetch("/api/verify", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                orderId: response.razorpay_order_id,
-                paymentId: response.razorpay_payment_id,
-                signature: response.razorpay_signature,
-              }),
-            })
-            const verifyData = await verifyResponse.json()
 
-            if (!verifyData.isOk) {
-              showToast("error", "Payment verification failed!")
-              return
-            }
+        prefill: {
+          contact: phone,
+        },
+      };
 
-            // successful verification -> notify parent
-            showToast("success", "Payment verified!")
-            //  await onConfirm?.(verifyData)
-            await onConfirm?.({ verifyData, activeTab });
-            onClose()
-          } catch (error) {
-            console.error("Verification error:", error)
-            showToast("error", "Payment verification failed!")
-          }
-        },
-        theme: { color: "#E67817" },
-        method: {
-          upi_intent: true,
-          card: true,
-          netbanking: true,
-          wallet: true,
-        },
-        modal: {
-          ondismiss: () => setAppState({ paymentRedirectPopupOpen: false }),
-        },
-      }
+      const paymentObject = new (window as any).Razorpay(options);
+      paymentObject.open();
 
-      const paymentObject = new (window as any).Razorpay(options)
-      paymentObject.on("payment.failed", (response: any) => {
-        showToast(
-          "error",
-          `Payment failed: ${response?.error?.description || "Unknown"}`,
-        )
-      })
-      paymentObject.open()
-    } catch (error: unknown) {
-      console.error("Payment error:", error)
-      showToast("error", "Internal Server Error. Please try again.")
+    } catch (error) {
+      console.error(error);
+      showToast("error", "Something went wrong");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleConfirm = () => {
+    if (!phone || phone.length < 10) {
+      showToast("error", "Enter valid phone number");
+      return;
+    }
+
     if (activeTab === "single") {
       onBuySingle?.()
-      processPayment(amount)
+      processPayment(phone)
     } else {
       onBuyState?.()
-      processPayment(stateAmount ?? amount)
+      processPayment(phone)
     }
   }
 
@@ -290,6 +449,7 @@ export function UnlockPopover({
       popupClass="w-[340px] pc:w-[480px] md:w-[560px]"
       closeIconClass="text-white hover:text-white"
     >
+
       <div className="w-full max-w-[560px] overflow-hidden rounded-xl bg-white shadow-xl">
         <div className="bg-gradient-to-r from-[#0A5092] to-[#2563EB] p-4 sm:p-6 text-white relative overflow-hidden">
 
@@ -385,8 +545,38 @@ export function UnlockPopover({
 
           <div className="border-t border-gray-200 my-4"></div>
 
+          <div className="">
+            <div className="bg-white rounded-xl shadow-md border p-3 flex items-center gap-3">
+
+              {/* icon */}
+              <div className="bg-blue-100 text-blue-600 p-2 rounded-lg">
+                📱
+              </div>
+
+              {/* input section */}
+              <div className="flex flex-col flex-1">
+                <label className="text-xs text-gray-500 mb-1">
+                  Enter Phone Number
+                </label>
+
+                <div className="flex items-center gap-2">
+                  <span className="text-gray-700 font-medium">+91</span>
+
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="XXXXXXXXXX"
+                    className="w-full outline-none text-lg font-semibold tracking-wide"
+                    maxLength={10}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* What you'll get */}
-          <div className="mb-4">
+          <div className="mb-4 mt-2">
             <h3 className="font-semibold text-gray-800 text-lg mb-3 text-left">
               What You&#39;ll Get :
             </h3>

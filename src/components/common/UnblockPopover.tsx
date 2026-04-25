@@ -167,8 +167,6 @@ export function UnlockPopover({
         </ul>
       )
     } else {
-      // if (whatWillYouGetState) return whatWillYouGetState
-      // if (whatWillYouGet) return whatWillYouGet
       return (
         <ul className="space-y-3 text-sm text-gray-700">
           <li className="flex gap-2">

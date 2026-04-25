@@ -373,18 +373,7 @@ export default function CollegeListClosingRanksPage() {
             ₹{finalAmount}
           </span>
         )}
-
-        {/* Arrow */}
-
-        {/* Badge */}
-        {/* {isNewUser && (
-          <>
-            <span className="text-[14px]">→</span>
-            <span className="bg-[#1a6fc2] text-[14px] text-white px-2 py-[2px] rounded-md font-semibold">
-              First Unlock Offer
-            </span>
-          </>
-        )} */}
+        
         {isNewUser && (
           <>
             {/* Desktop */}
@@ -773,7 +762,7 @@ export default function CollegeListClosingRanksPage() {
                   }}
                 />
               </div>
-              <div className="flex relative items-end md:justify-end flex-col md:flex-row w-full mb-4 mt-2 gap-2 md:gap-8">
+              <div className="flex relative items-start md:justify-end flex-col md:flex-row w-full mb-4 mt-2 gap-2 md:gap-8">
                 <SearchAndSelect
                   name="instituteType"
                   labelNode={
@@ -1313,8 +1302,9 @@ export default function CollegeListClosingRanksPage() {
 
         {/* Mobile View */}
         <section className="md:hidden w-full py-3 px-3">
-          <div className="px-2 py-2 bg-white rounded-2xl shadow-md p-4 space-y-4">
-
+          {/* <div className="px-2 py-2 bg-white rounded-2xl shadow-md p-4 space-y-4"> */}
+<div className="px-2 py-2 bg-white rounded-2xl p-4 space-y-4 
+shadow-[0_-2px_10px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.12)]">
             {/* 🔵 HEADER */}
             <div className="flex justify-between items-start">
 
@@ -1493,15 +1483,6 @@ export default function CollegeListClosingRanksPage() {
                   Talk to our experts and get the best college recommendations based on your rank, category, and preferences.
                 </p>
               </div>
-
-              {/* 🚀 CTA BUTTON */}
-              {/* <Link
-                href="https://wa.me/919028009835"
-                className="relative z-10 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-7 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300"
-              >
-                <Users className="h-5 w-5" />
-                Book Counselling
-              </Link> */}
 
               <Link
                 href="https://wa.me/919028009835"

@@ -358,8 +358,6 @@ export default function ClosingRanks() {
             </div>
           </div>
 
-          {/* Filters */}
-          {/* <div className=" flex flex-col md:flex-row justify-between gap-4 mb-4"> */}
           <div className="bg-white/70 border border-gray-200 rounded-2xl p-4 md:p-5 shadow-sm flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
             <div className="flex flex-col md:flex-row gap-4"
               onClick={(e) => {

@@ -388,65 +388,26 @@ export default function ClosingRanks() {
                 errors={errors}
               />
               {selectedType?.text === "NEET UG" && (
-                // <SearchAndSelect
-                //   setValue={setValue}
-                //   name="course"
-                //   label="Select Course"
-                //   placeholder="Select Course"
-                //   value={selectedCourse}
-                //   onChange={({ selectedValue }) => {
-                //     setSelectedCourse(selectedValue)
-                //     clearErrors("course")
-                //     updateURL({ courseType: selectedType?.text || "", course: selectedValue.text })
-                //   }}
-                //   control={control}
-                //   defaultOption={{ id: course || "", text: course || "" }}
-                //   options={coursesList}
-                //   loading={isCourseLoading}
-                //   disabled={isEmpty(coursesList)}
-                //   searchAPI={(txt, set) => autoComplete(txt, coursesList, set)}
-                //   errors={errors}
-                //   wrapperClass="md:max-w-[200px] w-full"
-                // />
-                <div
-                  className="md:max-w-[200px] w-full relative"
-                  onClick={(e) => {
-                    // 👇 input ko ignore karo
-                    const wrapper = e.currentTarget.querySelector(".trigger-area");
-
-                    if (wrapper) {
-                      wrapper.dispatchEvent(new MouseEvent("mousedown", { bubbles: true }));
-                    }
+                <SearchAndSelect
+                  setValue={setValue}
+                  name="course"
+                  label="Select Course"
+                  placeholder="Select Course"
+                  value={selectedCourse}
+                  onChange={({ selectedValue }) => {
+                    setSelectedCourse(selectedValue)
+                    clearErrors("course")
+                    updateURL({ courseType: selectedType?.text || "", course: selectedValue.text })
                   }}
-                >
-                  {/* 👇 overlay (input block karega) */}
-                  <div className="absolute inset-0 z-10" />
-
-                  <div className="trigger-area">
-                    <SearchAndSelect
-                      setValue={setValue}
-                      name="course"
-                      label="Select Course"
-                      placeholder="Select Course"
-                      value={selectedCourse}
-                      onChange={({ selectedValue }) => {
-                        setSelectedCourse(selectedValue)
-                        clearErrors("course")
-                        updateURL({
-                          courseType: selectedType?.text || "",
-                          course: selectedValue.text
-                        })
-                      }}
-                      control={control}
-                      defaultOption={{ id: course || "", text: course || "" }}
-                      options={coursesList}
-                      loading={isCourseLoading}
-                      disabled={isEmpty(coursesList)}
-                      searchAPI={(txt, set) => autoComplete(txt, coursesList, set)}
-                      errors={errors}
-                    />
-                  </div>
-                </div>
+                  control={control}
+                  defaultOption={{ id: course || "", text: course || "" }}
+                  options={coursesList}
+                  loading={isCourseLoading}
+                  disabled={isEmpty(coursesList)}
+                  searchAPI={(txt, set) => autoComplete(txt, coursesList, set)}
+                  errors={errors}
+                  wrapperClass="md:max-w-[200px] w-full"
+                />
               )}
             </div>
             <div className="relative md:max-w-[500px] w-full">

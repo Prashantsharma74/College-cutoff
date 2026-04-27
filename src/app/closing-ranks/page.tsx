@@ -402,7 +402,7 @@ export default function ClosingRanks() {
                   control={control}
                   defaultOption={{ id: course || "", text: course || "" }}
                   options={coursesList}
-                  // loading={isCourseLoading}
+                  loading={isCourseLoading}
                   disabled={isEmpty(coursesList)}
                   searchAPI={(txt, set) => autoComplete(txt, coursesList, set)}
                   errors={errors}

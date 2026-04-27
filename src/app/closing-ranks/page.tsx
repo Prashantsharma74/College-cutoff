@@ -427,14 +427,14 @@ export default function ClosingRanks() {
                   options={coursesList}
                   loading={isCourseLoading}
                   searchAPI={(txt, set) => autoComplete(txt, coursesList, set)}
-                  errors={errors}
                   wrapperClass="md:max-w-[200px] w-full"
+                  errors={errors}
 
                   // 🔥 KEYBOARD BLOCK FIX
-                  inputProps={{
-                    readOnly: true,
-                    onFocus: (e: any) => e.target.blur(),
-                  }}
+                  // inputProps={{
+                  //   readOnly: true,
+                  //   onFocus: (e: any) => e.target.blur(),
+                  // }}
                 />
               )}
             </div>

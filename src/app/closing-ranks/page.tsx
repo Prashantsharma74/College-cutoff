@@ -366,6 +366,7 @@ export default function ClosingRanks() {
                 const input = e.currentTarget.querySelector("input");
                 if (input) input.blur();
               }}
+              onFocus={(e) => e.target.blur()}
             >
               <SearchAndSelect
                 name="courseType"

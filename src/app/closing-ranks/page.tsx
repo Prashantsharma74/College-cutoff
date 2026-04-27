@@ -408,40 +408,6 @@ export default function ClosingRanks() {
                 //   errors={errors}
                 //   wrapperClass="md:max-w-[200px] w-full"
                 // />
-                // <SearchAndSelect
-                //   setValue={setValue}
-                //   name="course"
-                //   label="Select Course"
-                //   placeholder="Select Course"
-                //   value={selectedCourse}
-                //   onChange={({ selectedValue }) => {
-                //     setSelectedCourse(selectedValue)
-                //     clearErrors("course")
-                //     updateURL({
-                //       courseType: selectedType?.text || "",
-                //       course: selectedValue.text,
-                //     })
-
-                //     // 🔥 STRONG KEYBOARD CLOSE
-                //     setTimeout(() => {
-                //       const active = document.activeElement as HTMLElement
-                //       if (active && typeof active.blur === "function") {
-                //         active.blur()
-                //       }
-
-                //       // fallback (mobile safari fix)
-                //       const inputs = document.querySelectorAll("input")
-                //       inputs.forEach((inp) => inp.blur())
-                //     }, 150)
-                //   }}
-                //   control={control}
-                //   defaultOption={{ id: course || "", text: course || "" }}
-                //   options={coursesList}
-                //   loading={isCourseLoading}
-                //   searchAPI={(txt, set) => autoComplete(txt, coursesList, set)}
-                //   errors={errors}
-                //   wrapperClass="md:max-w-[200px] w-full"
-                // />
                 <SearchAndSelect
                   setValue={setValue}
                   name="course"
@@ -460,8 +426,15 @@ export default function ClosingRanks() {
                   defaultOption={{ id: course || "", text: course || "" }}
                   options={coursesList}
                   loading={isCourseLoading}
+                  searchAPI={(txt, set) => autoComplete(txt, coursesList, set)}
                   errors={errors}
                   wrapperClass="md:max-w-[200px] w-full"
+
+                  // 🔥 KEYBOARD BLOCK FIX
+                  inputProps={{
+                    readOnly: true,
+                    onFocus: (e: any) => e.target.blur(),
+                  }}
                 />
               )}
             </div>

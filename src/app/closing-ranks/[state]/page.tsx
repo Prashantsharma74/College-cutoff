@@ -348,7 +348,7 @@ export default function CollegeListClosingRanksPage() {
         {isNewUser && (
           <>
             {/* Mobile */}
-            <span className="font-bold text-[14px] md:hidden text-[12px] font-medium">
+            <span className="font-bold text-[14px]  text-[12px] font-medium">
               Unlock
             </span>
           </>
@@ -374,9 +374,8 @@ export default function CollegeListClosingRanksPage() {
           </span>
         )}
         
-        {isNewUser && (
+        {/* {isNewUser && (
           <>
-            {/* Desktop */}
             <span className="hidden md:flex items-center gap-1">
               <span>→</span>
               <span className="bg-[#1a6fc2] text-white px-2 py-[2px] rounded-md text-[12px]">
@@ -384,12 +383,11 @@ export default function CollegeListClosingRanksPage() {
               </span>
             </span>
 
-            {/* Mobile */}
             <span className="md:hidden text-[12px] text-blue-500 font-medium">
 
             </span>
           </>
-        )}
+        )} */}
       </>
   }
 

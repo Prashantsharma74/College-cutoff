@@ -155,8 +155,9 @@ export function Table({
                   key={index}
                   className={cn(
                     poppins.className,
-                    "uppercase px-4 py-3 text-left text-[17px] md:text-[18px] font-medium tracking-wider",
-                    index === columns.length - 1 && "rounded-r-lg"
+                    "uppercase px-4 py-3 text-left text-[14px] md:text-[18px] font-medium tracking-wider",
+                    index === columns.length - 1 &&
+                    "sticky right-0 z-20 bg-[#2b6cb0] text-white rounded-r-lg"
                   )}
                 >
                   {column?.title}
@@ -195,16 +196,49 @@ export function Table({
                     </td>
                   )}
 
-                  {columns?.map((column, colIndex) => {
+                  {/* {columns?.map((column, colIndex) => {
                     return (
                       <td
                         key={colIndex}
                         className={cn(
-                          "px-4 py-3 text-[15px] md:text-[16px]",
+                          "px-4 py-3 text-[14px] md:text-[16px]",
                           colIndex === columns.length - 1 && "rounded-r-lg"
                         )}
                       >
                         <div className="flex items-center">
+                          {column?.renderer
+                            ? column?.renderer({
+                              rowData: row,
+                              cellData: row[column?.tableKey],
+                            })
+                            : shouldRenderComponent(
+                              [
+                                row[column?.tableKey] === "-",
+                                !row[column?.tableKey],
+                              ],
+                              "OR",
+                            )
+                              ? "NA"
+                              : row[column?.tableKey]}
+                        </div>
+                      </td>
+                    )
+                  })} */}
+                  {columns?.map((column, colIndex) => {
+                    const isLast = colIndex === columns.length - 1
+
+                    return (
+                      <td
+                        key={colIndex}
+                        className={cn(
+                          "px-4 py-3 text-[14px] md:text-[16px]",
+
+                          // 👉 STICKY FIX
+                          isLast &&
+                          "sticky right-0 z-10 bg-white  rounded-r-lg"
+                        )}
+                      >
+                        <div className="flex items-center justify-center">
                           {column?.renderer
                             ? column?.renderer({
                               rowData: row,

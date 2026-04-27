@@ -20,43 +20,43 @@ import Seo from "@/components/Seo"
 // State list
 const STATES: { name: string; slug: string; code: string; popular?: boolean }[] = [
   { name: "All India", slug: "all-india", code: "all" },
-  { name: "Andaman and Nicobar Islands", slug: "andaman-and-nicobar-islands", code: "AN" },
-  { name: "Andhra Pradesh", slug: "andhra-pradesh", popular: true, code: "AD" },
-  { name: "Arunachal Pradesh", slug: "arunachal-pradesh", code: "AR" },
-  { name: "Assam", slug: "assam", code: "AS" },
-  { name: "Bihar", slug: "bihar", code: "BR" },
-  { name: "Chandigarh", slug: "chandigarh", code: "CH" },
-  { name: "Chhattisgarh", slug: "chhattisgarh", code: "CG" },
-  { name: "Dadra and Nagar Haveli", slug: "dadra-and-nagar-haveli", code: "DN" },
-  { name: "Delhi", slug: "delhi", code: "DL" },
-  { name: "Daman and Diu", slug: "daman-and-diu", code: "DD" },
-  { name: "Goa", slug: "goa", code: "GA" },
-  { name: "Gujarat", slug: "gujarat", popular: true, code: "GJ" },
-  { name: "Haryana", slug: "haryana", code: "HR" },
-  { name: "Himachal Pradesh", slug: "himachal-pradesh", code: "HP" },
-  { name: "Jammu and Kashmir", slug: "jammu-and-kashmir", code: "JK" },
-  { name: "Jharkhand", slug: "jharkhand", code: "JH" },
-  { name: "Karnataka", slug: "karnataka", popular: true, code: "KA" },
-  { name: "Kerala", slug: "kerala", popular: true, code: "KL" },
-  { name: "Ladakh", slug: "ladakh", code: "LA" },
-  { name: "Lakshadweep", slug: "lakshadweep", code: "LD" },
-  { name: "Madhya Pradesh", slug: "madhya-pradesh", code: "MP" },
-  { name: "Maharashtra", slug: "maharashtra", popular: true, code: "MH" },
-  { name: "Manipur", slug: "manipur", code: "MN" },
-  { name: "Meghalaya", slug: "meghalaya", code: "ML" },
-  { name: "Mizoram", slug: "mizoram", code: "MZ" },
-  { name: "Nagaland", slug: "nagaland", code: "NL" },
-  { name: "Odisha", slug: "odisha", code: "OD" },
-  { name: "Pondicherry", slug: "pondicherry", code: "PY" },
-  { name: "Punjab", slug: "punjab", code: "PB" },
-  { name: "Rajasthan", slug: "rajasthan", code: "RJ" },
-  { name: "Sikkim", slug: "sikkim", code: "SK" },
-  { name: "Tamil Nadu", slug: "tamil-nadu", popular: true, code: "TN" },
-  { name: "Telangana", slug: "telangana", popular: true, code: "TS" },
-  { name: "Tripura", slug: "tripura", code: "TR" },
-  { name: "Uttar Pradesh", slug: "uttar-pradesh", popular: true, code: "UP" },
-  { name: "Uttarakhand", slug: "uttarakhand", code: "UK" },
-  { name: "West Bengal", slug: "west-bengal", code: "WB" },
+  { name: "Andaman and Nicobar Islands", slug: "andaman-and-nicobar-islands", code: "Andaman and Nicobar Islands" },
+  { name: "Andhra Pradesh", slug: "andhra-pradesh", popular: true, code: "Andhra Pradesh" },
+  { name: "Arunachal Pradesh", slug: "arunachal-pradesh", code: "Arunachal Pradesh" },
+  { name: "Assam", slug: "assam", code: "Assam" },
+  { name: "Bihar", slug: "bihar", code: "Bihar" },
+  { name: "Chandigarh", slug: "chandigarh", code: "Chandigarh" },
+  { name: "Chhattisgarh", slug: "chhattisgarh", code: "Chhattisgarh" },
+  { name: "Dadra and Nagar Haveli", slug: "dadra-and-nagar-haveli", code: "Dadra And Nagar Haveli" },
+  { name: "Delhi", slug: "delhi", code: "Delhi" },
+  { name: "Daman and Diu", slug: "daman-and-diu", code: "Daman and Diu" },
+  { name: "Goa", slug: "goa", code: "Goa" },
+  { name: "Gujarat", slug: "gujarat", popular: true, code: "Gujarat" },
+  { name: "Haryana", slug: "haryana", code: "Haryana" },
+  { name: "Himachal Pradesh", slug: "himachal-pradesh", code: "Himachal Pradesh" },
+  { name: "Jammu and Kashmir", slug: "Jammu-And-Kashmir", code: "Jammu And Kashmir" },
+  { name: "Jharkhand", slug: "jharkhand", code: "Jharkhand" },
+  { name: "Karnataka", slug: "Karnataka", popular: true, code: "Karnataka" },
+  { name: "Kerala", slug: "kerala", popular: true, code: "Kerala" },
+  { name: "Ladakh", slug: "ladakh", code: "Ladakh" },
+  { name: "Lakshadweep", slug: "lakshadweep", code: "Lakshadweep" },
+  { name: "Madhya Pradesh", slug: "madhya-pradesh", code: "Madhya Pradesh" },
+  { name: "Maharashtra", slug: "maharashtra", popular: true, code: "Maharashtra" },
+  { name: "Manipur", slug: "manipur", code: "Manipur" },
+  { name: "Meghalaya", slug: "meghalaya", code: "Meghalaya" },
+  { name: "Mizoram", slug: "mizoram", code: "Mizoram" },
+  { name: "Nagaland", slug: "nagaland", code: "Nagaland" },
+  { name: "Odisha", slug: "odisha", code: "Odisha" },
+  { name: "Pondicherry", slug: "pondicherry", code: "Pondicherry" },
+  { name: "Punjab", slug: "punjab", code: "Punjab" },
+  { name: "Rajasthan", slug: "rajasthan", code: "Rajasthan" },
+  { name: "Sikkim", slug: "sikkim", code: "Sikkim" },
+  { name: "Tamil Nadu", slug: "tamil-nadu", popular: true, code: "Tamil Nadu" },
+  { name: "Telangana", slug: "telangana", popular: true, code: "Telangana" },
+  { name: "Tripura", slug: "tripura", code: "Tripura" },
+  { name: "Uttar Pradesh", slug: "uttar-pradesh", popular: true, code: "Uttar Pradesh" },
+  { name: "Uttarakhand", slug: "uttarakhand", code: "Uttarakhand" },
+  { name: "West Bengal", slug: "west-bengal", code: "West Bengal" },
 ]
 
 const pageContent = {
@@ -125,16 +125,29 @@ export default function ClosingRanks() {
       desc: "Explore college-wise cut-offs and closing ranks from All India and State counselling for all rounds across UG, PG & Super-Specialization.",
     }
 
-  const fetchStateSummary = async (courseType: string) => {
-    try {
-      const res = await fetch(`/api/state-summary?courseType=${courseType}`)
-      const json = await res.json()
-      console.log("testing Data", json)
-      if (json?.success) {
-        setStateSummary(json.data)
-      }
-    } catch (err) {
-      console.error("State summary error:", err)
+  // const fetchStateSummary = async (courseType: string) => {
+  //   try {
+  //     const res = await fetch(`/api/state-summary?courseType=${courseType}`)
+  //     const json = await res.json()
+  //     console.log("testing Data", json)
+  //     if (json?.success) {
+  //       setStateSummary(json.data)
+  //     }
+  //   } catch (err) {
+  //     console.error("State summary error:", err)
+  //   }
+  // }
+
+  const fetchStateSummary = async (courseType: string, course?: string) => {
+    const url = `/api/state-summary?courseType=${courseType}${course ? `&course=${course}` : ""
+      }`
+
+    const res = await fetch(url)
+    const json = await res.json()
+
+    if (json?.success) {
+      console.log("json data", json?.data)
+      setStateSummary(json.data)
     }
   }
 
@@ -146,11 +159,17 @@ export default function ClosingRanks() {
   //   }
   // }, [predictorTypeList])
 
+  // useEffect(() => {
+  //   if (selectedType) {
+  //     fetchStateSummary(selectedType.text)
+  //   }
+  // }, [selectedType])
+
   useEffect(() => {
     if (selectedType) {
-      fetchStateSummary(selectedType.text)
+      fetchStateSummary(selectedType.text, selectedCourse?.text)
     }
-  }, [selectedType])
+  }, [selectedType, selectedCourse])
 
   const updateURL = useCallback((params: Record<string, string>, replace = true) => {
     const query = new URLSearchParams(params).toString();

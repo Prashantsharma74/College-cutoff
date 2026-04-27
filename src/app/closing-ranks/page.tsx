@@ -422,12 +422,17 @@ export default function ClosingRanks() {
                       course: selectedValue.text,
                     })
 
-                    // 🔥 KEYBOARD CLOSE
+                    // 🔥 STRONG KEYBOARD CLOSE
                     setTimeout(() => {
-                      if (document.activeElement instanceof HTMLElement) {
-                        document.activeElement.blur()
+                      const active = document.activeElement as HTMLElement
+                      if (active && typeof active.blur === "function") {
+                        active.blur()
                       }
-                    }, 100)
+
+                      // fallback (mobile safari fix)
+                      const inputs = document.querySelectorAll("input")
+                      inputs.forEach((inp) => inp.blur())
+                    }, 150)
                   }}
                   control={control}
                   defaultOption={{ id: course || "", text: course || "" }}

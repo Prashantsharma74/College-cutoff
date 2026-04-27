@@ -388,6 +388,26 @@ export default function ClosingRanks() {
                 errors={errors}
               />
               {selectedType?.text === "NEET UG" && (
+                // <SearchAndSelect
+                //   setValue={setValue}
+                //   name="course"
+                //   label="Select Course"
+                //   placeholder="Select Course"
+                //   value={selectedCourse}
+                //   onChange={({ selectedValue }) => {
+                //     setSelectedCourse(selectedValue)
+                //     clearErrors("course")
+                //     updateURL({ courseType: selectedType?.text || "", course: selectedValue.text })
+                //   }}
+                //   control={control}
+                //   defaultOption={{ id: course || "", text: course || "" }}
+                //   options={coursesList}
+                //   loading={isCourseLoading}
+                //   // disabled={isEmpty(coursesList)}
+                //   searchAPI={(txt, set) => autoComplete(txt, coursesList, set)}
+                //   errors={errors}
+                //   wrapperClass="md:max-w-[200px] w-full"
+                // />
                 <SearchAndSelect
                   setValue={setValue}
                   name="course"
@@ -397,13 +417,22 @@ export default function ClosingRanks() {
                   onChange={({ selectedValue }) => {
                     setSelectedCourse(selectedValue)
                     clearErrors("course")
-                    updateURL({ courseType: selectedType?.text || "", course: selectedValue.text })
+                    updateURL({
+                      courseType: selectedType?.text || "",
+                      course: selectedValue.text,
+                    })
+
+                    // 🔥 KEYBOARD CLOSE
+                    setTimeout(() => {
+                      if (document.activeElement instanceof HTMLElement) {
+                        document.activeElement.blur()
+                      }
+                    }, 100)
                   }}
                   control={control}
                   defaultOption={{ id: course || "", text: course || "" }}
                   options={coursesList}
                   loading={isCourseLoading}
-                  // disabled={isEmpty(coursesList)}
                   searchAPI={(txt, set) => autoComplete(txt, coursesList, set)}
                   errors={errors}
                   wrapperClass="md:max-w-[200px] w-full"

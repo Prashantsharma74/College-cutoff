@@ -407,6 +407,11 @@ export default function ClosingRanks() {
                   searchAPI={(txt, set) => autoComplete(txt, coursesList, set)}
                   errors={errors}
                   wrapperClass="md:max-w-[200px] w-full"
+                  inputProps={{
+                    onFocus: (e) => {
+                      e.target.blur();
+                    }
+                  }}
                 />
               )}
             </div>

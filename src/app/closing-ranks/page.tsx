@@ -422,25 +422,19 @@ export default function ClosingRanks() {
                       course: selectedValue.text,
                     })
                   }}
-                  // control={control}
-                  // defaultOption={{ id: course || "", text: course || "" }}
-                  // options={coursesList}
-                  // loading={isCourseLoading}
-                  // searchAPI={(txt, set) => autoComplete(txt, coursesList, set)}
-                  // wrapperClass="md:max-w-[200px] w-full"
-                  // errors={errors}
                   control={control}
-                  defaultOption={{ id: courseType || "", text: courseType || "" }}
-                  options={predictorTypeList}
-                  searchAPI={(txt, set) => autoComplete(txt, predictorTypeList, set)}
+                  defaultOption={{ id: course || "", text: course || "" }}
+                  options={coursesList}
+                  loading={isCourseLoading}
+                  searchAPI={(txt, set) => autoComplete(txt, coursesList, set)}
                   wrapperClass="md:max-w-[200px] w-full"
                   errors={errors}
 
-                // 🔥 KEYBOARD BLOCK FIX
-                // inputProps={{
-                //   readOnly: true,
-                //   onFocus: (e: any) => e.target.blur(),
-                // }}
+                  // 🔥 KEYBOARD BLOCK FIX
+                  // inputProps={{
+                  //   readOnly: true,
+                  //   onFocus: (e: any) => e.target.blur(),
+                  // }}
                 />
               )}
             </div>

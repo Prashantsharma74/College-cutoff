@@ -408,7 +408,8 @@ export default function ClosingRanks() {
                   errors={errors}
                   wrapperClass="md:max-w-[200px] w-full"
                   inputProps={{
-                    readOnly: true
+                    readOnly: true,
+                    onFocus: (e) => e.target.blur()
                   }}
                 />
               )}

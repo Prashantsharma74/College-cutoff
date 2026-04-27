@@ -409,34 +409,15 @@ export default function ClosingRanks() {
                 //   wrapperClass="md:max-w-[200px] w-full"
                 // />
                 <div
-                  className="md:max-w-[200px] w-full"
-                  onMouseDown={(e) => {
-                    const input = e.currentTarget.querySelector("input");
-
-                    if (input) {
-                      input.setAttribute("disabled", "true"); // 👈 focus block
-                    }
-
-                    setTimeout(() => {
-                      if (input) {
-                        input.removeAttribute("disabled"); // 👈 wapas enable
-                      }
-                    }, 200); // thoda delay taaki dropdown open ho jaye
-                  }}
-                  onTouchStart={(e) => {
-                    const input = e.currentTarget.querySelector("input");
-
-                    if (input) {
-                      input.setAttribute("disabled", "true");
-                    }
-
-                    setTimeout(() => {
-                      if (input) {
-                        input.removeAttribute("disabled");
-                      }
-                    }, 200);
+                  className="md:max-w-[200px] w-full relative"
+                  onClick={() => {
+                    const trigger = document.querySelector('[name="course"]');
+                    if (trigger) trigger.click(); // 👈 manually trigger dropdown
                   }}
                 >
+                  {/* 👇 overlay layer jo input ko block karega */}
+                  <div className="absolute inset-0 z-10" />
+
                   <SearchAndSelect
                     setValue={setValue}
                     name="course"

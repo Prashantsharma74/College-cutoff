@@ -410,13 +410,31 @@ export default function ClosingRanks() {
                 // />
                 <div
                   className="md:max-w-[200px] w-full"
-                  onClick={(e) => {
+                  onMouseDown={(e) => {
                     const input = e.currentTarget.querySelector("input");
 
-                    // 👇 delay so dropdown open ho jaye pehle
+                    if (input) {
+                      input.setAttribute("disabled", "true"); // 👈 focus block
+                    }
+
                     setTimeout(() => {
-                      if (input) input.blur();
-                    }, 0);
+                      if (input) {
+                        input.removeAttribute("disabled"); // 👈 wapas enable
+                      }
+                    }, 200); // thoda delay taaki dropdown open ho jaye
+                  }}
+                  onTouchStart={(e) => {
+                    const input = e.currentTarget.querySelector("input");
+
+                    if (input) {
+                      input.setAttribute("disabled", "true");
+                    }
+
+                    setTimeout(() => {
+                      if (input) {
+                        input.removeAttribute("disabled");
+                      }
+                    }, 200);
                   }}
                 >
                   <SearchAndSelect

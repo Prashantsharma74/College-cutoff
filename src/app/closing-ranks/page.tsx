@@ -410,19 +410,13 @@ export default function ClosingRanks() {
                 // />
                 <div
                   className="md:max-w-[200px] w-full"
-                  onMouseDown={(e) => {
+                  onClick={(e) => {
                     const input = e.currentTarget.querySelector("input");
-                    if (input) {
-                      input.blur();
-                    }
-                    e.preventDefault(); // 🔥 THIS IS KEY
-                  }}
-                  onTouchStart={(e) => {
-                    const input = e.currentTarget.querySelector("input");
-                    if (input) {
-                      input.blur();
-                    }
-                    e.preventDefault(); // 🔥 mobile ke liye important
+
+                    // 👇 delay so dropdown open ho jaye pehle
+                    setTimeout(() => {
+                      if (input) input.blur();
+                    }, 0);
                   }}
                 >
                   <SearchAndSelect

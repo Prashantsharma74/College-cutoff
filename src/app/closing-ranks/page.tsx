@@ -408,9 +408,7 @@ export default function ClosingRanks() {
                   errors={errors}
                   wrapperClass="md:max-w-[200px] w-full"
                   inputProps={{
-                    onFocus: (e) => {
-                      e.target.blur();
-                    }
+                    readOnly: true
                   }}
                 />
               )}

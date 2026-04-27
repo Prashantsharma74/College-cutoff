@@ -429,7 +429,7 @@ export default function ClosingRanks() {
                   disabled={isEmpty(coursesList)}
                   errors={errors}
                   wrapperClass="md:max-w-[200px] w-full"
-                  isSearchable={false}   // 👈 add this
+                  searchAPI={() => { }}   // 👈 empty function (disable search)
                 />
               )}
             </div>

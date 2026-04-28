@@ -150,7 +150,7 @@ export function Table({
                 <th className="px-4 py-3 text-left rounded-l-lg">#</th>
               )}
 
-              {columns?.map((column, index) => (
+              {/* {columns?.map((column, index) => (
                 <th
                   key={index}
                   className={cn(
@@ -158,6 +158,21 @@ export function Table({
                     "uppercase px-4 py-3 text-left text-[14px] md:text-[18px] font-medium tracking-wider",
                     index === columns.length - 1 &&
                     "sticky right-0 z-20 bg-[#2b6cb0] text-white rounded-r-lg"
+                  )}
+                >
+                  {column?.title}
+                </th>
+              ))} */}
+              {columns?.map((column, index) => (
+                <th
+                  key={index}
+                  className={cn(
+                    poppins.className,
+                    "uppercase px-4 py-3 text-left text-[14px] md:text-[18px] font-medium tracking-wider",
+
+                    // ✅ ONLY FOR Unlock Cut-off
+                    column?.title === "Unlock Cut-off" &&
+                    "sticky right-0 z-20 bg-[#2b6cb0] text-white"
                   )}
                 >
                   {column?.title}
@@ -224,7 +239,7 @@ export function Table({
                       </td>
                     )
                   })} */}
-                  {columns?.map((column, colIndex) => {
+                  {/* {columns?.map((column, colIndex) => {
                     const isLast = colIndex === columns.length - 1
 
                     return (
@@ -233,7 +248,6 @@ export function Table({
                         className={cn(
                           "px-4 py-3 text-[14px] md:text-[16px]",
 
-                          // 👉 STICKY FIX
                           isLast &&
                           "sticky right-0 z-10 bg-white  rounded-r-lg"
                         )}
@@ -250,6 +264,36 @@ export function Table({
                                 !row[column?.tableKey],
                               ],
                               "OR",
+                            )
+                              ? "NA"
+                              : row[column?.tableKey]}
+                        </div>
+                      </td>
+                    )
+                  })} */}
+                  {columns?.map((column, colIndex) => {
+                    const isUnlockColumn = column?.tableKey === "action"
+
+                    return (
+                      <td
+                        key={colIndex}
+                        className={cn(
+                          "px-4 py-3 text-[14px] md:text-[16px]",
+
+                          // ✅ ONLY unlock column sticky
+                          isUnlockColumn &&
+                          "sticky right-0 z-10 bg-white rounded-r-lg shadow-left"
+                        )}
+                      >
+                        <div className="flex items-center justify-center">
+                          {column?.renderer
+                            ? column?.renderer({
+                              rowData: row,
+                              cellData: row[column?.tableKey],
+                            })
+                            : shouldRenderComponent(
+                              [row[column?.tableKey] === "-", !row[column?.tableKey]],
+                              "OR"
                             )
                               ? "NA"
                               : row[column?.tableKey]}

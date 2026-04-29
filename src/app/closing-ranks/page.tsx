@@ -645,9 +645,18 @@ export default function ClosingRanks() {
                           : "No Data Available"}
                       </span> */}
                       <span>
-                        {hasData
+                        {/* {hasData
                           ? `Latest ${meta.minYear} – ${meta.maxYear} Counselling Data`
-                          : "Coming Soon..."}
+                          : "Coming Soon..."} */}
+                        {isLoading ? (
+                          <span className="text-gray-400 animate-pulse">
+                            Loading...
+                          </span>
+                        ) : hasData ? (
+                          `Latest ${meta.minYear} – ${meta.maxYear} Counselling Data`
+                        ) : (
+                          "Coming Soon..."
+                        )}
                       </span>
                     </div>
 

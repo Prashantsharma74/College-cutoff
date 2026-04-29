@@ -111,6 +111,7 @@ export default function ClosingRanks() {
   const [coursesList, setCoursesList] = useState<IOption[]>([])
   const [isCourseLoading, setIsCourseLoading] = useState<boolean>(false)
   const [stateSummary, setStateSummary] = useState<any[]>([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const searchParams = useSearchParams()
   const courseType = searchParams.get("courseType")
@@ -151,23 +152,56 @@ export default function ClosingRanks() {
   //   }
   // }
 
+  // const fetchStateSummary = async (courseType: string, course?: string) => {
+
+  //   if (courseType === "NEET UG" && !course) {
+  //     console.log("⛔ Skip API (NEET UG without course)")
+  //     setStateSummary([])
+  //     return
+  //   }
+
+  //   const url = `/api/state-summary?courseType=${courseType}${course ? `&course=${course}` : ""
+  //     }`
+
+  //   const res = await fetch(url)
+  //   const json = await res.json()
+
+  //   if (json?.success) {
+  //     console.log("json data", json?.data)
+  //     setStateSummary(json.data)
+  //   }
+  // }
+
   const fetchStateSummary = async (courseType: string, course?: string) => {
 
-    if (courseType === "NEET UG" && !course) {
-      console.log("⛔ Skip API (NEET UG without course)")
-      setStateSummary([])
-      return
-    }
+    // 🔥 START LOADING
+    setIsLoading(true)
 
-    const url = `/api/state-summary?courseType=${courseType}${course ? `&course=${course}` : ""
-      }`
+    try {
+      // 🚫 SKIP CASE
+      if (courseType === "NEET UG" && !course) {
+        console.log("⛔ Skip API (NEET UG without course)")
+        setStateSummary([])
+        setIsLoading(false)
+        return
+      }
 
-    const res = await fetch(url)
-    const json = await res.json()
+      const url = `/api/state-summary?courseType=${courseType}${course ? `&course=${course}` : ""
+        }`
 
-    if (json?.success) {
-      console.log("json data", json?.data)
-      setStateSummary(json.data)
+      const res = await fetch(url)
+      const json = await res.json()
+
+      if (json?.success) {
+        console.log("json data", json?.data)
+        setStateSummary(json.data)
+      }
+
+    } catch (err) {
+      console.error("API error", err)
+    } finally {
+      // 🔥 STOP LOADING (IMPORTANT)
+      setIsLoading(false)
     }
   }
 
@@ -571,7 +605,23 @@ export default function ClosingRanks() {
                       <GraduationCap className="h-4 w-4 text-gray-400" />
                       <span>
 
-                        {count === 0 ? (
+                        {/* {count === 0 ? (
+                          <span className="font-semibold text-gray-500">
+                            Coming Soon...
+                          </span>
+                        ) : (
+                          <>
+                            <span className="font-semibold text-gray-800">
+                              {count}
+                            </span>{" "}
+                            Colleges Available
+                          </>
+                        )} */}
+                        {isLoading ? (
+                          <span className="font-semibold text-gray-400 animate-pulse">
+                            Loading...
+                          </span>
+                        ) : count === 0 ? (
                           <span className="font-semibold text-gray-500">
                             Coming Soon...
                           </span>

@@ -349,7 +349,7 @@ export default function CollegeListClosingRanksPage() {
           <>
             {/* Mobile */}
             <span className="font-bold text-[14px]  text-[12px] font-medium">
-              
+              Unlock
             </span>
           </>
         )}
@@ -445,7 +445,7 @@ export default function CollegeListClosingRanksPage() {
                 </Link>
               ) : (
                 <Button
-                  className="flex items-center gap-2 bg-[#f37a3a] hover:bg-[#ef6820] text-white px-3 py-1.5 rounded-lg text-xs font-medium transition w-fit"
+                  className="flex items-center gap-2 bg-[#f37a3a] hover:bg-[#ef6820] text-white px-5 py-3 rounded-lg text-xs font-medium transition w-fit"
                   // className="py-2 px-2 text-[14px] w-fit disabled:bg-color-table-header disabled:text-white disabled:cursor-not-allowed min-w-[100px] flex items-center gap-2"
                   variant="primary"
                   onClick={() => {

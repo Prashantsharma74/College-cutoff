@@ -172,7 +172,7 @@ export function Table({
 
                     // ✅ ONLY FOR Unlock Cut-off
                     column?.title === "Unlock Cut-off" &&
-                    "sticky right-0 z-20 bg-[#2b6cb0] text-white"
+                    "sticky right-0 z-20 bg-[#1a6fc2] text-white"
                   )}
                 >
                   {column?.title}

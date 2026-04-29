@@ -349,7 +349,7 @@ export default function CollegeListClosingRanksPage() {
           <>
             {/* Mobile */}
             <span className="font-bold text-[14px]  text-[12px] font-medium">
-              Unlock
+              
             </span>
           </>
         )}
@@ -857,10 +857,10 @@ export default function CollegeListClosingRanksPage() {
                 <span className="emoji2" style={{ fontSize: "18px" }}>🎁</span>
                 <span className="text">
                   <span className="text-black first-unlock" >First Unlock @</span>
-                  <span className="price text-orange-500" > ₹9</span>
+                  <span className="price text-orange-500" > ₹{amount === 99 ? 19 : 9}</span>
                   <span className="dot"> • </span>
                   <span className="first-unlock">Then</span>
-                  <span className="price highlight text-orange-500" > ₹49 </span>
+                  <span className="price highlight text-orange-500" > ₹{amount} </span>
                   <span className="sub first-unlock">per college</span>
                   <span className="emoji1" style={{ fontSize: "18px" }}>🎁</span>
                 </span>
@@ -871,9 +871,9 @@ export default function CollegeListClosingRanksPage() {
               <div className="offer-banner-mobile">
                 <span className="text-mobile">
                   <span className="text-black first-unlock" >First Unlock @</span>
-                  <span className="price-mobile text-orange-500"> ₹9</span>
+                  <span className="price-mobile text-orange-500"> ₹{amount === 99 ? 19 : 9}</span>
                   <span> Then</span>
-                  <span className="price-mobile highlight text-orange-500" > ₹49 </span>
+                  <span className="price-mobile highlight text-orange-500" > ₹{amount} </span>
                   <span className="sub-mobile">per college</span>
                   <span className="emoji1-mobile" style={{ fontSize: "18px" }}>🎁</span>
                 </span>

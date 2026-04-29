@@ -279,8 +279,6 @@ export function Table({
                         key={colIndex}
                         className={cn(
                           "px-4 py-3 text-[14px] md:text-[16px]",
-
-                          // ✅ ONLY unlock column sticky
                           isUnlockColumn &&
                           "sticky right-0 z-10 bg-white rounded-r-lg shadow-left"
                         )}

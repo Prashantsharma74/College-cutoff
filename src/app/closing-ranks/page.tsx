@@ -138,7 +138,27 @@ export default function ClosingRanks() {
   //   }
   // }
 
+  // const fetchStateSummary = async (courseType: string, course?: string) => {
+  //   const url = `/api/state-summary?courseType=${courseType}${course ? `&course=${course}` : ""
+  //     }`
+
+  //   const res = await fetch(url)
+  //   const json = await res.json()
+
+  //   if (json?.success) {
+  //     console.log("json data", json?.data)
+  //     setStateSummary(json.data)
+  //   }
+  // }
+
   const fetchStateSummary = async (courseType: string, course?: string) => {
+
+    if (courseType === "NEET UG" && !course) {
+      console.log("⛔ Skip API (NEET UG without course)")
+      setStateSummary([])
+      return
+    }
+
     const url = `/api/state-summary?courseType=${courseType}${course ? `&course=${course}` : ""
       }`
 

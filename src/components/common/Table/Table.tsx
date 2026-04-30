@@ -283,7 +283,7 @@ export function Table({
                           "sticky right-0 z-10 bg-white rounded-r-lg shadow-left"
                         )}
                       >
-                        <div className="flex items-center justify-center">
+                        <div className="flex items-start">
                           {column?.renderer
                             ? column?.renderer({
                               rowData: row,

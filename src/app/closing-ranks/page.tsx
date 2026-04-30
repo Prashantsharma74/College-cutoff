@@ -664,7 +664,7 @@ export default function ClosingRanks() {
 
                   {/* ⚡ CTA */}
                   <div className="mt-5 flex items-center justify-between">
-                    <span className="text-orange-500">
+                    <span className="text-orange-500 font-bold">
                       View Closing Ranks
                     </span>
 

@@ -378,7 +378,7 @@ input[type="number"]::-webkit-outer-spin-button {
     align-items: center;
     flex-wrap: wrap;
     gap: 16px;
-    padding: 10px 14px;
+    padding: 10px 4px;
     border-radius: 12px;
     background: radial-gradient(ellipse at 50% 120%,
         rgba(255, 221, 87, 0.4),

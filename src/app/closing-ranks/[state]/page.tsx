@@ -348,8 +348,8 @@ export default function CollegeListClosingRanksPage() {
         {isNewUser && (
           <>
             {/* Mobile */}
-            <span className="font-bold text-[14px]  text-[12px] font-medium">
-              Unlock
+            <span className="font-bold text-[14px] py-3 text-[12px] font-medium">
+              {/* Unlock */}
             </span>
           </>
         )}
@@ -373,7 +373,7 @@ export default function CollegeListClosingRanksPage() {
             ₹{finalAmount}
           </span>
         )}
-        
+
         {/* {isNewUser && (
           <>
             <span className="hidden md:flex items-center gap-1">
@@ -754,13 +754,14 @@ export default function CollegeListClosingRanksPage() {
                   pageSize={pageSize}
                   onChange={(size) => {
                     setPageSize(size)
-                    setCurrentPage(1) // reset page
-                    updateURL(1, size) // update URL
-                    // getData();   // fetch new data
+                    setCurrentPage(1)
+                    updateURL(1, size)
+                    // getData(); 
                   }}
                 />
               </div>
-              <div className="flex relative items-start md:justify-end flex-col md:flex-row w-full mb-4 mt-2 gap-2 md:gap-8">
+              {/* <div className="flex relative items-start md:justify-end flex-col md:flex-row w-full mb-4 mt-2 gap-2 md:gap-8"> */}
+              <div className="flex relative flex-col-reverse md:flex-row md:justify-end md:items-end w-full w-full mb-4 mt-2 gap-2">
                 <SearchAndSelect
                   name="instituteType"
                   labelNode={
@@ -867,7 +868,7 @@ export default function CollegeListClosingRanksPage() {
               </div>
             </div>
 
-            <div className="offer-design-mobile">
+            {/* <div className="offer-design-mobile">
               <div className="offer-banner-mobile">
                 <span className="text-mobile">
                   <span className="text-black first-unlock" >First Unlock @</span>
@@ -876,6 +877,21 @@ export default function CollegeListClosingRanksPage() {
                   <span className="price-mobile highlight text-orange-500" > ₹{amount} </span>
                   <span className="sub-mobile">per college</span>
                   <span className="emoji1-mobile" style={{ fontSize: "18px" }}>🎁</span>
+                </span>
+              </div>
+            </div> */}
+
+            <div className="offer-design-mobile">
+              <div className="offer-banner-mobile">
+                <span className="text-mobile">
+                  <span className="text-black first-unlock">First Unlock @</span>
+                  <span className="price-mobile text-orange-500"> ₹{amount === 99 ? 19 : 9}</span>
+                  <span> Then</span>
+                  <span className="price-mobile highlight text-orange-500"> ₹{amount} </span>
+                  <span className="sub-mobile">per college</span>
+                  <span className="inline-flex items-center whitespace-nowrap ml-1">
+                    🎁
+                  </span>
                 </span>
               </div>
             </div>
@@ -1301,7 +1317,7 @@ export default function CollegeListClosingRanksPage() {
         {/* Mobile View */}
         <section className="md:hidden w-full py-3 px-3">
           {/* <div className="px-2 py-2 bg-white rounded-2xl shadow-md p-4 space-y-4"> */}
-<div className="px-2 py-2 bg-white rounded-2xl p-4 space-y-4 
+          <div className="px-2 py-2 bg-white rounded-2xl p-4 space-y-4 
 shadow-[0_-2px_10px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.12)]">
             {/* 🔵 HEADER */}
             <div className="flex justify-between items-start">

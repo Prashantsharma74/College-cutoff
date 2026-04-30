@@ -498,8 +498,7 @@ export function UnlockPopover({
             isMobile && "landscape:h-[240px] overflow-y-auto",
           )}
         >
-          {/* <div className="flex gap-4 font-semibold items-center"> */}
-          <div className="flex flex-col sm:flex-row gap-3 font-semibold items-stretch">
+          <div className="flex gap-4 font-semibold items-center">
             <button
               type="button"
               onClick={() => setActiveTab("single")}

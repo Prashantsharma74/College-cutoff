@@ -601,22 +601,9 @@ export default function ClosingRanks() {
                   {/* 📊 Info Section */}
                   <div className="space-y-3 text-sm text-gray-600">
 
-                    <div className="flex items-center gap-2">
+                    {/* <div className="flex items-center gap-2">
                       <GraduationCap className="h-4 w-4 text-gray-400" />
                       <span>
-
-                        {/* {count === 0 ? (
-                          <span className="font-semibold text-gray-500">
-                            Coming Soon...
-                          </span>
-                        ) : (
-                          <>
-                            <span className="font-semibold text-gray-800">
-                              {count}
-                            </span>{" "}
-                            Colleges Available
-                          </>
-                        )} */}
                         {isLoading ? (
                           <span className="font-semibold text-gray-400 animate-pulse">
                             Loading...
@@ -634,20 +621,35 @@ export default function ClosingRanks() {
                           </>
                         )}
                       </span>
-                    </div>
+                    </div> */}
 
-                    <div className="flex items-center gap-2">
+                    {selectedType?.text && (
+                      <div className="flex items-center gap-2">
+                        <GraduationCap className="h-4 w-4 text-gray-400" />
+                        <span>
+                          {isLoading ? (
+                            <span className="font-semibold text-gray-400 animate-pulse">
+                              Loading...
+                            </span>
+                          ) : count === 0 ? (
+                            <span className="font-semibold text-gray-500">
+                              Coming Soon...
+                            </span>
+                          ) : (
+                            <>
+                              <span className="font-semibold text-gray-800">
+                                {count}
+                              </span>{" "}
+                              Colleges Available
+                            </>
+                          )}
+                        </span>
+                      </div>
+                    )}
+
+                    {/* <div className="flex items-center gap-2">
                       <BarChart3 className="h-4 w-4 text-gray-400" />
-                      {/* <span>Latest 2024 & 2025 Counselling Data</span> */}
-                      {/* <span>
-                        {meta?.minYear && meta?.maxYear
-                          ? `Latest ${meta.minYear} – ${meta.maxYear} Counselling Data`
-                          : "No Data Available"}
-                      </span> */}
                       <span>
-                        {/* {hasData
-                          ? `Latest ${meta.minYear} – ${meta.maxYear} Counselling Data`
-                          : "Coming Soon..."} */}
                         {isLoading ? (
                           <span className="text-gray-400 animate-pulse">
                             Loading...
@@ -658,7 +660,24 @@ export default function ClosingRanks() {
                           "Coming Soon..."
                         )}
                       </span>
-                    </div>
+                    </div> */}
+
+                    {selectedType?.text && (
+                      <div className="flex items-center gap-2">
+                        <BarChart3 className="h-4 w-4 text-gray-400" />
+                        <span>
+                          {isLoading ? (
+                            <span className="text-gray-400 animate-pulse">
+                              Loading...
+                            </span>
+                          ) : hasData ? (
+                            `Latest ${meta.minYear} – ${meta.maxYear} Counselling Data`
+                          ) : (
+                            "Coming Soon..."
+                          )}
+                        </span>
+                      </div>
+                    )}
 
                   </div>
 

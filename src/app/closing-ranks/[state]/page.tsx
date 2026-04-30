@@ -139,47 +139,11 @@ export default function CollegeListClosingRanksPage() {
   }
 
   const [showUnlockPopover, setShowUnlockPopover] = useState(false);
-  // const [rowData, setRowData] = useState<any>(null);
-  // const [processingPayment, setProcessingPayment] = useState<any>(false);
 
-  // useEffect(() => {
-  //   setCurrentPage(1)
-  //   updateURL(1, pageSize)
-  //   getData(1,"update")
-  // }, [updateUI, selectedInstituteType, selectedState, pageSize])
-
-  // useEffect(() => {
-  //   //     setCurrentPage(currentPage);
-  //   updateURL(currentPage, pageSize)
-  //   getData(currentPage,"first")
-  // }, [currentPage])
   useEffect(() => {
     const timeout = setTimeout(() => getData(currentPage, "new One"), 200)
     return () => clearTimeout(timeout)
   }, [updateUI, selectedInstituteType, selectedState, pageSize, currentPage])
-
-  // useEffect(() => {
-  //   async function checkUser() {
-  //     const user = await fetchData({
-  //       url: "/api/user",
-  //       method: "GET",
-  //       noToast: true,
-  //     })
-
-  //     if (!user?.success) return
-
-  //     const res = await fetchData({
-  //       url: "/api/purchase/all-purchase",
-  //       method: "GET",
-  //       data: { phone: user?.payload?.phone },
-  //       noToast: true,
-  //     })
-
-  //     setIsNewUser(!res?.data?.length)
-  //   }
-
-  //   checkUser()
-  // }, [])
 
   const finalAmount = isNewUser
     ? amount === 49
@@ -190,17 +154,12 @@ export default function CollegeListClosingRanksPage() {
     : amount
 
   async function getData(page: number, data: string) {
-    // console.log("GET DATA: ", data)
-    // Type guard to ensure the key is valid
     function isValidPriceTypeKey(key: string): key is keyof typeof priceType {
       return key in priceType
     }
     try {
-
       setIsLoading(true)
 
-
-      // const page = Number(getSearchParams("page") || 1)
       if (stateCode !== "all") {
         const priceTypeName =
           courseType && courseType.includes(" ")
@@ -254,7 +213,6 @@ export default function CollegeListClosingRanksPage() {
             noToast: true,
           }),
         ])
-        // console.log("Price: ",price)
         if (price?.success) {
           setAmount(price?.payload?.data?.price)
         }
@@ -400,7 +358,6 @@ export default function CollegeListClosingRanksPage() {
         disableMobStaticLeft: true,
       },
       { title: "Institute Type", tableKey: "instituteType", width: "150px" },
-      // { title: "State", tableKey: "state", width: "150px" },
       {
         title: "Course Type",
         tableKey: "courseType",
@@ -553,7 +510,7 @@ export default function CollegeListClosingRanksPage() {
     ]
     if (stateCode === "all" || stateCode === "All") {
       columns.splice(
-        columns.length - 1, // Insert before the last column
+        columns.length - 1,
         0,
         { title: "State", tableKey: "state", width: "150px" },
       )
@@ -706,15 +663,7 @@ export default function CollegeListClosingRanksPage() {
       <div>
         <section className="w-full py-12 md:py-16 bg-gradient-to-r from-yellow-50 to-emerald-50 relative overflow-hidden">
           <Container className="container px-4 md:px-6">
-            {/* <Link
-                href={backURL()}
-                className="inline-flex items-center text-yellow-600 hover:text-yellow-700 mb-6"
-              >
-                <ChevronLeft className="h-4 w-4 mr-1" />
-                Back to All States
-              </Link> */}
 
-            {/* ➡️ Right: Breadcrumbs */}
             <div className="md:text-right">
               <Breadcrumbs />
             </div>

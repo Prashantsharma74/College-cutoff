@@ -168,7 +168,7 @@ export function Table({
                   key={index}
                   className={cn(
                     poppins.className,
-                    "uppercase px-4 py-3 text-left text-[14px] md:text-[18px] font-medium tracking-wider",
+                    "uppercase px-4 py-3 text-left text-[16px] md:text-[18px] font-medium tracking-wider",
 
                     // ✅ ONLY FOR Unlock Cut-off
                     column?.title === "Unlock Cut-off" &&

@@ -126,13 +126,15 @@ export function UnlockPopover({
   const renderHeaderTitle = (): ReactNode => {
     if (activeTab === "single") {
       return (
-        <h1 className="text-center text-xl font-bold leading-tight text-white md:py-3">
+        // <h1 className="text-center text-xl font-bold leading-tight text-white md:py-3">
+        <h1 className="text-center text-sm sm:text-lg md:text-xl font-bold leading-snug text-white px-2">
           {titleSingle ? titleSingle : "Please make payment to unlock"}
         </h1>
       )
     } else {
       return (
-        <h1 className="text-center text-xl font-bold leading-tight text-white md:py-3">
+        // <h1 className="text-center text-xl font-bold leading-tight text-white md:py-3">
+        <h1 className="text-center text-sm sm:text-lg md:text-xl font-bold leading-snug text-white px-2">
           {titleState ? titleState : "Please make payment to unlock all"}
         </h1>
       )
@@ -444,12 +446,13 @@ export function UnlockPopover({
       isOpen={isOpen}
       onClose={onClose}
       height="150px"
-      popupClass="w-[340px] pc:w-[480px] md:w-[560px]"
+      // popupClass="w-[340px] pc:w-[480px] md:w-[560px]"
+      popupClass="w-[95%] max-w-[560px]"
       closeIconClass="text-white hover:text-white"
     >
 
       <div className="w-full max-w-[560px] overflow-hidden rounded-xl bg-white shadow-xl">
-        <div className="bg-gradient-to-r from-[#0A5092] to-[#2563EB] p-4 sm:p-6 text-white relative overflow-hidden">
+        <div className="bg-gradient-to-r from-[#0A5092] to-[#2563EB] p-2 sm:p-6 text-white relative overflow-hidden">
 
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
           <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-400/20 rounded-full blur-3xl" />
@@ -491,84 +494,79 @@ export function UnlockPopover({
 
         <div
           className={cn(
-            "p-4",
+            "p-3",
             isMobile && "landscape:h-[240px] overflow-y-auto",
           )}
         >
-          <div className="mb-4">
-            <div className="flex gap-4 font-semibold items-center">
-              <button
-                type="button"
-                onClick={() => setActiveTab("single")}
-                className={`flex-1 p-2 text-[15px] rounded-lg transition ${activeTab === "single"
-                  ? "bg-[#0F63BF] text-white"
-                  : "bg-white border border-blue-800 text-gray-700"
-                  }`}
-              >
-                <div className="font-semibold pt-1">CONTINUE WITH</div>
-                <div className="mt-1 font-semibold">THIS COLLEGE</div>
-                <div className="font-bold">₹{amount}</div>
-              </button>
+          {/* <div className="flex gap-4 font-semibold items-center"> */}
+          <div className="flex flex-col sm:flex-row gap-3 font-semibold items-stretch">
+            <button
+              type="button"
+              onClick={() => setActiveTab("single")}
+              className={`flex-1 p-2 text-[15px] rounded-lg transition ${activeTab === "single"
+                ? "bg-[#0F63BF] text-white"
+                : "bg-white border border-blue-800 text-gray-700"
+                }`}
+            >
+              <div className="font-semibold pt-1">CONTINUE WITH</div>
+              <div className="mt-1 font-semibold">THIS COLLEGE</div>
+              <div className="font-bold">₹{amount}</div>
+            </button>
 
-              <span className="text-gray-500 text-[16px] font-medium">or</span>
+            <span className="text-gray-500 text-[16px] font-medium">or</span>
 
-              <button
-                type="button"
-                onClick={() => setActiveTab("state")}
-                className={`relative flex-1 p-2 rounded-lg text-[15px] transition ${activeTab === "state"
-                  ? "bg-[#0F63BF] text-white"
-                  : "bg-white border border-blue-800 text-gray-700"
-                  }`}
-                disabled={stateAmount == null}
-              >
-                <p className="font-medium flex items-center justify-start gap-1">
-                  <span className="absolute -top-2.5 right-2 text-xs bg-color-accent text-white px-2 py-0.5 rounded">
-                    Special Offer
-                  </span>
+            <button
+              type="button"
+              onClick={() => setActiveTab("state")}
+              className={`relative flex-1 p-2 rounded-lg text-[15px] transition ${activeTab === "state"
+                ? "bg-[#0F63BF] text-white"
+                : "bg-white border border-blue-800 text-gray-700"
+                }`}
+              disabled={stateAmount == null}
+            >
+              <p className="font-medium flex items-center justify-start gap-1">
+                <span className="absolute -top-2.5 right-2 text-xs bg-color-accent text-white px-2 py-0.5 rounded">
+                  Special Offer
+                </span>
+              </p>
+
+              <div className="font-semibold pt-1">
+                BUY ALL {collegeCount}{" "}
+                {stateName?.toUpperCase()} COLLEGES IN ONE CLICK
+              </div>
+              {stateAmount != null && (
+                <p className={`text-xl font-bold ${activeTab === "state" ? "text-white" : "text-color-accent "}`}>
+                  <strong> ₹{stateAmount} /-</strong>
                 </p>
-
-                <div className="font-semibold pt-1">
-                  BUY ALL {collegeCount}{" "}
-                  {stateName?.toUpperCase()} COLLEGES IN ONE CLICK
-                </div>
-                {stateAmount != null && (
-                  <p className={`text-xl font-bold ${activeTab === "state" ? "text-white" : "text-color-accent "}`}>
-                    <strong> ₹{stateAmount} /-</strong>
-                  </p>
-                )}
-              </button>
-            </div>
-
+              )}
+            </button>
           </div>
 
           <div className="border-t border-gray-200 my-4"></div>
+          <div className="bg-white rounded-xl shadow-md border p-3 flex items-center gap-3">
 
-          <div className="">
-            <div className="bg-white rounded-xl shadow-md border p-3 flex items-center gap-3">
+            {/* icon */}
+            <div className="bg-blue-100 text-blue-600 p-2 rounded-lg">
+              📱
+            </div>
 
-              {/* icon */}
-              <div className="bg-blue-100 text-blue-600 p-2 rounded-lg">
-                📱
-              </div>
+            {/* input section */}
+            <div className="flex flex-col flex-1">
+              <label className="text-xs text-gray-500 mb-1">
+                Enter Phone Number
+              </label>
 
-              {/* input section */}
-              <div className="flex flex-col flex-1">
-                <label className="text-xs text-gray-500 mb-1">
-                  Enter Phone Number
-                </label>
+              <div className="flex items-center gap-2">
+                <span className="text-gray-700 font-medium">+91</span>
 
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-700 font-medium">+91</span>
-
-                  <input
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="XXXXXXXXXX"
-                    className="w-full outline-none text-lg font-semibold tracking-wide"
-                    maxLength={10}
-                  />
-                </div>
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="XXXXXXXXXX"
+                  className="w-full outline-none text-lg font-semibold tracking-wide"
+                  maxLength={10}
+                />
               </div>
             </div>
           </div>

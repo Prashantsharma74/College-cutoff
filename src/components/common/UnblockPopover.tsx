@@ -442,243 +442,45 @@ export function UnlockPopover({
   }
 
   return (
-    // <AnimatedPopup
-    //   isOpen={isOpen}
-    //   onClose={onClose}
-    //   height="150px"
-    //   // popupClass="w-[340px] pc:w-[480px] md:w-[560px]"
-    //   popupClass="w-[95%] max-w-[560px]"
-    //   closeIconClass="text-white hover:text-white"
-    // >
-
-    // <AnimatedPopup
-    //   isOpen={isOpen}
-    //   onClose={onClose}
-    //   height="150px"
-    //   popupClass="w-[95%] max-w-[560px]"
-    //   closeIconClass="text-black hover:text-gray-700 transition"
-    // >
-
-    //   <div className="w-full max-w-[560px] overflow-hidden rounded-xl bg-white shadow-xl">
-    //     <div className="bg-gradient-to-r from-[#0A5092] to-[#2563EB] p-2 sm:p-6 text-white relative overflow-hidden">
-
-    //       <div className="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
-    //       <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-400/20 rounded-full blur-3xl" />
-
-    //       <motion.div
-    //         initial={{ opacity: 0, y: -10 }}
-    //         animate={{ opacity: 1, y: 0 }}
-    //         transition={{ duration: 0.5 }}
-    //         className="flex items-center justify-center bg-white/90 backdrop-blur-md border border-white/30 text-gray-800 rounded-2xl px-1 py-1 mb-2 text-sm sm:text-base font-medium shadow-md"
-    //       >
-    //         <motion.span
-    //           animate={{ rotate: [0, 15, -10, 15, 0] }}
-    //           transition={{ repeat: Infinity, duration: 1.5 }}
-    //           className="mr-2 text-lg"
-    //         >
-    //           🎉
-    //         </motion.span>
-
-    //         Unlock your first college at just
-
-    //         <span className="mx-2 font-bold text-orange-600 text-base sm:text-lg">
-    //           ₹{amount}
-    //         </span>
-
-    //         <span className="text-gray-500 ml-1 text-xs sm:text-sm">
-    //           (Limited Offer)
-    //         </span>
-    //       </motion.div>
-
-    //       <motion.div
-    //         initial={{ opacity: 0, y: 10 }}
-    //         animate={{ opacity: 1, y: 0 }}
-    //         transition={{ delay: 0.2, duration: 0.5 }}
-    //       >
-    //         {renderHeaderTitle()}
-    //       </motion.div>
-
-    //     </div>
-
-    //     <div
-    //       className={cn(
-    //         "p-3",
-    //         isMobile && "landscape:h-[240px] overflow-y-auto",
-    //       )}
-    //     >
-    //       <div className="flex gap-4 font-semibold items-center">
-    //         <button
-    //           type="button"
-    //           onClick={() => setActiveTab("single")}
-    //           className={`flex-1 p-2 text-[15px] rounded-lg transition ${activeTab === "single"
-    //             ? "bg-[#0F63BF] text-white"
-    //             : "bg-white border border-blue-800 text-gray-700"
-    //             }`}
-    //         >
-    //           <div className="font-semibold pt-1">CONTINUE WITH</div>
-    //           <div className="mt-1 font-semibold">THIS COLLEGE</div>
-    //           <div className="font-bold">₹{amount}</div>
-    //         </button>
-
-    //         <span className="text-gray-500 text-[16px] font-medium">or</span>
-
-    //         <button
-    //           type="button"
-    //           onClick={() => setActiveTab("state")}
-    //           className={`relative flex-1 p-2 rounded-lg text-[15px] transition ${activeTab === "state"
-    //             ? "bg-[#0F63BF] text-white"
-    //             : "bg-white border border-blue-800 text-gray-700"
-    //             }`}
-    //           disabled={stateAmount == null}
-    //         >
-    //           <p className="font-medium flex items-center justify-start gap-1">
-    //             <span className="absolute -top-2.5 right-2 text-xs bg-color-accent text-white px-2 py-0.5 rounded">
-    //               Special Offer
-    //             </span>
-    //           </p>
-
-    //           <div className="font-semibold pt-1">
-    //             BUY ALL {collegeCount}{" "}
-    //             {stateName?.toUpperCase()} COLLEGES IN ONE CLICK
-    //           </div>
-    //           {stateAmount != null && (
-    //             <p className={`text-xl font-bold ${activeTab === "state" ? "text-white" : "text-color-accent "}`}>
-    //               <strong> ₹{stateAmount} /-</strong>
-    //             </p>
-    //           )}
-    //         </button>
-    //       </div>
-
-    //       <div className="border-t border-gray-200 my-4"></div>
-    //       <div className="bg-white rounded-xl shadow-md border p-3 flex items-center gap-3">
-
-    //         <div className="bg-blue-100 text-blue-600 p-2 rounded-lg">
-    //           📱
-    //         </div>
-
-    //         <div className="flex flex-col flex-1">
-    //           <label className="text-xs text-gray-500 mb-1">
-    //             Enter Phone Number
-    //           </label>
-
-    //           <div className="flex items-center gap-2">
-    //             <span className="text-gray-700 font-medium">+91</span>
-
-    //             <input
-    //               type="tel"
-    //               value={phone}
-    //               onChange={(e) => setPhone(e.target.value)}
-    //               placeholder="XXXXXXXXXX"
-    //               className="w-full outline-none text-lg font-semibold tracking-wide"
-    //               maxLength={10}
-    //             />
-    //           </div>
-    //         </div>
-    //       </div>
-
-    //       <div className="mb-4 mt-2">
-    //         <h3 className="font-semibold text-gray-800 text-lg mb-3 text-left">
-    //           What You&#39;ll Get :
-    //         </h3>
-    //         <div className="space-y-3 text-[20px] text-gray-700">
-    //           {renderWhatYouGet()}
-    //         </div>
-    //       </div>
-
-    //       <div className="border-t border-gray-200 my-4"></div>
-
-    //       <div className="text-center flex items-center justify-center">
-    //         <Button
-    //           className="flex items-center justify-center text-lg font-medium  uppercase"
-    //           onClick={handleConfirm}
-    //           disabled={
-    //             loading || (activeTab === "state" && stateAmount == null)
-    //           }
-    //         >
-    //           <span className="mr-2">
-    //             {loading
-    //               ? "Processing..."
-    //               : `UNLOCK NOW @ ₹${activeTab === "single" ? amount : (stateAmount ?? amount)}`}
-    //           </span>
-    //           <ArrowRight className="h-4 w-4" />
-    //         </Button>
-    //       </div>
-
-    //       <p className="text-center text-xs text-gray-500 mt-3">
-    //         Secured by <span className="font-semibold">Razorpay</span>
-    //       </p>
-    //     </div>
-    //   </div>
-    // </AnimatedPopup >
-
     <AnimatedPopup
       isOpen={isOpen}
       onClose={onClose}
-      popupClass="w-full"
       height="150px"
-      closeIconClass="text-black hover:text-gray-700 transition"
+      // popupClass="w-[340px] pc:w-[480px] md:w-[560px]"
+      popupClass="w-[95%] max-w-[560px]"
+      closeIconClass="text-white hover:text-white"
     >
-      <div className="w-full max-w-[420px] mx-auto overflow-hidden rounded-xl bg-white shadow-xl">
 
-        {/* HEADER */}
-        <div className="bg-gradient-to-r from-[#0A5092] to-[#2563EB] p-3 sm:p-6 text-white">
+    {/* <AnimatedPopup
+      isOpen={isOpen}
+      onClose={onClose}
+      height="150px"
+      popupClass="w-[95%] max-w-[560px]"
+      closeIconClass="text-black hover:text-gray-700 transition"
+    > */}
 
-          {/* OFFER STRIP */}
-          <div className="flex items-center justify-center flex-wrap text-xs sm:text-sm px-2 text-center bg-white/90 text-gray-800 rounded-xl py-2 mb-3">
-            🎉 Unlock your first college at just
-            <span className="mx-2 font-bold text-orange-600">₹{amount}</span>
-            <span className="text-gray-500">(Limited Offer)</span>
-          </div>
+      <div className="w-full max-w-[560px] overflow-hidden rounded-xl bg-white shadow-xl">
+        <div className="bg-gradient-to-r from-[#0A5092] to-[#2563EB] p-2 sm:p-6 text-white relative overflow-hidden">
 
-          {/* TITLE */}
-          <div className="text-center text-sm sm:text-lg md:text-xl font-bold leading-snug px-2">
-            {activeTab === "single" ? titleSingle : titleState}
-          </div>
+          <div className="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-400/20 rounded-full blur-3xl" />
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            {renderHeaderTitle()}
+          </motion.div>
+
         </div>
 
-        {/* BODY */}
-        <div className="p-3 max-h-[75vh] overflow-y-auto">
-
-          {/* BUTTONS */}
-          {/* <div className="flex flex-col sm:flex-row gap-3 font-semibold items-stretch">
-
-            <button
-              onClick={() => setActiveTab("single")}
-              className={`w-full sm:flex-1 p-3 rounded-lg text-sm ${activeTab === "single"
-                ? "bg-[#0F63BF] text-white"
-                : "bg-white border border-blue-800 text-gray-700"
-                }`}
-            >
-              <div>CONTINUE WITH</div>
-              <div>THIS COLLEGE</div>
-              <div className="font-bold">₹{amount}</div>
-            </button>
-
-            <div className="flex items-center justify-center text-gray-500 text-sm">
-              or
-            </div>
-
-            <button
-              onClick={() => setActiveTab("state")}
-              className={`w-full sm:flex-1 p-3 rounded-lg text-sm ${activeTab === "state"
-                ? "bg-[#0F63BF] text-white"
-                : "bg-white border border-blue-800 text-gray-700"
-                }`}
-            >
-              <div className="text-xs bg-orange-500 text-white inline-block px-2 py-0.5 rounded mb-1">
-                Special Offer
-              </div>
-
-              <div>
-                BUY ALL {collegeCount} {stateName?.toUpperCase()} COLLEGES
-              </div>
-
-              {stateAmount && (
-                <div className="font-bold text-lg">₹{stateAmount}</div>
-              )}
-            </button>
-          </div> */}
-
+        <div
+          className={cn(
+            "p-3",
+            isMobile && "landscape:h-[240px] overflow-y-auto",
+          )}
+        >
           <div className="flex gap-4 font-semibold items-center">
             <button
               type="button"
@@ -722,53 +524,58 @@ export function UnlockPopover({
             </button>
           </div>
 
-          <div className="border-t my-4" />
+          <div className="border-t border-gray-200 my-4"></div>
+          <div className="bg-white rounded-xl shadow-md border p-3 flex items-center gap-3">
 
-          {/* PHONE INPUT */}
-          <div className="bg-white rounded-xl border p-3 flex items-center gap-3 w-full">
-            <div className="bg-blue-100 p-2 rounded-lg">📱</div>
+            <div className="bg-blue-100 text-blue-600 p-2 rounded-lg">
+              📱
+            </div>
 
             <div className="flex flex-col flex-1">
-              <label className="text-xs text-gray-500">Enter Phone Number</label>
+              <label className="text-xs text-gray-500 mb-1">
+                Enter Phone Number
+              </label>
 
               <div className="flex items-center gap-2">
-                <span>+91</span>
+                <span className="text-gray-700 font-medium">+91</span>
+
                 <input
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full outline-none text-base font-semibold"
                   placeholder="XXXXXXXXXX"
+                  className="w-full outline-none text-lg font-semibold tracking-wide"
+                  maxLength={10}
                 />
               </div>
             </div>
           </div>
 
-          {/* FEATURES */}
-          <div className="mt-4">
-            <h3 className="font-semibold text-gray-800 mb-2">
-              What You'll Get:
+          <div className="mb-4 mt-2">
+            <h3 className="font-semibold text-gray-800 text-lg mb-3 text-left">
+              What You&#39;ll Get :
             </h3>
-
-            <div className="space-y-3 text-sm text-gray-700">
+            <div className="space-y-3 text-[20px] text-gray-700">
               {renderWhatYouGet()}
             </div>
           </div>
 
-          <div className="border-t my-4" />
+          <div className="border-t border-gray-200 my-4"></div>
 
-          {/* CTA */}
-          <div className="flex justify-center">
+          <div className="text-center flex items-center justify-center">
             <Button
+              className="flex items-center justify-center text-lg font-medium  uppercase"
               onClick={handleConfirm}
-              className="w-full sm:w-auto text-base font-medium uppercase"
+              disabled={
+                loading || (activeTab === "state" && stateAmount == null)
+              }
             >
-              {loading
-                ? "Processing..."
-                : `UNLOCK NOW @ ₹${activeTab === "single"
-                  ? amount
-                  : stateAmount ?? amount
-                }`}
+              <span className="mr-2">
+                {loading
+                  ? "Processing..."
+                  : `UNLOCK NOW @ ₹${activeTab === "single" ? amount : (stateAmount ?? amount)}`}
+              </span>
+              <ArrowRight className="h-4 w-4" />
             </Button>
           </div>
 
@@ -777,7 +584,7 @@ export function UnlockPopover({
           </p>
         </div>
       </div>
-    </AnimatedPopup>
+    </AnimatedPopup >
   )
 }
 

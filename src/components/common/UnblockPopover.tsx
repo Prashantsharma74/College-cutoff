@@ -446,18 +446,10 @@ export function UnlockPopover({
       isOpen={isOpen}
       onClose={onClose}
       height="150px"
-      // popupClass="w-[340px] pc:w-[480px] md:w-[560px]"
-      popupClass="w-[95%] max-w-[560px]"
+      popupClass="w-[340px] pc:w-[480px] md:w-[560px]"
+      // popupClass="w-[95%] max-w-[560px]"
       closeIconClass="text-white hover:text-white"
     >
-
-    {/* <AnimatedPopup
-      isOpen={isOpen}
-      onClose={onClose}
-      height="150px"
-      popupClass="w-[95%] max-w-[560px]"
-      closeIconClass="text-black hover:text-gray-700 transition"
-    > */}
 
       <div className="w-full max-w-[560px] overflow-hidden rounded-xl bg-white shadow-xl">
         <div className="bg-gradient-to-r from-[#0A5092] to-[#2563EB] p-2 sm:p-6 text-white relative overflow-hidden">

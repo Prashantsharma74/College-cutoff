@@ -198,43 +198,97 @@ export const Pagination = forwardRef<PaginationHandle, PaginationProps>(
       return activePage * itemsCountPerPage
     }
 
+    // function renderPageNumbers() {
+    //   const totalPages = Math.ceil(totalItems / itemsCountPerPage)
+    //   const pages: (number | string)[] = []
+
+    //   if (totalPages <= 5) {
+    //     for (let i = 1; i <= totalPages; i++) pages.push(i)
+    //   } else {
+    //     pages.push(1, 2)
+
+    //     if (activePage > 3) {
+    //       pages.push("...")
+    //     }
+
+    //     if (activePage > 2 && activePage < totalPages - 1) {
+    //       pages.push(activePage)
+    //     }
+
+    //     if (activePage < totalPages - 2) {
+    //       pages.push("...")
+    //     }
+
+    //     pages.push(totalPages - 1, totalPages)
+    //   }
+
+    //   const finalPages: (number | string)[] = []
+    //   for (let i = 0; i < pages.length; i++) {
+    //     if (!(pages[i] === "..." && pages[i - 1] === "...")) {
+    //       finalPages.push(pages[i])
+    //     }
+    //   }
+
+    //   return finalPages.map((p, i) =>
+    //     p === "..." ? (
+    //       <span
+    //         key={i}
+    //         className="px-2 text-gray-400 text-sm select-none"
+    //       >
+    //         ...
+    //       </span>
+    //     ) : (
+    //       <button
+    //         key={i}
+    //         onClick={() => handlePageChange(p as number)}
+    //         disabled={disabled}
+    //         className={cn(
+    //           "min-w-[34px] h-[34px] px-2 text-sm font-medium rounded-lg transition-all duration-200",
+
+    //           // 👉 active
+    //           p === activePage
+    //             ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow"
+    //             : "text-gray-600 hover:bg-orange-100 hover:text-orange-600",
+
+    //           // 👉 disabled
+    //           disabled && "cursor-not-allowed opacity-50"
+    //         )}
+    //       >
+    //         {p}
+    //       </button>
+    //     )
+    //   )
+    // }
+
     function renderPageNumbers() {
       const totalPages = Math.ceil(totalItems / itemsCountPerPage)
       const pages: (number | string)[] = []
 
-      if (totalPages <= 5) {
-        for (let i = 1; i <= totalPages; i++) pages.push(i)
-      } else {
-        pages.push(1, 2)
+      const siblingCount = 1 // kitne pages left-right dikhane hain
 
-        if (activePage > 3) {
-          pages.push("...")
-        }
+      const left = Math.max(1, activePage - siblingCount)
+      const right = Math.min(totalPages, activePage + siblingCount)
 
-        if (activePage > 2 && activePage < totalPages - 1) {
-          pages.push(activePage)
-        }
-
-        if (activePage < totalPages - 2) {
-          pages.push("...")
-        }
-
-        pages.push(totalPages - 1, totalPages)
+      // Always show first page
+      if (left > 1) {
+        pages.push(1)
+        if (left > 2) pages.push("...")
       }
 
-      const finalPages: (number | string)[] = []
-      for (let i = 0; i < pages.length; i++) {
-        if (!(pages[i] === "..." && pages[i - 1] === "...")) {
-          finalPages.push(pages[i])
-        }
+      // Middle pages
+      for (let i = left; i <= right; i++) {
+        pages.push(i)
       }
 
-      return finalPages.map((p, i) =>
+      // Always show last page
+      if (right < totalPages) {
+        if (right < totalPages - 1) pages.push("...")
+        pages.push(totalPages)
+      }
+
+      return pages.map((p, i) =>
         p === "..." ? (
-          <span
-            key={i}
-            className="px-2 text-gray-400 text-sm select-none"
-          >
+          <span key={i} className="px-2 text-gray-400 text-sm">
             ...
           </span>
         ) : (
@@ -243,15 +297,10 @@ export const Pagination = forwardRef<PaginationHandle, PaginationProps>(
             onClick={() => handlePageChange(p as number)}
             disabled={disabled}
             className={cn(
-              "min-w-[34px] h-[34px] px-2 text-sm font-medium rounded-lg transition-all duration-200",
-
-              // 👉 active
+              "min-w-[34px] h-[34px] px-2 text-sm font-medium rounded-lg",
               p === activePage
-                ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow"
-                : "text-gray-600 hover:bg-orange-100 hover:text-orange-600",
-
-              // 👉 disabled
-              disabled && "cursor-not-allowed opacity-50"
+                ? "bg-blue-600 text-white"
+                : "text-gray-600 hover:bg-orange-100",
             )}
           >
             {p}
@@ -259,7 +308,6 @@ export const Pagination = forwardRef<PaginationHandle, PaginationProps>(
         )
       )
     }
-
 
     return (
       <div
